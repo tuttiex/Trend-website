@@ -95,8 +95,10 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                         {/* Chart Widget */}
                         <div className="aspect-video glass-card overflow-hidden relative group">
                             <iframe
-                                src={`https://dexscreener.com/base/${token.token_address}?embed=1&theme=dark&info=0`}
+                                src={`https://www.geckoterminal.com/base/tokens/${token.token_address}?embed=1&info=0&swaps=1`}
                                 className="w-full h-full border-0 absolute inset-0"
+                                allow="clipboard-write"
+                                allowFullScreen
                             />
                         </div>
 
@@ -152,11 +154,11 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                         </div>
 
                         <a
-                            href={`https://dexscreener.com/base/${token.token_address}`}
+                            href={`https://www.geckoterminal.com/base/tokens/${token.token_address}`}
                             target="_blank"
                             className="glass-card p-4 flex items-center justify-between group hover:bg-white/5 transition-colors"
                         >
-                            <div className="text-sm font-bold">View on DexScreener</div>
+                            <div className="text-sm font-bold">View on GeckoTerminal</div>
                             <ExternalLink size={16} className="text-zinc-500 group-hover:text-white transition-colors" />
                         </a>
                     </div>
