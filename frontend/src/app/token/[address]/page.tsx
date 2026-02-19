@@ -21,7 +21,9 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
     useEffect(() => {
         async function fetchToken() {
             try {
-                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/public/tokens`);
+                const apiUrl = `${process.env.NEXT_PUBLIC_API_URL || ''}/api/public/tokens`;
+                console.log('Fetching from:', apiUrl);
+                const res = await fetch(apiUrl);
                 const data = await res.json();
                 if (data.success) {
                     const found = data.data.find((t: Token) => t.token_address.toLowerCase() === address.toLowerCase());
