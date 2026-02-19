@@ -20,7 +20,8 @@ export default function Home() {
     useEffect(() => {
         async function fetchTokens() {
             try {
-                const apiUrl = `${process.env.NEXT_PUBLIC_API_URL || ''}/api/public/tokens`;
+                const baseUrl = (process.env.NEXT_PUBLIC_API_URL || '').replace(/\/$/, '');
+                const apiUrl = `${baseUrl}/api/public/tokens`;
                 console.log('Fetching from:', apiUrl);
                 const res = await fetch(apiUrl);
                 const data = await res.json();
