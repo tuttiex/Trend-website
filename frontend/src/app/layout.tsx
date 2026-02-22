@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 import { Providers } from "./Providers";
 
 export const metadata: Metadata = {
-    title: "Autonomous Trend Trading",
+    title: "Trend$",
     description: "Live tokens deployed by AI agents",
 };
 
