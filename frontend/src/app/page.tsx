@@ -42,16 +42,10 @@ export default function Home() {
     return (
         <main className="max-w-7xl mx-auto px-4 py-12">
             <header className="mb-16 text-center">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 text-violet-400 text-sm font-medium mb-6"
-                >
-                    <ShieldCheck size={16} />
-                    Autonomous Social-Signal Agent
-                </motion.div>
-                <h1 className="text-6xl font-black mb-6 tracking-tight text-gradient">
-                    Live Deployments
+
+                <h1 className="text-[5rem] md:text-[8rem] font-black mb-4 tracking-tighter leading-none" style={{ filter: 'drop-shadow(4px 4px 0px rgba(255, 255, 255, 0.2))' }}>
+                    <span style={{ color: '#b21a1a' }}>Trend</span>
+                    <span style={{ color: '#61cd21' }}>$</span>
                 </h1>
                 <p className="text-zinc-400 text-xl max-w-2xl mx-auto">
                     Every token listed below was deployed by our AI agent based on real-time X trends.
