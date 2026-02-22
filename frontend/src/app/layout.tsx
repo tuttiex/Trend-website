@@ -4,6 +4,8 @@ import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
+import { Providers } from "./Providers";
+
 export const metadata: Metadata = {
     title: "Autonomous Trend Trading",
     description: "Live tokens deployed by AI agents",
@@ -17,7 +19,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={`${inter.className} bg-black text-white antialiased`}>
-                {children}
+                <Providers>{children}</Providers>
             </body>
         </html>
     );

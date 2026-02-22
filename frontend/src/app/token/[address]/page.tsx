@@ -4,6 +4,8 @@ import { useEffect, useState, use } from 'react';
 import Link from 'next/link';
 import { ChevronLeft, ExternalLink, TrendingUp, Info } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { LiFiWidget } from '@lifi/widget';
 
 interface Token {
     token_address: string;
@@ -65,6 +67,9 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                             <img src={`https://ipfs.io/ipfs/${token.image_cid}`} alt={token.symbol} className="w-full h-full object-cover" />
                         </div>
                         <span className="font-bold">{token.symbol}</span>
+                        <div className="ml-4 flex items-center">
+                            <ConnectButton showBalance={false} chainStatus="icon" />
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -159,12 +164,31 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                             <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
                                 Swap 🚀
                             </h2>
-                            <div className="rounded-2xl overflow-hidden bg-[#131313] min-h-[500px] border border-white/5">
-                                <iframe
-                                    src={`https://app.uniswap.org/#/swap?outputCurrency=${token.token_address}&chain=base`}
-                                    width="100%"
-                                    height="500px"
-                                    style={{ border: 0 }}
+                            <div className="rounded-2xl overflow-hidden bg-[#131313] min-h-[500px]">
+                                <LiFiWidget
+                                    integrator="trend-agent"
+                                    config={{
+                                        theme: {
+                                            container: {
+                                                border: '1px solid rgba(255, 255, 255, 0.05)',
+                                                borderRadius: '16px',
+                                            },
+                                            palette: {
+                                                mode: 'dark',
+                                                primary: { main: '#8b5cf6' }, // violet-500
+                                                background: {
+                                                    default: '#131313',
+                                                    paper: '#131313',
+                                                },
+                                            },
+                                            shape: {
+                                                borderRadius: 16,
+                                                borderRadiusSecondary: 16,
+                                            },
+                                        },
+                                        toChain: 8453,
+                                        toToken: token.token_address,
+                                    }}
                                 />
                             </div>
                             <p className="mt-4 text-[10px] text-zinc-600 text-center uppercase tracking-tighter">
