@@ -93,7 +93,7 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                         </div>
 
                         {/* Chart Widget */}
-                        <div className="aspect-video glass-card overflow-hidden relative group">
+                        <div className="h-[600px] glass-card overflow-hidden relative group">
                             <iframe
                                 src={`https://www.geckoterminal.com/base/tokens/${token.token_address}?embed=1&info=0&swaps=1`}
                                 className="w-full h-full border-0 absolute inset-0"
