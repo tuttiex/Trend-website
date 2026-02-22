@@ -69,31 +69,38 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                 </div>
             </nav>
 
-            <main className="max-w-7xl mx-auto px-4 py-8">
-                <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-                    {/* Main Chart Area */}
-                    <div className="lg:col-span-3 space-y-6">
-                        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-                            <div>
-                                <h1 className="text-4xl font-black mb-2 flex items-center gap-3">
-                                    {token.symbol}
-                                    <span className="text-sm bg-violet-600/20 text-violet-400 px-3 py-1 rounded-full border border-violet-500/20 uppercase">Base</span>
-                                </h1>
-                                <p className="text-zinc-500 font-mono text-sm">{token.token_address}</p>
-                            </div>
-                            <div className="flex gap-2">
-                                <a
-                                    href={`https://basescan.org/token/${token.token_address}`}
-                                    target="_blank"
-                                    className="p-3 glass-card hover:bg-white/10 transition-colors"
-                                >
-                                    <ExternalLink size={20} />
-                                </a>
-                            </div>
+            <main className="max-w-[1400px] mx-auto px-6 py-8">
+                {/* 1. Dedicated Header Row */}
+                <div className="flex items-center gap-6 mb-8">
+                    <div className="relative w-24 h-24 rounded-full overflow-hidden bg-zinc-900 border-2 border-white/10 shrink-0">
+                        <img src={`https://ipfs.io/ipfs/${token.image_cid}`} alt={token.symbol} className="w-full h-full object-cover" />
+                    </div>
+                    <div>
+                        <div className="flex items-center gap-3 mb-1">
+                            <h1 className="text-3xl font-bold tracking-tight">{token.symbol} by Agent</h1>
+                            <span className="text-lg font-medium text-zinc-500">${token.symbol}</span>
+                            <span className="text-xs bg-violet-600/20 text-violet-400 px-2 py-0.5 rounded border border-violet-500/20 uppercase">Base</span>
                         </div>
+                        <div
+                            className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-lg border border-white/5 cursor-copy transition-colors group"
+                            onClick={() => navigator.clipboard.writeText(token.token_address)}
+                        >
+                            <span className="text-sm font-mono text-zinc-300">
+                                {token.token_address.slice(0, 6)}...{token.token_address.slice(-4)}
+                            </span>
+                            <span className="text-xs text-zinc-500 group-hover:text-white transition-colors">Copy</span>
+                        </div>
+                    </div>
+                </div>
 
-                        {/* Chart Widget */}
-                        <div className="h-[600px] glass-card overflow-hidden relative group">
+                {/* 2. Main Grid: 65/35 Split */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+                    {/* Left Column (Terminal + Analytics) */}
+                    <div className="lg:col-span-2 flex flex-col gap-6">
+
+                        {/* Terminal (Tall) */}
+                        <div className="h-[650px] glass-card overflow-hidden relative">
                             <iframe
                                 src={`https://www.geckoterminal.com/base/tokens/${token.token_address}?embed=1&info=0&swaps=1`}
                                 className="w-full h-full border-0 absolute inset-0"
@@ -102,45 +109,57 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                             />
                         </div>
 
-                        {/* Token Info */}
+                        {/* 4. The Two Things Under the Terminal (50/50 Split) */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="glass-card p-6">
-                                <div className="flex items-center gap-2 text-zinc-500 mb-4">
-                                    <TrendingUp size={18} />
-                                    <span className="text-xs font-bold uppercase tracking-wider">Trend Insight</span>
+                            {/* Left Box */}
+                            <div className="glass-card p-6 flex flex-col">
+                                <div className="flex items-center gap-2 text-zinc-500 mb-6">
+                                    <TrendingUp size={16} />
+                                    <span className="text-xs font-bold uppercase tracking-widest">Trend Insight</span>
                                 </div>
-                                <h2 className="text-xl font-bold mb-2">Topic: {token.topic}</h2>
-                                <p className="text-zinc-500 text-sm leading-relaxed">
+                                <h2 className="text-2xl font-bold mb-4">Topic: {token.topic}</h2>
+                                <p className="text-zinc-400 text-sm leading-relaxed flex-grow">
                                     This token was autonomously deployed by the Trend Agent after detecting significant social momentum around "{token.topic}" on X.
                                 </p>
                             </div>
-                            <div className="glass-card p-6">
-                                <div className="flex items-center gap-2 text-zinc-500 mb-4">
-                                    <Info size={18} />
-                                    <span className="text-xs font-bold uppercase tracking-wider">Analytics</span>
+
+                            {/* Right Box */}
+                            <div className="glass-card p-6 flex flex-col">
+                                <div className="flex items-center gap-2 text-zinc-500 mb-6">
+                                    <Info size={16} />
+                                    <span className="text-xs font-bold uppercase tracking-widest">Analytics</span>
                                 </div>
-                                <div className="space-y-3">
-                                    <div className="flex justify-between text-sm">
-                                        <span className="text-zinc-600">Launched</span>
-                                        <span>{new Date(token.timestamp).toLocaleString()}</span>
+                                <div className="space-y-4">
+                                    <div className="flex justify-between items-center text-sm border-b border-white/5 pb-3">
+                                        <span className="text-zinc-500">Launched</span>
+                                        <span className="font-medium text-zinc-200">{new Date(token.timestamp).toLocaleString()}</span>
                                     </div>
-                                    <div className="flex justify-between text-sm">
-                                        <span className="text-zinc-600">Network</span>
-                                        <span>Base Mainnet</span>
+                                    <div className="flex justify-between items-center text-sm border-b border-white/5 pb-3">
+                                        <span className="text-zinc-500">Network</span>
+                                        <span className="font-medium text-zinc-200">Base Mainnet</span>
+                                    </div>
+                                    <div className="flex justify-between items-center text-sm">
+                                        <span className="text-zinc-500">Contract</span>
+                                        <a
+                                            href={`https://basescan.org/token/${token.token_address}`}
+                                            target="_blank"
+                                            className="font-medium text-violet-400 hover:text-violet-300 flex items-center gap-1"
+                                        >
+                                            View Explorer <ExternalLink size={12} />
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    {/* Trade Area */}
-                    <div className="lg:col-span-2 space-y-6">
-                        <div className="glass-card p-6 border-violet-500/30">
+                    {/* Right Column (Trade Aspect) */}
+                    <div className="lg:col-span-1 flex flex-col gap-6">
+                        <div className="glass-card p-6 border-violet-500/30 flex-grow">
                             <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
                                 Swap 🚀
                             </h2>
-                            {/* Uniswap Widget Iframe - Standard simple swap embed */}
-                            <div className="rounded-2xl overflow-hidden bg-[#131313] min-h-[500px]">
+                            <div className="rounded-2xl overflow-hidden bg-[#131313] min-h-[500px] border border-white/5">
                                 <iframe
                                     src={`https://app.uniswap.org/#/swap?outputCurrency=${token.token_address}&chain=base`}
                                     width="100%"
@@ -152,16 +171,8 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                                 Trading carries high risk. Do your own research.
                             </p>
                         </div>
-
-                        <a
-                            href={`https://www.geckoterminal.com/base/tokens/${token.token_address}`}
-                            target="_blank"
-                            className="glass-card p-4 flex items-center justify-between group hover:bg-white/5 transition-colors"
-                        >
-                            <div className="text-sm font-bold">View on GeckoTerminal</div>
-                            <ExternalLink size={16} className="text-zinc-500 group-hover:text-white transition-colors" />
-                        </a>
                     </div>
+
                 </div>
             </main>
         </div>
