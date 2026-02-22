@@ -72,7 +72,7 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
             <main className="max-w-7xl mx-auto px-4 py-8">
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
                     {/* Main Chart Area */}
-                    <div className="lg:col-span-2 space-y-6">
+                    <div className="lg:col-span-3 space-y-6">
                         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
                             <div>
                                 <h1 className="text-4xl font-black mb-2 flex items-center gap-3">
@@ -93,7 +93,7 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                         </div>
 
                         {/* Chart Widget */}
-                        <div className="aspect-video glass-card overflow-hidden relative group">
+                        <div className="h-[600px] glass-card overflow-hidden relative group">
                             <iframe
                                 src={`https://www.geckoterminal.com/base/tokens/${token.token_address}?embed=1&info=0&swaps=1`}
                                 className="w-full h-full border-0 absolute inset-0"
@@ -101,40 +101,10 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                                 allowFullScreen
                             />
                         </div>
-
-                        {/* Token Info */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="glass-card p-6">
-                                <div className="flex items-center gap-2 text-zinc-500 mb-4">
-                                    <TrendingUp size={18} />
-                                    <span className="text-xs font-bold uppercase tracking-wider">Trend Insight</span>
-                                </div>
-                                <h2 className="text-xl font-bold mb-2">Topic: {token.topic}</h2>
-                                <p className="text-zinc-500 text-sm leading-relaxed">
-                                    This token was autonomously deployed by the Trend Agent after detecting significant social momentum around "{token.topic}" on X.
-                                </p>
-                            </div>
-                            <div className="glass-card p-6">
-                                <div className="flex items-center gap-2 text-zinc-500 mb-4">
-                                    <Info size={18} />
-                                    <span className="text-xs font-bold uppercase tracking-wider">Analytics</span>
-                                </div>
-                                <div className="space-y-3">
-                                    <div className="flex justify-between text-sm">
-                                        <span className="text-zinc-600">Launched</span>
-                                        <span>{new Date(token.timestamp).toLocaleString()}</span>
-                                    </div>
-                                    <div className="flex justify-between text-sm">
-                                        <span className="text-zinc-600">Network</span>
-                                        <span>Base Mainnet</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     {/* Trade Area */}
-                    <div className="lg:col-span-2 space-y-6">
+                    <div className="lg:col-span-1 space-y-6">
                         <div className="glass-card p-6 border-violet-500/30">
                             <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
                                 Swap 🚀
