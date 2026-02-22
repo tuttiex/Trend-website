@@ -160,24 +160,22 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
 
                     {/* Right Column (Trade Aspect) */}
                     <div className="lg:col-span-1 flex flex-col gap-6">
-                        <div className="glass-card p-6 border-violet-500/30 flex-grow">
-                            <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
-                                Swap 🚀
-                            </h2>
-                            <div className="rounded-2xl overflow-hidden bg-[#131313] min-h-[500px]">
+                        <div className="w-full">
+                            <div className="min-h-[500px]">
                                 <LiFiWidget
                                     integrator="trend-agent"
                                     config={{
                                         theme: {
                                             container: {
-                                                border: '1px solid rgba(255, 255, 255, 0.05)',
-                                                borderRadius: '16px',
+                                                border: '1px solid rgba(139, 92, 246, 0.3)', // Subtle violet border
+                                                borderRadius: '24px',
+                                                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)', // Outer shadow for depth
                                             },
                                             palette: {
                                                 mode: 'dark',
                                                 primary: { main: '#8b5cf6' }, // violet-500
                                                 background: {
-                                                    default: '#131313',
+                                                    default: 'rgba(20, 20, 20, 0.8)', // Semi-transparent dark background
                                                     paper: '#131313',
                                                 },
                                             },
