@@ -43,7 +43,7 @@ export default function Home() {
         <main className="max-w-7xl mx-auto px-4 py-12">
             <header className="mb-16 text-center">
 
-                <h1 className="text-[5rem] md:text-[8rem] font-black mb-4 tracking-tighter leading-none" style={{ filter: 'drop-shadow(4px 4px 0px rgba(255, 255, 255, 0.2))' }}>
+                <h1 className="text-[5rem] md:text-[8rem] font-black mb-4 tracking-tighter leading-none" style={{ filter: 'drop-shadow(4px 4px 0px rgba(255, 255, 255, 0.2))', fontFamily: '"Sprite Graffiti", sans-serif' }}>
                     <span style={{ color: '#b21a1a' }}>Trend</span>
                     <span style={{ color: '#61cd21' }}>$</span>
                 </h1>
