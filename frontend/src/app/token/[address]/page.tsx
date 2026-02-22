@@ -62,7 +62,7 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                     </Link>
                     <div className="flex items-center gap-3">
                         <div className="w-8 h-8 rounded-lg bg-zinc-900 overflow-hidden border border-white/10">
-                            <img src={`https://gateway.pinata.cloud/ipfs/${token.image_cid}`} alt={token.symbol} className="w-full h-full object-cover" />
+                            <img src={`https://ipfs.io/ipfs/${token.image_cid}`} alt={token.symbol} className="w-full h-full object-cover" />
                         </div>
                         <span className="font-bold">{token.symbol}</span>
                     </div>

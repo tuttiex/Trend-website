@@ -84,7 +84,7 @@ export default function Home() {
                                 <div className="flex items-center gap-4 mb-6">
                                     <div className="relative w-16 h-16 rounded-2xl overflow-hidden bg-zinc-900 border border-white/5">
                                         <img
-                                            src={`https://gateway.pinata.cloud/ipfs/${token.image_cid}`}
+                                            src={`https://ipfs.io/ipfs/${token.image_cid}`}
                                             alt={token.symbol}
                                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                                         />
