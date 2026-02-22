@@ -82,7 +82,7 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                     </div>
                     <div>
                         <div className="flex items-center gap-3 mb-1">
-                            <h1 className="text-3xl font-bold tracking-tight">{token.symbol} by Agent</h1>
+                            <h1 className="text-3xl font-bold tracking-tight">{token.symbol}</h1>
                             <span className="text-lg font-medium text-zinc-500">${token.symbol}</span>
                             <span className="text-xs bg-violet-600/20 text-violet-400 px-2 py-0.5 rounded border border-violet-500/20 uppercase">Base</span>
                         </div>

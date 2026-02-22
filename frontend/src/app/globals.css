@@ -5,11 +5,12 @@
   --foreground: #ffffff;
   --glass: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.1);
-  --accent: #8b5cf6; /* Violet-500 */
+  --accent: #8b5cf6;
+  /* Violet-500 */
 }
 
 body {
-  background: radial-gradient(circle at top right, #1e1b4b, #000000);
+  background: #000000;
   min-height: 100vh;
 }
 
