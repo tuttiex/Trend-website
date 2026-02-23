@@ -58,11 +58,11 @@ export default function Home() {
             {loading && tokens.length === 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-pulse">
                     {[1, 2, 3].map(i => (
-                        <div key={i} className="h-64 glass-card" />
+                        <div key={i} className="h-64 bg-[#b21a1a]/10 backdrop-blur-md border border-[#b21a1a]/20 rounded-2xl" />
                     ))}
                 </div>
             ) : tokens.length === 0 ? (
-                <div className="text-center py-24 glass-card">
+                <div className="text-center py-24 bg-[#b21a1a]/10 backdrop-blur-md border border-[#b21a1a]/20 rounded-2xl">
                     <TrendingUp className="mx-auto mb-4 text-zinc-600" size={48} />
                     <h2 className="text-2xl font-semibold mb-2 text-zinc-300">No agents active yet</h2>
                     <p className="text-zinc-500">The agent will push new tokens here as they are deployed.</p>
@@ -75,7 +75,7 @@ export default function Home() {
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: index * 0.1 }}
-                            className="glass-card p-6 group hover:border-[#b21a1a]/50 transition-all cursor-pointer"
+                            className="bg-[#b21a1a]/10 backdrop-blur-md border border-[#b21a1a]/20 rounded-2xl p-6 group hover:border-[#b21a1a]/50 transition-all cursor-pointer"
                         >
                             <Link href={`/token/${token.token_address}`}>
                                 <div className="flex items-center gap-4 mb-6">
