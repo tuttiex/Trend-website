@@ -29,7 +29,11 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                 const res = await fetch(apiUrl);
                 const data = await res.json();
                 if (data.success) {
-                    const found = data.data.find((t: Token) => t.token_address.toLowerCase() === address.toLowerCase());
+                    const found = data.data.find((t: Token) =>
+                        t.token_address.toLowerCase() === address.toLowerCase() &&
+                        t.symbol !== 'JXSN' &&
+                        t.symbol !== 'TENI'
+                    );
                     setToken(found || null);
                 }
             } catch (err) {

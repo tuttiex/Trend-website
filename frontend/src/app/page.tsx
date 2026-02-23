@@ -29,7 +29,8 @@ export default function Home() {
                 const res = await fetch(apiUrl);
                 const data = await res.json();
                 if (data.success) {
-                    setTokens(data.data);
+                    const filteredTokens = data.data.filter((t: Token) => t.symbol !== 'JXSN' && t.symbol !== 'TENI');
+                    setTokens(filteredTokens);
                 }
             } catch (err) {
                 console.error('Failed to fetch tokens:', err);
