@@ -75,7 +75,7 @@ export default function Home() {
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: index * 0.1 }}
-                            className="glass-card p-6 group hover:border-violet-500/50 transition-all cursor-pointer"
+                            className="glass-card p-6 group hover:border-[#b21a1a]/50 transition-all cursor-pointer"
                         >
                             <Link href={`/token/${token.token_address}`}>
                                 <div className="flex items-center gap-4 mb-6">
@@ -103,7 +103,7 @@ export default function Home() {
                                         </div>
                                     </div>
 
-                                    <button className="w-full py-4 bg-white text-black font-black rounded-xl hover:bg-violet-500 hover:text-white transition-colors flex items-center justify-center gap-2">
+                                    <button className="w-full py-4 bg-white text-black font-black rounded-xl hover:bg-[#b21a1a] hover:text-white transition-colors flex items-center justify-center gap-2">
                                         Trade Now
                                         <ExternalLink size={18} />
                                     </button>
