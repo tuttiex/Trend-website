@@ -29,7 +29,7 @@ export default function Home() {
                 const res = await fetch(apiUrl);
                 const data = await res.json();
                 if (data.success) {
-                    const filteredTokens = data.data.filter((t: Token) => t.symbol !== 'JXSN' && t.symbol !== 'TENI');
+                    const filteredTokens = data.data.filter((t: Token) => t.symbol !== 'JXSN' && t.symbol !== 'TENI' && t.symbol !== 'VERIFY');
                     setTokens(filteredTokens);
                 }
             } catch (err) {

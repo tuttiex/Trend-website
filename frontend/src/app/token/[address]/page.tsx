@@ -32,7 +32,8 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                     const found = data.data.find((t: Token) =>
                         t.token_address.toLowerCase() === address.toLowerCase() &&
                         t.symbol !== 'JXSN' &&
-                        t.symbol !== 'TENI'
+                        t.symbol !== 'TENI' &&
+                        t.symbol !== 'VERIFY'
                     );
                     setToken(found || null);
                 }
