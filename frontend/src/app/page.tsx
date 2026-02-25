@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { TrendingUp, ExternalLink, ShieldCheck } from 'lucide-react';
+import { TrendingUp, ExternalLink, ShieldCheck, ArrowRight } from 'lucide-react';
 import localFont from 'next/font/local';
 
 const spriteGraffiti = localFont({ src: '../../public/SpriteGraffitiShadow.woff' });
@@ -147,6 +147,11 @@ export default function Home() {
 
             <div className="mb-16">
                 {renderTokenGrid(usaTokens, "Waiting for USA Trends...")}
+                <div className="flex justify-end mt-4">
+                    <Link href="/us" className="text-zinc-500 font-bold hover:text-white transition-colors flex items-center gap-2 text-sm uppercase tracking-wider">
+                        View All US Trends <ArrowRight size={16} />
+                    </Link>
+                </div>
             </div>
 
             {/* NG Trends Header */}
@@ -158,6 +163,11 @@ export default function Home() {
 
             <div className="mb-8">
                 {renderTokenGrid(otherTokens, "Waiting for Nigeria Trends...")}
+                <div className="flex justify-end mt-4">
+                    <Link href="/ng" className="text-zinc-500 font-bold hover:text-white transition-colors flex items-center gap-2 text-sm uppercase tracking-wider">
+                        View All NG Trends <ArrowRight size={16} />
+                    </Link>
+                </div>
             </div>
         </main>
     );
