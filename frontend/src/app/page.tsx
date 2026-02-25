@@ -190,6 +190,14 @@ export default function Home() {
                     <span className="px-3 py-1 rounded-full bg-zinc-800/80 text-zinc-400 text-xs font-bold border border-zinc-700/50 uppercase tracking-widest">Coming Soon</span>
                 </div>
             </div>
+
+            {/* TikTok Trends Header */}
+            <div className="flex items-center justify-center mt-12 mb-24">
+                <div className="text-zinc-500 font-bold text-2xl flex items-center gap-3">
+                    TikTok Trends
+                    <span className="px-3 py-1 rounded-full bg-zinc-800/80 text-zinc-400 text-xs font-bold border border-zinc-700/50 uppercase tracking-widest">Coming Soon</span>
+                </div>
+            </div>
         </main>
     );
 }
