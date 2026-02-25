@@ -149,13 +149,11 @@ export default function Home() {
                 {renderTokenGrid(usaTokens, "Waiting for USA Trends...")}
             </div>
 
-            {/* Nigeria Trends Section */}
-            <div className="flex flex-col md:flex-row w-full items-center justify-between mb-8 gap-4">
-                <div className="text-white font-bold text-2xl flex items-center gap-2 md:flex-1">
-                    🇳🇬 Nigeria Trends
+            {/* NG Trends Header */}
+            <div className="flex items-center justify-start mb-6">
+                <div className="text-white font-bold text-2xl flex items-center gap-2">
+                    🇳🇬 NG Trends
                 </div>
-                <div className="hidden md:block md:flex-1"></div>
-                <div className="hidden md:block md:flex-1"></div>
             </div>
 
             <div className="mb-8">
