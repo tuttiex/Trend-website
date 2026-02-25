@@ -141,7 +141,7 @@ export default function Home() {
             {/* US Trends Header */}
             <div className="flex items-center justify-start mb-6">
                 <div className="text-white font-bold text-2xl flex items-center gap-2">
-                    🇺🇸 US Trends
+                    US Trends
                 </div>
             </div>
 
