@@ -152,7 +152,7 @@ export default function Home() {
             {/* NG Trends Header */}
             <div className="flex items-center justify-start mb-6">
                 <div className="text-white font-bold text-2xl flex items-center gap-2">
-                    🇳🇬 NG Trends
+                    NG Trends
                 </div>
             </div>
 
