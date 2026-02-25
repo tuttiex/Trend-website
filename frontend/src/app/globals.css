@@ -11,8 +11,7 @@
 }
 
 body {
-  background: url('/bg.jpg') no-repeat center center fixed;
-  background-size: cover;
+  background: #0B0C10;
   min-height: 100vh;
 }
 
