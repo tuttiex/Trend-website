@@ -71,14 +71,14 @@ export default function Home() {
         }
 
         return (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="flex overflow-x-auto gap-6 pb-6 hide-scrollbar snap-x snap-mandatory">
                 {tokens.map((token, index) => (
                     <motion.div
                         key={token.token_address}
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: index * 0.1 }}
-                        className="bg-[#b21a1a]/10 backdrop-blur-md border border-[#b21a1a]/20 rounded-2xl p-6 group hover:border-[#b21a1a]/50 transition-all cursor-pointer"
+                        className="min-w-[320px] max-w-[350px] flex-none snap-start bg-[#b21a1a]/10 backdrop-blur-md border border-[#b21a1a]/20 rounded-2xl p-6 group hover:border-[#b21a1a]/50 transition-all cursor-pointer"
                     >
                         <Link href={`/token/${token.token_address}`}>
                             <div className="flex items-center gap-4 mb-6">
