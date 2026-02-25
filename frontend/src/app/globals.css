@@ -1,7 +1,5 @@
 @import url('https://fonts.cdnfonts.com/css/sprite-graffiti');
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
   --background: #000000;
