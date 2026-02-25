@@ -68,7 +68,7 @@ export default function Home() {
             return (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-pulse">
                     {[1, 2, 3].map(i => (
-                        <div key={i} className="h-64 bg-[#b21a1a]/10 backdrop-blur-md border border-[#b21a1a]/20 rounded-2xl" />
+                        <div key={i} className="h-64 bg-[#61cd21]/10 backdrop-blur-md border border-[#61cd21]/20 rounded-2xl" />
                     ))}
                 </div>
             );
@@ -76,7 +76,7 @@ export default function Home() {
 
         if (tokens.length === 0) {
             return (
-                <div className="text-center py-16 bg-[#b21a1a]/10 backdrop-blur-md border border-[#b21a1a]/20 rounded-2xl">
+                <div className="text-center py-16 bg-[#61cd21]/10 backdrop-blur-md border border-[#61cd21]/20 rounded-2xl">
                     <TrendingUp className="mx-auto mb-4 text-zinc-600" size={40} />
                     <p className="text-zinc-500">{emptyMessage}</p>
                 </div>
@@ -91,7 +91,7 @@ export default function Home() {
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: index * 0.1 }}
-                        className="min-w-[320px] max-w-[350px] flex-none snap-start bg-[#b21a1a]/10 backdrop-blur-md border border-[#b21a1a]/20 rounded-2xl p-6 group hover:border-[#b21a1a]/50 transition-all cursor-pointer"
+                        className="min-w-[320px] max-w-[350px] flex-none snap-start bg-[#61cd21]/10 backdrop-blur-md border border-[#61cd21]/20 rounded-2xl p-6 group hover:border-[#61cd21]/50 transition-all cursor-pointer"
                     >
                         <Link href={`/token/${token.token_address}`}>
                             <div className="flex items-center gap-4 mb-6">
@@ -119,7 +119,7 @@ export default function Home() {
                                     </div>
                                 </div>
 
-                                <button className="w-full py-4 bg-[#b21a1a] text-white font-black rounded-xl hover:bg-[#3fd0c9] hover:text-white transition-colors flex items-center justify-center gap-2">
+                                <button className="w-full py-4 bg-[#61cd21] text-white font-black rounded-xl hover:bg-[#3fd0c9] hover:text-white transition-colors flex items-center justify-center gap-2">
                                     Trade Now
                                     <ExternalLink size={18} />
                                 </button>
@@ -135,7 +135,7 @@ export default function Home() {
         <main className="max-w-7xl mx-auto px-4 py-12">
             <header className="mb-16 text-center">
                 <h1 className={`text-[5rem] md:text-[8rem] font-black mb-4 tracking-tighter leading-none ${spriteGraffiti.className}`}>
-                    <span style={{ color: '#b21a1a' }}>Trend</span>
+                    <span style={{ color: '#61cd21' }}>Trend</span>
                     <span style={{ color: '#61cd21' }}>$</span>
                 </h1>
                 <p className="text-zinc-400 text-xl max-w-2xl mx-auto">
@@ -146,14 +146,14 @@ export default function Home() {
             {/* Main X Trends Header */}
             <div className="flex items-center justify-center mb-12">
                 <h2 className="text-3xl font-black flex items-center justify-center gap-3 whitespace-nowrap">
-                    <span className="text-[#b21a1a]">X Trends</span>
-                    <span className="px-3 py-1 rounded-full bg-[#b21a1a]/20 text-[#b21a1a] text-xs font-bold border border-[#b21a1a]/30 uppercase tracking-widest">Live Updates</span>
+                    <span className="text-[#61cd21]">X Trends</span>
+                    <span className="px-3 py-1 rounded-full bg-[#61cd21]/20 text-[#61cd21] text-xs font-bold border border-[#61cd21]/30 uppercase tracking-widest">Live Updates</span>
                 </h2>
             </div>
 
             {/* US Trends Header */}
             <div className="flex items-center justify-start mb-6">
-                <div className="text-[#b21a1a] font-bold text-2xl flex items-center gap-2">
+                <div className="text-[#61cd21] font-bold text-2xl flex items-center gap-2">
                     US Trends
                 </div>
             </div>
@@ -161,7 +161,7 @@ export default function Home() {
             <div className="mb-16">
                 {renderTokenGrid(usaTokens, "Waiting for USA Trends...")}
                 <div className="flex justify-end mt-4">
-                    <Link href="/us" className="text-[#b21a1a] font-bold hover:text-white transition-colors flex items-center gap-2 text-sm uppercase tracking-wider">
+                    <Link href="/us" className="text-[#61cd21] font-bold hover:text-white transition-colors flex items-center gap-2 text-sm uppercase tracking-wider">
                         View All US Trends <ArrowRight size={16} />
                     </Link>
                 </div>
@@ -169,7 +169,7 @@ export default function Home() {
 
             {/* NG Trends Header */}
             <div className="flex items-center justify-start mb-6">
-                <div className="text-[#b21a1a] font-bold text-2xl flex items-center gap-2">
+                <div className="text-[#61cd21] font-bold text-2xl flex items-center gap-2">
                     NG Trends
                 </div>
             </div>
@@ -177,7 +177,7 @@ export default function Home() {
             <div className="mb-8">
                 {renderTokenGrid(otherTokens, "Waiting for Nigeria Trends...")}
                 <div className="flex justify-end mt-4">
-                    <Link href="/ng" className="text-[#b21a1a] font-bold hover:text-white transition-colors flex items-center gap-2 text-sm uppercase tracking-wider">
+                    <Link href="/ng" className="text-[#61cd21] font-bold hover:text-white transition-colors flex items-center gap-2 text-sm uppercase tracking-wider">
                         View All NG Trends <ArrowRight size={16} />
                     </Link>
                 </div>
@@ -185,17 +185,17 @@ export default function Home() {
 
             {/* Worldwide Header */}
             <div className="flex items-center justify-start mt-12 mb-16">
-                <div className="text-[#b21a1a] font-bold text-2xl flex items-center gap-3">
+                <div className="text-[#61cd21] font-bold text-2xl flex items-center gap-3">
                     Worldwide
-                    <span className="px-3 py-1 rounded-full bg-[#b21a1a]/20 text-[#b21a1a] text-xs font-bold border border-[#b21a1a]/30 uppercase tracking-widest">Coming Soon</span>
+                    <span className="px-3 py-1 rounded-full bg-[#61cd21]/20 text-[#61cd21] text-xs font-bold border border-[#61cd21]/30 uppercase tracking-widest">Coming Soon</span>
                 </div>
             </div>
 
             {/* TikTok Trends Header */}
             <div className="flex items-center justify-center mt-12 mb-24">
-                <div className="text-[#b21a1a] font-bold text-2xl flex items-center gap-3">
+                <div className="text-[#61cd21] font-bold text-2xl flex items-center gap-3">
                     TikTok Trends
-                    <span className="px-3 py-1 rounded-full bg-[#b21a1a]/20 text-[#b21a1a] text-xs font-bold border border-[#b21a1a]/30 uppercase tracking-widest">Coming Soon</span>
+                    <span className="px-3 py-1 rounded-full bg-[#61cd21]/20 text-[#61cd21] text-xs font-bold border border-[#61cd21]/30 uppercase tracking-widest">Coming Soon</span>
                 </div>
             </div>
         </main>

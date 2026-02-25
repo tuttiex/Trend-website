@@ -52,7 +52,7 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
         return (
             <div className="min-h-screen flex flex-col items-center justify-center bg-[#3fd0c9] px-4">
                 <h1 className="text-2xl font-bold mb-4">Token Not Found</h1>
-                <Link href="/" className="text-[#b21a1a] hover:underline flex items-center gap-2">
+                <Link href="/" className="text-[#61cd21] hover:underline flex items-center gap-2">
                     <ChevronLeft size={20} /> Back to dashboard
                 </Link>
             </div>
@@ -89,7 +89,7 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                         <div className="flex items-center gap-3 mb-1">
                             <h1 className="text-3xl font-bold tracking-tight">{token.symbol}</h1>
                             <span className="text-lg font-medium text-zinc-500">${token.symbol}</span>
-                            <span className="text-xs bg-[#b21a1a]/20 text-[#b21a1a] px-2 py-0.5 rounded border border-[#b21a1a]/20 uppercase">Base</span>
+                            <span className="text-xs bg-[#61cd21]/20 text-[#61cd21] px-2 py-0.5 rounded border border-[#61cd21]/20 uppercase">Base</span>
                         </div>
                         <div
                             className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-lg border border-white/5 cursor-copy transition-colors group"
@@ -153,7 +153,7 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                                         <a
                                             href={`https://basescan.org/token/${token.token_address}`}
                                             target="_blank"
-                                            className="font-medium text-[#b21a1a] hover:text-[#b21a1a]/80 flex items-center gap-1"
+                                            className="font-medium text-[#61cd21] hover:text-[#61cd21]/80 flex items-center gap-1"
                                         >
                                             View Explorer <ExternalLink size={12} />
                                         </a>
@@ -178,7 +178,7 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                                             },
                                             palette: {
                                                 mode: 'dark',
-                                                primary: { main: '#b21a1a' }, // red theme
+                                                primary: { main: '#61cd21' }, // green theme
                                                 background: {
                                                     default: 'rgba(20, 20, 20, 0.8)', // Semi-transparent dark background
                                                     paper: '#131313',

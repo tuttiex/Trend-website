@@ -54,14 +54,14 @@ export default function USTrends() {
     return (
         <main className="max-w-7xl mx-auto px-4 py-12">
             <nav className="mb-8">
-                <Link href="/" className="text-zinc-400 hover:text-[#b21a1a] transition-colors flex items-center gap-2 w-fit">
+                <Link href="/" className="text-zinc-400 hover:text-[#61cd21] transition-colors flex items-center gap-2 w-fit">
                     <ChevronLeft size={20} /> Back to Dashboard
                 </Link>
             </nav>
 
             <header className="mb-16 text-center">
                 <h1 className={`text-[4rem] md:text-[6rem] font-black mb-4 tracking-tighter leading-none ${spriteGraffiti.className}`}>
-                    <span style={{ color: '#b21a1a' }}>US</span>
+                    <span style={{ color: '#61cd21' }}>US</span>
                     <span style={{ color: '#61cd21' }}>$</span>
                 </h1>
                 <p className="text-zinc-400 text-xl max-w-2xl mx-auto">
@@ -70,7 +70,7 @@ export default function USTrends() {
             </header>
 
             <div className="flex items-center justify-start mb-6">
-                <div className="text-[#b21a1a] font-bold text-2xl flex items-center gap-2">
+                <div className="text-[#61cd21] font-bold text-2xl flex items-center gap-2">
                     US Trends
                 </div>
             </div>
@@ -78,11 +78,11 @@ export default function USTrends() {
             {loading && tokens.length === 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-pulse">
                     {[1, 2, 3].map(i => (
-                        <div key={i} className="h-64 bg-[#b21a1a]/10 backdrop-blur-md border border-[#b21a1a]/20 rounded-2xl" />
+                        <div key={i} className="h-64 bg-[#61cd21]/10 backdrop-blur-md border border-[#61cd21]/20 rounded-2xl" />
                     ))}
                 </div>
             ) : tokens.length === 0 ? (
-                <div className="text-center py-24 bg-[#b21a1a]/10 backdrop-blur-md border border-[#b21a1a]/20 rounded-2xl">
+                <div className="text-center py-24 bg-[#61cd21]/10 backdrop-blur-md border border-[#61cd21]/20 rounded-2xl">
                     <TrendingUp className="mx-auto mb-4 text-zinc-600" size={48} />
                     <h2 className="text-2xl font-semibold mb-2 text-zinc-300">No agents active yet</h2>
                     <p className="text-zinc-500">The agent will push new tokens here as they are deployed.</p>
@@ -95,7 +95,7 @@ export default function USTrends() {
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: index * 0.1 }}
-                            className="bg-[#b21a1a]/10 backdrop-blur-md border border-[#b21a1a]/20 rounded-2xl p-6 group hover:border-[#b21a1a]/50 transition-all cursor-pointer"
+                            className="bg-[#61cd21]/10 backdrop-blur-md border border-[#61cd21]/20 rounded-2xl p-6 group hover:border-[#61cd21]/50 transition-all cursor-pointer"
                         >
                             <Link href={`/token/${token.token_address}`}>
                                 <div className="flex items-center gap-4 mb-6">
@@ -123,7 +123,7 @@ export default function USTrends() {
                                         </div>
                                     </div>
 
-                                    <button className="w-full py-4 bg-[#b21a1a] text-white font-black rounded-xl hover:bg-[#3fd0c9] hover:text-white transition-colors flex items-center justify-center gap-2">
+                                    <button className="w-full py-4 bg-[#61cd21] text-white font-black rounded-xl hover:bg-[#3fd0c9] hover:text-white transition-colors flex items-center justify-center gap-2">
                                         Trade Now
                                         <ExternalLink size={18} />
                                     </button>
