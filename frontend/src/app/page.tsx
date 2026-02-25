@@ -56,7 +56,7 @@ export default function Home() {
                 </p>
             </header>
 
-            <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center justify-center mb-8">
                 <h2 className="text-3xl font-black flex items-center gap-3">
                     <span className="text-white">X Trends</span>
                     <span className="px-3 py-1 rounded-full bg-[#b21a1a]/20 text-[#b21a1a] text-xs font-bold border border-[#b21a1a]/30 uppercase tracking-widest">Live Updates</span>
