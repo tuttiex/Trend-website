@@ -46,11 +46,11 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
         fetchToken();
     }, [address]);
 
-    if (loading) return <div className="min-h-screen bg-black" />;
+    if (loading) return <div className="min-h-screen bg-[#3fd0c9]" />;
 
     if (!token) {
         return (
-            <div className="min-h-screen flex flex-col items-center justify-center bg-black px-4">
+            <div className="min-h-screen flex flex-col items-center justify-center bg-[#3fd0c9] px-4">
                 <h1 className="text-2xl font-bold mb-4">Token Not Found</h1>
                 <Link href="/" className="text-[#b21a1a] hover:underline flex items-center gap-2">
                     <ChevronLeft size={20} /> Back to dashboard
@@ -60,8 +60,8 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
     }
 
     return (
-        <div className="min-h-screen bg-black">
-            <nav className="border-b border-white/5 bg-black/50 backdrop-blur-xl sticky top-0 z-50">
+        <div className="min-h-screen bg-[#3fd0c9]">
+            <nav className="border-b border-white/5 bg-[#3fd0c9]/50 backdrop-blur-xl sticky top-0 z-50">
                 <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
                     <Link href="/" className="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors">
                         <ChevronLeft size={20} />
