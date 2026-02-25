@@ -56,11 +56,15 @@ export default function Home() {
                 </p>
             </header>
 
-            <div className="flex items-center justify-center mb-8">
-                <h2 className="text-3xl font-black flex items-center gap-3">
+            <div className="flex flex-col md:flex-row w-full items-center justify-between mb-8 gap-4">
+                <div className="text-white font-bold text-2xl flex items-center gap-2 md:flex-1">
+                    🇺🇸 USA Trends
+                </div>
+                <h2 className="text-3xl font-black flex items-center justify-center gap-3 md:flex-1 whitespace-nowrap">
                     <span className="text-white">X Trends</span>
                     <span className="px-3 py-1 rounded-full bg-[#b21a1a]/20 text-[#b21a1a] text-xs font-bold border border-[#b21a1a]/30 uppercase tracking-widest">Live Updates</span>
                 </h2>
+                <div className="hidden md:block md:flex-1"></div>
             </div>
 
             {loading && tokens.length === 0 ? (
