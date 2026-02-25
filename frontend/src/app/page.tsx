@@ -17,7 +17,8 @@ interface Token {
 }
 
 export default function Home() {
-    const [tokens, setTokens] = useState<Token[]>([]);
+    const [usaTokens, setUsaTokens] = useState<Token[]>([]);
+    const [otherTokens, setOtherTokens] = useState<Token[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -30,7 +31,13 @@ export default function Home() {
                 const data = await res.json();
                 if (data.success) {
                     const filteredTokens = data.data.filter((t: Token) => t.symbol !== 'JXSN' && t.symbol !== 'TENI' && t.symbol !== 'VERIFY');
-                    setTokens(filteredTokens);
+
+                    const usaSymbols = ['SOTU', 'WWRW', 'SPCX'];
+                    const usa = filteredTokens.filter((t: Token) => usaSymbols.includes(t.symbol.toUpperCase()));
+                    const others = filteredTokens.filter((t: Token) => !usaSymbols.includes(t.symbol.toUpperCase()));
+
+                    setUsaTokens(usa);
+                    setOtherTokens(others);
                 }
             } catch (err) {
                 console.error('Failed to fetch tokens:', err);
@@ -43,10 +50,77 @@ export default function Home() {
         return () => clearInterval(interval);
     }, []);
 
+    const renderTokenGrid = (tokens: Token[], emptyMessage: string) => {
+        if (loading && tokens.length === 0) {
+            return (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-pulse">
+                    {[1, 2, 3].map(i => (
+                        <div key={i} className="h-64 bg-[#b21a1a]/10 backdrop-blur-md border border-[#b21a1a]/20 rounded-2xl" />
+                    ))}
+                </div>
+            );
+        }
+
+        if (tokens.length === 0) {
+            return (
+                <div className="text-center py-16 bg-[#b21a1a]/10 backdrop-blur-md border border-[#b21a1a]/20 rounded-2xl">
+                    <TrendingUp className="mx-auto mb-4 text-zinc-600" size={40} />
+                    <p className="text-zinc-500">{emptyMessage}</p>
+                </div>
+            );
+        }
+
+        return (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {tokens.map((token, index) => (
+                    <motion.div
+                        key={token.token_address}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: index * 0.1 }}
+                        className="bg-[#b21a1a]/10 backdrop-blur-md border border-[#b21a1a]/20 rounded-2xl p-6 group hover:border-[#b21a1a]/50 transition-all cursor-pointer"
+                    >
+                        <Link href={`/token/${token.token_address}`}>
+                            <div className="flex items-center gap-4 mb-6">
+                                <div className="relative w-16 h-16 rounded-2xl overflow-hidden bg-zinc-900 border border-white/5">
+                                    <img
+                                        src={`https://gateway.pinata.cloud/ipfs/${token.image_cid}`}
+                                        alt={token.symbol}
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    />
+                                </div>
+                                <div>
+                                    <h3 className="text-xl font-bold mb-1">{token.symbol}</h3>
+                                    <div className="flex items-center gap-2 text-zinc-500 text-sm">
+                                        <TrendingUp size={14} className="text-emerald-400" />
+                                        Trend: {token.topic}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="space-y-4">
+                                <div className="flex justify-between items-end">
+                                    <div className="text-xs text-zinc-600 uppercase tracking-widest font-bold">Address</div>
+                                    <div className="text-sm text-zinc-400 font-mono">
+                                        {token.token_address.slice(0, 6)}...{token.token_address.slice(-4)}
+                                    </div>
+                                </div>
+
+                                <button className="w-full py-4 bg-white text-black font-black rounded-xl hover:bg-[#b21a1a] hover:text-white transition-colors flex items-center justify-center gap-2">
+                                    Trade Now
+                                    <ExternalLink size={18} />
+                                </button>
+                            </div>
+                        </Link>
+                    </motion.div>
+                ))}
+            </div>
+        );
+    };
+
     return (
         <main className="max-w-7xl mx-auto px-4 py-12">
             <header className="mb-16 text-center">
-
                 <h1 className={`text-[5rem] md:text-[8rem] font-black mb-4 tracking-tighter leading-none ${spriteGraffiti.className}`}>
                     <span style={{ color: '#b21a1a' }}>Trend</span>
                     <span style={{ color: '#61cd21' }}>$</span>
@@ -56,6 +130,7 @@ export default function Home() {
                 </p>
             </header>
 
+            {/* USA Trends Section */}
             <div className="flex flex-col md:flex-row w-full items-center justify-between mb-8 gap-4">
                 <div className="text-white font-bold text-2xl flex items-center gap-2 md:flex-1">
                     🇺🇸 USA Trends
@@ -67,64 +142,22 @@ export default function Home() {
                 <div className="hidden md:block md:flex-1"></div>
             </div>
 
-            {loading && tokens.length === 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-pulse">
-                    {[1, 2, 3].map(i => (
-                        <div key={i} className="h-64 bg-[#b21a1a]/10 backdrop-blur-md border border-[#b21a1a]/20 rounded-2xl" />
-                    ))}
-                </div>
-            ) : tokens.length === 0 ? (
-                <div className="text-center py-24 bg-[#b21a1a]/10 backdrop-blur-md border border-[#b21a1a]/20 rounded-2xl">
-                    <TrendingUp className="mx-auto mb-4 text-zinc-600" size={48} />
-                    <h2 className="text-2xl font-semibold mb-2 text-zinc-300">No agents active yet</h2>
-                    <p className="text-zinc-500">The agent will push new tokens here as they are deployed.</p>
-                </div>
-            ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {tokens.map((token, index) => (
-                        <motion.div
-                            key={token.token_address}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: index * 0.1 }}
-                            className="bg-[#b21a1a]/10 backdrop-blur-md border border-[#b21a1a]/20 rounded-2xl p-6 group hover:border-[#b21a1a]/50 transition-all cursor-pointer"
-                        >
-                            <Link href={`/token/${token.token_address}`}>
-                                <div className="flex items-center gap-4 mb-6">
-                                    <div className="relative w-16 h-16 rounded-2xl overflow-hidden bg-zinc-900 border border-white/5">
-                                        <img
-                                            src={`https://ipfs.io/ipfs/${token.image_cid}`}
-                                            alt={token.symbol}
-                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                        />
-                                    </div>
-                                    <div>
-                                        <h3 className="text-xl font-bold mb-1">{token.symbol}</h3>
-                                        <div className="flex items-center gap-2 text-zinc-500 text-sm">
-                                            <TrendingUp size={14} className="text-emerald-400" />
-                                            Trend: {token.topic}
-                                        </div>
-                                    </div>
-                                </div>
+            <div className="mb-16">
+                {renderTokenGrid(usaTokens, "Waiting for USA Trends...")}
+            </div>
 
-                                <div className="space-y-4">
-                                    <div className="flex justify-between items-end">
-                                        <div className="text-xs text-zinc-600 uppercase tracking-widest font-bold">Address</div>
-                                        <div className="text-sm text-zinc-400 font-mono">
-                                            {token.token_address.slice(0, 6)}...{token.token_address.slice(-4)}
-                                        </div>
-                                    </div>
-
-                                    <button className="w-full py-4 bg-white text-black font-black rounded-xl hover:bg-[#b21a1a] hover:text-white transition-colors flex items-center justify-center gap-2">
-                                        Trade Now
-                                        <ExternalLink size={18} />
-                                    </button>
-                                </div>
-                            </Link>
-                        </motion.div>
-                    ))}
+            {/* Nigeria Trends Section */}
+            <div className="flex flex-col md:flex-row w-full items-center justify-between mb-8 gap-4">
+                <div className="text-white font-bold text-2xl flex items-center gap-2 md:flex-1">
+                    🇳🇬 Nigeria Trends
                 </div>
-            )}
+                <div className="hidden md:block md:flex-1"></div>
+                <div className="hidden md:block md:flex-1"></div>
+            </div>
+
+            <div className="mb-8">
+                {renderTokenGrid(otherTokens, "Waiting for Nigeria Trends...")}
+            </div>
         </main>
     );
 }
