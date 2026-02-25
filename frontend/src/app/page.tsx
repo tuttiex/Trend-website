@@ -56,6 +56,13 @@ export default function Home() {
                 </p>
             </header>
 
+            <div className="flex items-center justify-between mb-8">
+                <h2 className="text-3xl font-black flex items-center gap-3">
+                    <span className="text-white">X Trends</span>
+                    <span className="px-3 py-1 rounded-full bg-[#b21a1a]/20 text-[#b21a1a] text-xs font-bold border border-[#b21a1a]/30 uppercase tracking-widest">Live Updates</span>
+                </h2>
+            </div>
+
             {loading && tokens.length === 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-pulse">
                     {[1, 2, 3].map(i => (
