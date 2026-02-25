@@ -14,6 +14,7 @@ interface Token {
     topic: string;
     image_cid: string;
     timestamp: string;
+    region?: string;
 }
 
 export default function USTrends() {
@@ -30,7 +31,10 @@ export default function USTrends() {
                 if (data.success) {
                     const filteredTokens = data.data.filter((t: Token) => t.symbol !== 'JXSN' && t.symbol !== 'TENI' && t.symbol !== 'VERIFY');
                     const usaSymbols = ['SOTU', 'WWRW', 'SPCX'];
-                    const usa = filteredTokens.filter((t: Token) => usaSymbols.includes(t.symbol.toUpperCase()));
+                    const usa = filteredTokens.filter((t: Token) => {
+                        if (t.region) return t.region === 'US';
+                        return usaSymbols.includes(t.symbol.toUpperCase());
+                    });
                     setTokens(usa);
                 }
             } catch (err) {

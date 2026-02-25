@@ -14,6 +14,7 @@ interface Token {
     topic: string;
     image_cid: string;
     timestamp: string;
+    region?: string;
 }
 
 export default function NGTrends() {
@@ -30,7 +31,10 @@ export default function NGTrends() {
                 if (data.success) {
                     const filteredTokens = data.data.filter((t: Token) => t.symbol !== 'JXSN' && t.symbol !== 'TENI' && t.symbol !== 'VERIFY');
                     const usaSymbols = ['SOTU', 'WWRW', 'SPCX'];
-                    const others = filteredTokens.filter((t: Token) => !usaSymbols.includes(t.symbol.toUpperCase()));
+                    const others = filteredTokens.filter((t: Token) => {
+                        if (t.region) return t.region === 'NG';
+                        return !usaSymbols.includes(t.symbol.toUpperCase());
+                    });
                     setTokens(others);
                 }
             } catch (err) {

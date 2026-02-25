@@ -14,6 +14,7 @@ interface Token {
     topic: string;
     image_cid: string;
     timestamp: string;
+    region?: string;
 }
 
 export default function Home() {
@@ -33,11 +34,17 @@ export default function Home() {
                     const filteredTokens = data.data.filter((t: Token) => t.symbol !== 'JXSN' && t.symbol !== 'TENI' && t.symbol !== 'VERIFY');
 
                     const usaSymbols = ['SOTU', 'WWRW', 'SPCX'];
-                    const usa = filteredTokens.filter((t: Token) => usaSymbols.includes(t.symbol.toUpperCase()));
-                    const others = filteredTokens.filter((t: Token) => !usaSymbols.includes(t.symbol.toUpperCase()));
+                    const usa = filteredTokens.filter((t: Token) => {
+                        if (t.region) return t.region === 'US';
+                        return usaSymbols.includes(t.symbol.toUpperCase());
+                    });
+                    const others = filteredTokens.filter((t: Token) => {
+                        if (t.region) return t.region === 'NG';
+                        return !usaSymbols.includes(t.symbol.toUpperCase());
+                    });
 
-                    setUsaTokens(usa);
-                    setOtherTokens(others);
+                    setUsaTokens(usa.slice(0, 5));
+                    setOtherTokens(others.slice(0, 5));
                 }
             } catch (err) {
                 console.error('Failed to fetch tokens:', err);
