@@ -35,11 +35,17 @@ export default function Home() {
 
                     const usaSymbols = ['SOTU', 'WWRW', 'SPCX'];
                     const usa = filteredTokens.filter((t: Token) => {
-                        if (t.region) return t.region === 'US';
+                        if (t.region) {
+                            const r = t.region.toUpperCase();
+                            return r === 'US' || r === 'USA' || r === 'UNITED STATES';
+                        }
                         return usaSymbols.includes(t.symbol.toUpperCase());
                     });
                     const others = filteredTokens.filter((t: Token) => {
-                        if (t.region) return t.region === 'NG';
+                        if (t.region) {
+                            const r = t.region.toUpperCase();
+                            return r === 'NG' || r === 'NIGERIA';
+                        }
                         return !usaSymbols.includes(t.symbol.toUpperCase());
                     });
 

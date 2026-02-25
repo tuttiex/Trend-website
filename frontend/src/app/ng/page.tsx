@@ -32,7 +32,10 @@ export default function NGTrends() {
                     const filteredTokens = data.data.filter((t: Token) => t.symbol !== 'JXSN' && t.symbol !== 'TENI' && t.symbol !== 'VERIFY');
                     const usaSymbols = ['SOTU', 'WWRW', 'SPCX'];
                     const others = filteredTokens.filter((t: Token) => {
-                        if (t.region) return t.region === 'NG';
+                        if (t.region) {
+                            const r = t.region.toUpperCase();
+                            return r === 'NG' || r === 'NIGERIA';
+                        }
                         return !usaSymbols.includes(t.symbol.toUpperCase());
                     });
                     setTokens(others);
