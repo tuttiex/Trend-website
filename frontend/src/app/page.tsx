@@ -148,7 +148,7 @@ export default function Home() {
             <div className="mb-16">
                 {renderTokenGrid(usaTokens, "Waiting for USA Trends...")}
                 <div className="flex justify-end mt-4">
-                    <Link href="/us" className="text-zinc-500 font-bold hover:text-white transition-colors flex items-center gap-2 text-sm uppercase tracking-wider">
+                    <Link href="/us" className="text-[#b21a1a] font-bold hover:text-white transition-colors flex items-center gap-2 text-sm uppercase tracking-wider">
                         View All US Trends <ArrowRight size={16} />
                     </Link>
                 </div>
@@ -164,7 +164,7 @@ export default function Home() {
             <div className="mb-8">
                 {renderTokenGrid(otherTokens, "Waiting for Nigeria Trends...")}
                 <div className="flex justify-end mt-4">
-                    <Link href="/ng" className="text-zinc-500 font-bold hover:text-white transition-colors flex items-center gap-2 text-sm uppercase tracking-wider">
+                    <Link href="/ng" className="text-[#b21a1a] font-bold hover:text-white transition-colors flex items-center gap-2 text-sm uppercase tracking-wider">
                         View All NG Trends <ArrowRight size={16} />
                     </Link>
                 </div>
