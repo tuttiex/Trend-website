@@ -119,7 +119,7 @@ export default function Home() {
                                     </div>
                                 </div>
 
-                                <button className="w-full py-4 bg-white text-black font-black rounded-xl hover:bg-[#b21a1a] hover:text-white transition-colors flex items-center justify-center gap-2">
+                                <button className="w-full py-4 bg-[#b21a1a] text-white font-black rounded-xl hover:bg-white hover:text-black transition-colors flex items-center justify-center gap-2">
                                     Trade Now
                                     <ExternalLink size={18} />
                                 </button>
@@ -185,17 +185,17 @@ export default function Home() {
 
             {/* Worldwide Header */}
             <div className="flex items-center justify-start mt-12 mb-16">
-                <div className="text-zinc-500 font-bold text-2xl flex items-center gap-3">
+                <div className="text-[#b21a1a] font-bold text-2xl flex items-center gap-3">
                     Worldwide
-                    <span className="px-3 py-1 rounded-full bg-zinc-800/80 text-zinc-400 text-xs font-bold border border-zinc-700/50 uppercase tracking-widest">Coming Soon</span>
+                    <span className="px-3 py-1 rounded-full bg-[#b21a1a]/20 text-[#b21a1a] text-xs font-bold border border-[#b21a1a]/30 uppercase tracking-widest">Coming Soon</span>
                 </div>
             </div>
 
             {/* TikTok Trends Header */}
             <div className="flex items-center justify-center mt-12 mb-24">
-                <div className="text-zinc-500 font-bold text-2xl flex items-center gap-3">
+                <div className="text-[#b21a1a] font-bold text-2xl flex items-center gap-3">
                     TikTok Trends
-                    <span className="px-3 py-1 rounded-full bg-zinc-800/80 text-zinc-400 text-xs font-bold border border-zinc-700/50 uppercase tracking-widest">Coming Soon</span>
+                    <span className="px-3 py-1 rounded-full bg-[#b21a1a]/20 text-[#b21a1a] text-xs font-bold border border-[#b21a1a]/30 uppercase tracking-widest">Coming Soon</span>
                 </div>
             </div>
         </main>
