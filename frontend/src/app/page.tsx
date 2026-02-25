@@ -182,6 +182,14 @@ export default function Home() {
                     </Link>
                 </div>
             </div>
+
+            {/* Worldwide Header */}
+            <div className="flex items-center justify-start mt-12 mb-16">
+                <div className="text-zinc-500 font-bold text-2xl flex items-center gap-3">
+                    Worldwide
+                    <span className="px-3 py-1 rounded-full bg-zinc-800/80 text-zinc-400 text-xs font-bold border border-zinc-700/50 uppercase tracking-widest">Coming Soon</span>
+                </div>
+            </div>
         </main>
     );
 }
