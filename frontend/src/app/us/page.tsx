@@ -123,7 +123,7 @@ export default function USTrends() {
                                         </div>
                                     </div>
 
-                                    <button className="w-full py-4 bg-[#45A29E] text-[#0B0C10] font-black rounded-xl hover:bg-[#0B0C10] hover:text-[#0B0C10] transition-colors flex items-center justify-center gap-2">
+                                    <button className="w-full py-4 bg-[#45A29E] text-[#0B0C10] font-black rounded-xl hover:bg-[#61cd21] hover:text-white transition-colors flex items-center justify-center gap-2">
                                         Trade Now
                                         <ExternalLink size={18} />
                                     </button>
