@@ -29,6 +29,10 @@ async function initDB() {
         timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )
     `);
+
+        // Add region column for existing databases gracefully
+        await client.query(`ALTER TABLE tokens ADD COLUMN IF NOT EXISTS region TEXT`);
+
         client.release();
         console.log('Database initialized successfully');
     } catch (err) {
@@ -48,21 +52,22 @@ app.post('/api/deployments', async (req, res) => {
             return res.status(401).json({ error: 'Unauthorized' });
         }
 
-        const { tokenAddress, symbol, topic, imageCid } = req.body.data || req.body;
+        const { tokenAddress, symbol, topic, imageCid, region } = req.body.data || req.body;
 
         if (!tokenAddress || !symbol || !topic || !imageCid) {
             return res.status(400).json({ error: 'Missing required fields' });
         }
 
         const query = `
-      INSERT INTO tokens (token_address, symbol, topic, image_cid)
-      VALUES ($1, $2, $3, $4)
+      INSERT INTO tokens (token_address, symbol, topic, image_cid, region)
+      VALUES ($1, $2, $3, $4, $5)
       ON CONFLICT (token_address) DO UPDATE SET
         symbol = EXCLUDED.symbol,
         topic = EXCLUDED.topic,
-        image_cid = EXCLUDED.image_cid
+        image_cid = EXCLUDED.image_cid,
+        region = EXCLUDED.region
     `;
-        const values = [tokenAddress, symbol, topic, imageCid];
+        const values = [tokenAddress, symbol, topic, imageCid, region];
         await pool.query(query, values);
 
         console.log(`Saved token: ${symbol} (${tokenAddress})`);
