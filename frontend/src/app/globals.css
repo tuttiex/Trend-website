@@ -2,8 +2,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #3fd0c9;
-  --foreground: #ffffff;
+  --background: #0B0C10;
+  --foreground: #C5C6C7;
   --glass: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.1);
   --accent: #61cd21;
@@ -11,7 +11,7 @@
 }
 
 body {
-  background: #3fd0c9;
+  background: #0B0C10;
   min-height: 100vh;
 }
 

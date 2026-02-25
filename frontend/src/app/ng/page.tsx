@@ -54,7 +54,7 @@ export default function NGTrends() {
     return (
         <main className="max-w-7xl mx-auto px-4 py-12">
             <nav className="mb-8">
-                <Link href="/" className="text-zinc-400 hover:text-[#61cd21] transition-colors flex items-center gap-2 w-fit">
+                <Link href="/" className="text-[#45A29E] hover:text-[#66FCF1] transition-colors flex items-center gap-2 w-fit">
                     <ChevronLeft size={20} /> Back to Dashboard
                 </Link>
             </nav>
@@ -64,13 +64,13 @@ export default function NGTrends() {
                     <span style={{ color: '#61cd21' }}>NG</span>
                     <span style={{ color: '#61cd21' }}>$</span>
                 </h1>
-                <p className="text-zinc-400 text-xl max-w-2xl mx-auto">
+                <p className="text-[#45A29E] text-xl max-w-2xl mx-auto">
                     Tokens deployed based on real time Nigerian trends.
                 </p>
             </header>
 
             <div className="flex items-center justify-start mb-6">
-                <div className="text-[#61cd21] font-bold text-2xl flex items-center gap-2">
+                <div className="text-[#66FCF1] font-bold text-2xl flex items-center gap-2">
                     NG Trends
                 </div>
             </div>
@@ -78,14 +78,14 @@ export default function NGTrends() {
             {loading && tokens.length === 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-pulse">
                     {[1, 2, 3].map(i => (
-                        <div key={i} className="h-64 bg-[#61cd21]/10 backdrop-blur-md border border-[#61cd21]/20 rounded-2xl" />
+                        <div key={i} className="h-64 bg-[#1F2833] backdrop-blur-sm border border-[#45A29E]/20 rounded-2xl" />
                     ))}
                 </div>
             ) : tokens.length === 0 ? (
-                <div className="text-center py-24 bg-[#61cd21]/10 backdrop-blur-md border border-[#61cd21]/20 rounded-2xl">
+                <div className="text-center py-24 bg-[#1F2833] backdrop-blur-sm border border-[#45A29E]/20 rounded-2xl">
                     <TrendingUp className="mx-auto mb-4 text-zinc-600" size={48} />
                     <h2 className="text-2xl font-semibold mb-2 text-zinc-300">No agents active yet</h2>
-                    <p className="text-zinc-500">The agent will push new tokens here as they are deployed.</p>
+                    <p className="text-[#C5C6C7]/60">The agent will push new tokens here as they are deployed.</p>
                 </div>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -95,11 +95,11 @@ export default function NGTrends() {
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: index * 0.1 }}
-                            className="bg-[#61cd21]/10 backdrop-blur-md border border-[#61cd21]/20 rounded-2xl p-6 group hover:border-[#61cd21]/50 transition-all cursor-pointer"
+                            className="bg-[#1F2833] backdrop-blur-sm border border-[#45A29E]/20 rounded-2xl p-6 group hover:border-[#66FCF1]/70 transition-all cursor-pointer"
                         >
                             <Link href={`/token/${token.token_address}`}>
                                 <div className="flex items-center gap-4 mb-6">
-                                    <div className="relative w-16 h-16 rounded-2xl overflow-hidden bg-zinc-900 border border-white/5">
+                                    <div className="relative w-16 h-16 rounded-2xl overflow-hidden bg-zinc-900/50 border border-white/5">
                                         <img
                                             src={`https://ipfs.io/ipfs/${token.image_cid}`}
                                             alt={token.symbol}
@@ -108,7 +108,7 @@ export default function NGTrends() {
                                     </div>
                                     <div>
                                         <h3 className="text-xl font-bold mb-1">{token.symbol}</h3>
-                                        <div className="flex items-center gap-2 text-zinc-500 text-sm">
+                                        <div className="flex items-center gap-2 text-[#C5C6C7]/60 text-sm">
                                             <TrendingUp size={14} className="text-emerald-400" />
                                             Trend: {token.topic}
                                         </div>
@@ -118,12 +118,12 @@ export default function NGTrends() {
                                 <div className="space-y-4">
                                     <div className="flex justify-between items-end">
                                         <div className="text-xs text-zinc-600 uppercase tracking-widest font-bold">Address</div>
-                                        <div className="text-sm text-zinc-400 font-mono">
+                                        <div className="text-sm text-[#45A29E] font-mono">
                                             {token.token_address.slice(0, 6)}...{token.token_address.slice(-4)}
                                         </div>
                                     </div>
 
-                                    <button className="w-full py-4 bg-[#61cd21] text-white font-black rounded-xl hover:bg-[#3fd0c9] hover:text-white transition-colors flex items-center justify-center gap-2">
+                                    <button className="w-full py-4 bg-[#45A29E] text-[#0B0C10] font-black rounded-xl hover:bg-[#0B0C10] hover:text-[#0B0C10] transition-colors flex items-center justify-center gap-2">
                                         Trade Now
                                         <ExternalLink size={18} />
                                     </button>

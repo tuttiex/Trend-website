@@ -68,7 +68,7 @@ export default function Home() {
             return (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-pulse">
                     {[1, 2, 3].map(i => (
-                        <div key={i} className="h-64 bg-[#61cd21]/10 backdrop-blur-md border border-[#61cd21]/20 rounded-2xl" />
+                        <div key={i} className="h-64 bg-[#1F2833] backdrop-blur-sm border border-[#45A29E]/20 rounded-2xl" />
                     ))}
                 </div>
             );
@@ -76,9 +76,9 @@ export default function Home() {
 
         if (tokens.length === 0) {
             return (
-                <div className="text-center py-16 bg-[#61cd21]/10 backdrop-blur-md border border-[#61cd21]/20 rounded-2xl">
+                <div className="text-center py-16 bg-[#1F2833] backdrop-blur-sm border border-[#45A29E]/20 rounded-2xl">
                     <TrendingUp className="mx-auto mb-4 text-zinc-600" size={40} />
-                    <p className="text-zinc-500">{emptyMessage}</p>
+                    <p className="text-[#C5C6C7]/60">{emptyMessage}</p>
                 </div>
             );
         }
@@ -91,11 +91,11 @@ export default function Home() {
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: index * 0.1 }}
-                        className="min-w-[320px] max-w-[350px] flex-none snap-start bg-[#61cd21]/10 backdrop-blur-md border border-[#61cd21]/20 rounded-2xl p-6 group hover:border-[#61cd21]/50 transition-all cursor-pointer"
+                        className="min-w-[320px] max-w-[350px] flex-none snap-start bg-[#1F2833] backdrop-blur-sm border border-[#45A29E]/20 rounded-2xl p-6 group hover:border-[#66FCF1]/70 transition-all cursor-pointer"
                     >
                         <Link href={`/token/${token.token_address}`}>
                             <div className="flex items-center gap-4 mb-6">
-                                <div className="relative w-16 h-16 rounded-2xl overflow-hidden bg-zinc-900 border border-white/5">
+                                <div className="relative w-16 h-16 rounded-2xl overflow-hidden bg-zinc-900/50 border border-white/5">
                                     <img
                                         src={`https://gateway.pinata.cloud/ipfs/${token.image_cid}`}
                                         alt={token.symbol}
@@ -104,7 +104,7 @@ export default function Home() {
                                 </div>
                                 <div>
                                     <h3 className="text-xl font-bold mb-1">{token.symbol}</h3>
-                                    <div className="flex items-center gap-2 text-zinc-500 text-sm">
+                                    <div className="flex items-center gap-2 text-[#C5C6C7]/60 text-sm">
                                         <TrendingUp size={14} className="text-emerald-400" />
                                         Trend: {token.topic}
                                     </div>
@@ -114,12 +114,12 @@ export default function Home() {
                             <div className="space-y-4">
                                 <div className="flex justify-between items-end">
                                     <div className="text-xs text-zinc-600 uppercase tracking-widest font-bold">Address</div>
-                                    <div className="text-sm text-zinc-400 font-mono">
+                                    <div className="text-sm text-[#45A29E] font-mono">
                                         {token.token_address.slice(0, 6)}...{token.token_address.slice(-4)}
                                     </div>
                                 </div>
 
-                                <button className="w-full py-4 bg-[#61cd21] text-white font-black rounded-xl hover:bg-[#3fd0c9] hover:text-white transition-colors flex items-center justify-center gap-2">
+                                <button className="w-full py-4 bg-[#45A29E] text-[#0B0C10] font-black rounded-xl hover:bg-[#0B0C10] hover:text-[#0B0C10] transition-colors flex items-center justify-center gap-2">
                                     Trade Now
                                     <ExternalLink size={18} />
                                 </button>
@@ -138,7 +138,7 @@ export default function Home() {
                     <span style={{ color: '#61cd21' }}>Trend</span>
                     <span style={{ color: '#61cd21' }}>$</span>
                 </h1>
-                <p className="text-zinc-400 text-xl max-w-2xl mx-auto">
+                <p className="text-[#45A29E] text-xl max-w-2xl mx-auto">
                     Tokens listed below were deployed by Trend$ agent based on real time social media trends.
                 </p>
             </header>
@@ -146,14 +146,14 @@ export default function Home() {
             {/* Main X Trends Header */}
             <div className="flex items-center justify-center mb-12">
                 <h2 className="text-3xl font-black flex items-center justify-center gap-3 whitespace-nowrap">
-                    <span className="text-[#61cd21]">X Trends</span>
-                    <span className="px-3 py-1 rounded-full bg-[#61cd21]/20 text-[#61cd21] text-xs font-bold border border-[#61cd21]/30 uppercase tracking-widest">Live Updates</span>
+                    <span className="text-[#66FCF1]">X Trends</span>
+                    <span className="px-3 py-1 rounded-full bg-[#45A29E]/20 text-[#66FCF1] text-xs font-bold border border-[#45A29E]/50 uppercase tracking-widest">Live Updates</span>
                 </h2>
             </div>
 
             {/* US Trends Header */}
             <div className="flex items-center justify-start mb-6">
-                <div className="text-[#61cd21] font-bold text-2xl flex items-center gap-2">
+                <div className="text-[#66FCF1] font-bold text-2xl flex items-center gap-2">
                     US Trends
                 </div>
             </div>
@@ -161,7 +161,7 @@ export default function Home() {
             <div className="mb-16">
                 {renderTokenGrid(usaTokens, "Waiting for USA Trends...")}
                 <div className="flex justify-end mt-4">
-                    <Link href="/us" className="text-[#61cd21] font-bold hover:text-white transition-colors flex items-center gap-2 text-sm uppercase tracking-wider">
+                    <Link href="/us" className="text-[#66FCF1] font-bold hover:text-[#0B0C10] transition-colors flex items-center gap-2 text-sm uppercase tracking-wider">
                         View All US Trends <ArrowRight size={16} />
                     </Link>
                 </div>
@@ -169,7 +169,7 @@ export default function Home() {
 
             {/* NG Trends Header */}
             <div className="flex items-center justify-start mb-6">
-                <div className="text-[#61cd21] font-bold text-2xl flex items-center gap-2">
+                <div className="text-[#66FCF1] font-bold text-2xl flex items-center gap-2">
                     NG Trends
                 </div>
             </div>
@@ -177,7 +177,7 @@ export default function Home() {
             <div className="mb-8">
                 {renderTokenGrid(otherTokens, "Waiting for Nigeria Trends...")}
                 <div className="flex justify-end mt-4">
-                    <Link href="/ng" className="text-[#61cd21] font-bold hover:text-white transition-colors flex items-center gap-2 text-sm uppercase tracking-wider">
+                    <Link href="/ng" className="text-[#66FCF1] font-bold hover:text-[#0B0C10] transition-colors flex items-center gap-2 text-sm uppercase tracking-wider">
                         View All NG Trends <ArrowRight size={16} />
                     </Link>
                 </div>
@@ -185,17 +185,17 @@ export default function Home() {
 
             {/* Worldwide Header */}
             <div className="flex items-center justify-start mt-12 mb-16">
-                <div className="text-[#61cd21] font-bold text-2xl flex items-center gap-3">
+                <div className="text-[#66FCF1] font-bold text-2xl flex items-center gap-3">
                     Worldwide
-                    <span className="px-3 py-1 rounded-full bg-[#61cd21]/20 text-[#61cd21] text-xs font-bold border border-[#61cd21]/30 uppercase tracking-widest">Coming Soon</span>
+                    <span className="px-3 py-1 rounded-full bg-[#45A29E]/20 text-[#66FCF1] text-xs font-bold border border-[#45A29E]/50 uppercase tracking-widest">Coming Soon</span>
                 </div>
             </div>
 
             {/* TikTok Trends Header */}
             <div className="flex items-center justify-center mt-12 mb-24">
-                <div className="text-[#61cd21] font-bold text-2xl flex items-center gap-3">
+                <div className="text-[#66FCF1] font-bold text-2xl flex items-center gap-3">
                     TikTok Trends
-                    <span className="px-3 py-1 rounded-full bg-[#61cd21]/20 text-[#61cd21] text-xs font-bold border border-[#61cd21]/30 uppercase tracking-widest">Coming Soon</span>
+                    <span className="px-3 py-1 rounded-full bg-[#45A29E]/20 text-[#66FCF1] text-xs font-bold border border-[#45A29E]/50 uppercase tracking-widest">Coming Soon</span>
                 </div>
             </div>
         </main>

@@ -46,13 +46,13 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
         fetchToken();
     }, [address]);
 
-    if (loading) return <div className="min-h-screen bg-[#3fd0c9]" />;
+    if (loading) return <div className="min-h-screen bg-[#0B0C10]" />;
 
     if (!token) {
         return (
-            <div className="min-h-screen flex flex-col items-center justify-center bg-[#3fd0c9] px-4">
+            <div className="min-h-screen flex flex-col items-center justify-center bg-[#0B0C10] px-4">
                 <h1 className="text-2xl font-bold mb-4">Token Not Found</h1>
-                <Link href="/" className="text-[#61cd21] hover:underline flex items-center gap-2">
+                <Link href="/" className="text-[#66FCF1] hover:underline flex items-center gap-2">
                     <ChevronLeft size={20} /> Back to dashboard
                 </Link>
             </div>
@@ -60,15 +60,15 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
     }
 
     return (
-        <div className="min-h-screen bg-[#3fd0c9]">
-            <nav className="border-b border-white/5 bg-[#3fd0c9]/50 backdrop-blur-xl sticky top-0 z-50">
+        <div className="min-h-screen bg-[#0B0C10]">
+            <nav className="border-b border-white/5 bg-[#0B0C10]/50 backdrop-blur-xl sticky top-0 z-50">
                 <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-                    <Link href="/" className="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors">
+                    <Link href="/" className="flex items-center gap-2 text-[#45A29E] hover:text-[#0B0C10] transition-colors">
                         <ChevronLeft size={20} />
                         <span className="font-medium">Dashboard</span>
                     </Link>
                     <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-zinc-900 overflow-hidden border border-white/10">
+                        <div className="w-8 h-8 rounded-lg bg-zinc-900/50 overflow-hidden border border-white/10">
                             <img src={`https://ipfs.io/ipfs/${token.image_cid}`} alt={token.symbol} className="w-full h-full object-cover" />
                         </div>
                         <span className="font-bold">{token.symbol}</span>
@@ -82,14 +82,14 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
             <main className="max-w-[1400px] mx-auto px-6 py-8">
                 {/* 1. Dedicated Header Row */}
                 <div className="flex items-center gap-6 mb-8">
-                    <div className="relative w-24 h-24 rounded-full overflow-hidden bg-zinc-900 border-2 border-white/10 shrink-0">
+                    <div className="relative w-24 h-24 rounded-full overflow-hidden bg-zinc-900/50 border-2 border-white/10 shrink-0">
                         <img src={`https://ipfs.io/ipfs/${token.image_cid}`} alt={token.symbol} className="w-full h-full object-cover" />
                     </div>
                     <div>
                         <div className="flex items-center gap-3 mb-1">
                             <h1 className="text-3xl font-bold tracking-tight">{token.symbol}</h1>
-                            <span className="text-lg font-medium text-zinc-500">${token.symbol}</span>
-                            <span className="text-xs bg-[#61cd21]/20 text-[#61cd21] px-2 py-0.5 rounded border border-[#61cd21]/20 uppercase">Base</span>
+                            <span className="text-lg font-medium text-[#C5C6C7]/60">${token.symbol}</span>
+                            <span className="text-xs bg-[#45A29E]/20 text-[#66FCF1] px-2 py-0.5 rounded border border-[#66FCF1]/20 uppercase">Base</span>
                         </div>
                         <div
                             className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-lg border border-white/5 cursor-copy transition-colors group"
@@ -98,7 +98,7 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                             <span className="text-sm font-mono text-zinc-300">
                                 {token.token_address.slice(0, 6)}...{token.token_address.slice(-4)}
                             </span>
-                            <span className="text-xs text-zinc-500 group-hover:text-white transition-colors">Copy</span>
+                            <span className="text-xs text-[#C5C6C7]/60 group-hover:text-[#0B0C10] transition-colors">Copy</span>
                         </div>
                     </div>
                 </div>
@@ -123,37 +123,37 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {/* Left Box */}
                             <div className="glass-card p-6 flex flex-col">
-                                <div className="flex items-center gap-2 text-zinc-500 mb-6">
+                                <div className="flex items-center gap-2 text-[#C5C6C7]/60 mb-6">
                                     <TrendingUp size={16} />
                                     <span className="text-xs font-bold uppercase tracking-widest">Trend Insight</span>
                                 </div>
                                 <h2 className="text-2xl font-bold mb-4">Topic: {token.topic}</h2>
-                                <p className="text-zinc-400 text-sm leading-relaxed flex-grow">
+                                <p className="text-[#45A29E] text-sm leading-relaxed flex-grow">
                                     This token was autonomously deployed by the Trend Agent after detecting significant social momentum around "{token.topic}" on X.
                                 </p>
                             </div>
 
                             {/* Right Box */}
                             <div className="glass-card p-6 flex flex-col">
-                                <div className="flex items-center gap-2 text-zinc-500 mb-6">
+                                <div className="flex items-center gap-2 text-[#C5C6C7]/60 mb-6">
                                     <Info size={16} />
                                     <span className="text-xs font-bold uppercase tracking-widest">Analytics</span>
                                 </div>
                                 <div className="space-y-4">
                                     <div className="flex justify-between items-center text-sm border-b border-white/5 pb-3">
-                                        <span className="text-zinc-500">Launched</span>
+                                        <span className="text-[#C5C6C7]/60">Launched</span>
                                         <span className="font-medium text-zinc-200">{new Date(token.timestamp).toLocaleString()}</span>
                                     </div>
                                     <div className="flex justify-between items-center text-sm border-b border-white/5 pb-3">
-                                        <span className="text-zinc-500">Network</span>
+                                        <span className="text-[#C5C6C7]/60">Network</span>
                                         <span className="font-medium text-zinc-200">Base Mainnet</span>
                                     </div>
                                     <div className="flex justify-between items-center text-sm">
-                                        <span className="text-zinc-500">Contract</span>
+                                        <span className="text-[#C5C6C7]/60">Contract</span>
                                         <a
                                             href={`https://basescan.org/token/${token.token_address}`}
                                             target="_blank"
-                                            className="font-medium text-[#61cd21] hover:text-[#61cd21]/80 flex items-center gap-1"
+                                            className="font-medium text-[#66FCF1] hover:text-[#66FCF1]/80 flex items-center gap-1"
                                         >
                                             View Explorer <ExternalLink size={12} />
                                         </a>
@@ -178,7 +178,7 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                                             },
                                             palette: {
                                                 mode: 'dark',
-                                                primary: { main: '#61cd21' }, // green theme
+                                                primary: { main: '#66FCF1' }, // green theme
                                                 background: {
                                                     default: 'rgba(20, 20, 20, 0.8)', // Semi-transparent dark background
                                                     paper: '#131313',
