@@ -133,14 +133,14 @@ export default function Home() {
             {/* Main X Trends Header */}
             <div className="flex items-center justify-center mb-12">
                 <h2 className="text-3xl font-black flex items-center justify-center gap-3 whitespace-nowrap">
-                    <span className="text-white">X Trends</span>
+                    <span className="text-[#b21a1a]">X Trends</span>
                     <span className="px-3 py-1 rounded-full bg-[#b21a1a]/20 text-[#b21a1a] text-xs font-bold border border-[#b21a1a]/30 uppercase tracking-widest">Live Updates</span>
                 </h2>
             </div>
 
             {/* US Trends Header */}
             <div className="flex items-center justify-start mb-6">
-                <div className="text-white font-bold text-2xl flex items-center gap-2">
+                <div className="text-[#b21a1a] font-bold text-2xl flex items-center gap-2">
                     US Trends
                 </div>
             </div>
@@ -151,7 +151,7 @@ export default function Home() {
 
             {/* NG Trends Header */}
             <div className="flex items-center justify-start mb-6">
-                <div className="text-white font-bold text-2xl flex items-center gap-2">
+                <div className="text-[#b21a1a] font-bold text-2xl flex items-center gap-2">
                     NG Trends
                 </div>
             </div>
