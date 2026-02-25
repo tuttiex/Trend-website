@@ -52,7 +52,7 @@ export default function Home() {
                     <span style={{ color: '#61cd21' }}>$</span>
                 </h1>
                 <p className="text-zinc-400 text-xl max-w-2xl mx-auto">
-                    Tokens listed below were deployed by Trend$ agent based on real time X trends.
+                    Tokens listed below were deployed by Trend$ agent based on real time social media trends.
                 </p>
             </header>
 
