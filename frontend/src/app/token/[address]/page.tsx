@@ -172,7 +172,7 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                                     config={{
                                         theme: {
                                             container: {
-                                                border: '1px solid rgba(178, 26, 26, 0.3)', // Subtle red border
+                                                border: '1px solid rgba(69, 162, 158, 0.3)', // Subtle teal border
                                                 borderRadius: '24px',
                                                 boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)', // Outer shadow for depth
                                             },
