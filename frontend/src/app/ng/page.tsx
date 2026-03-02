@@ -70,7 +70,7 @@ export default function NGTrends() {
             </header>
 
             <div className="flex items-center justify-start mb-6">
-                <div className="text-[#45A29E] font-bold text-2xl flex items-center gap-2">
+                <div className="text-[#45A29E] font-bold text-2xl tracking-tight flex items-center gap-2">
                     NG Trends
                 </div>
             </div>
@@ -117,8 +117,8 @@ export default function NGTrends() {
 
                                 <div className="space-y-4">
                                     <div className="flex justify-between items-end">
-                                        <div className="text-xs text-zinc-600 uppercase tracking-widest font-bold">Address</div>
-                                        <div className="text-sm text-[#45A29E] font-mono">
+                                        <div className="text-xs text-[#C5C6C7]/60 font-medium">Address</div>
+                                        <div className="text-sm text-[#45A29E] font-mono tabular-nums tracking-tight">
                                             {token.token_address.slice(0, 6)}...{token.token_address.slice(-4)}
                                         </div>
                                     </div>

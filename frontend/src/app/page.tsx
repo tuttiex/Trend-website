@@ -113,8 +113,8 @@ export default function Home() {
 
                             <div className="space-y-4">
                                 <div className="flex justify-between items-end">
-                                    <div className="text-xs text-zinc-600 uppercase tracking-widest font-bold">Address</div>
-                                    <div className="text-sm text-[#45A29E] font-mono">
+                                    <div className="text-xs text-[#C5C6C7]/60 font-medium">Address</div>
+                                    <div className="text-sm text-[#45A29E] font-mono tabular-nums tracking-tight">
                                         {token.token_address.slice(0, 6)}...{token.token_address.slice(-4)}
                                     </div>
                                 </div>
@@ -145,7 +145,7 @@ export default function Home() {
 
             {/* Main X Trends Header */}
             <div className="flex items-center justify-center mb-12">
-                <h2 className="text-3xl font-black flex items-center justify-center gap-3 whitespace-nowrap">
+                <h2 className="text-3xl font-black tracking-tight flex items-center justify-center gap-3 whitespace-nowrap">
                     <span className="text-[#66FCF1]">X Trends</span>
                     <span className="px-3 py-1 rounded-full bg-[#45A29E]/20 text-[#66FCF1] text-xs font-bold border border-[#45A29E]/50 uppercase tracking-widest">Live Updates</span>
                 </h2>
@@ -153,7 +153,7 @@ export default function Home() {
 
             {/* US Trends Header */}
             <div className="flex items-center justify-start mb-6">
-                <div className="text-[#45A29E] font-bold text-2xl flex items-center gap-2">
+                <div className="text-[#45A29E] font-bold text-2xl tracking-tight flex items-center gap-2">
                     US Trends
                 </div>
             </div>
@@ -169,7 +169,7 @@ export default function Home() {
 
             {/* NG Trends Header */}
             <div className="flex items-center justify-start mb-6">
-                <div className="text-[#45A29E] font-bold text-2xl flex items-center gap-2">
+                <div className="text-[#45A29E] font-bold text-2xl tracking-tight flex items-center gap-2">
                     NG Trends
                 </div>
             </div>
@@ -185,7 +185,7 @@ export default function Home() {
 
             {/* Worldwide Header */}
             <div className="flex items-center justify-start mt-12 mb-16">
-                <div className="text-[#45A29E] font-bold text-2xl flex items-center gap-3">
+                <div className="text-[#45A29E] font-bold text-2xl tracking-tight flex items-center gap-3">
                     Worldwide
                     <span className="px-3 py-1 rounded-full bg-[#45A29E]/20 text-[#45A29E] text-xs font-bold border border-[#45A29E]/50 uppercase tracking-widest">Coming Soon</span>
                 </div>
@@ -193,7 +193,7 @@ export default function Home() {
 
             {/* TikTok Trends Header */}
             <div className="flex items-center justify-center mt-12 mb-24">
-                <div className="text-[#45A29E] font-bold text-2xl flex items-center gap-3">
+                <div className="text-[#45A29E] font-bold text-2xl tracking-tight flex items-center gap-3">
                     TikTok Trends
                     <span className="px-3 py-1 rounded-full bg-[#45A29E]/20 text-[#45A29E] text-xs font-bold border border-[#45A29E]/50 uppercase tracking-widest">Coming Soon</span>
                 </div>

@@ -125,7 +125,7 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                             <div className="glass-card p-6 flex flex-col">
                                 <div className="flex items-center gap-2 text-[#C5C6C7]/60 mb-6">
                                     <TrendingUp size={16} />
-                                    <span className="text-xs font-bold uppercase tracking-widest">Trend Insight</span>
+                                    <span className="text-xs font-bold text-[#C5C6C7]">Trend Insight</span>
                                 </div>
                                 <h2 className="text-2xl font-bold mb-4">Topic: {token.topic}</h2>
                                 <p className="text-[#45A29E] text-sm leading-relaxed flex-grow">
@@ -137,12 +137,12 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                             <div className="glass-card p-6 flex flex-col">
                                 <div className="flex items-center gap-2 text-[#C5C6C7]/60 mb-6">
                                     <Info size={16} />
-                                    <span className="text-xs font-bold uppercase tracking-widest">Analytics</span>
+                                    <span className="text-xs font-bold text-[#C5C6C7]">Analytics</span>
                                 </div>
                                 <div className="space-y-4">
                                     <div className="flex justify-between items-center text-sm border-b border-white/5 pb-3">
                                         <span className="text-[#C5C6C7]/60">Launched</span>
-                                        <span className="font-medium text-zinc-200">{new Date(token.timestamp).toLocaleString()}</span>
+                                        <span className="font-medium text-zinc-200 tabular-nums">{new Date(token.timestamp).toLocaleString()}</span>
                                     </div>
                                     <div className="flex justify-between items-center text-sm border-b border-white/5 pb-3">
                                         <span className="text-[#C5C6C7]/60">Network</span>
