@@ -95,7 +95,7 @@ export default function NGTrends() {
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: index * 0.1 }}
-                            className="bg-[#1F2833] backdrop-blur-sm border border-[#45A29E]/20 rounded-2xl p-6 group hover:bg-[#141A22] hover:border-[#45A29E]/70 transition-all cursor-pointer"
+                            className="bg-[#1F2833] backdrop-blur-sm border border-[#45A29E]/20 rounded-2xl p-6 group hover:bg-[#141A22] hover:border-[#45A29E]/70 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(69,162,158,0.12)] transition-all duration-300 cursor-pointer"
                         >
                             <Link href={`/token/${token.token_address}`}>
                                 <div className="flex items-center gap-4 mb-6">
