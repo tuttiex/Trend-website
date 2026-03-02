@@ -52,7 +52,7 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
         return (
             <div className="min-h-screen flex flex-col items-center justify-center bg-[#0B0C10] px-4">
                 <h1 className="text-2xl font-bold mb-4">Token Not Found</h1>
-                <Link href="/" className="text-[#66FCF1] hover:underline flex items-center gap-2">
+                <Link href="/" className="text-[#45A29E] hover:text-[#C5C6C7] transition-colors hover:underline flex items-center gap-2">
                     <ChevronLeft size={20} /> Back to dashboard
                 </Link>
             </div>
@@ -89,7 +89,7 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                         <div className="flex items-center gap-3 mb-1">
                             <h1 className="text-3xl font-bold tracking-tight">{token.symbol}</h1>
                             <span className="text-lg font-medium text-[#C5C6C7]/60">${token.symbol}</span>
-                            <span className="text-xs bg-[#45A29E]/20 text-[#66FCF1] px-2 py-0.5 rounded border border-[#66FCF1]/20 uppercase">Base</span>
+                            <span className="text-xs bg-[#45A29E]/20 text-[#45A29E] px-2 py-0.5 rounded border border-[#45A29E]/20 uppercase">Base</span>
                         </div>
                         <div
                             className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-lg border border-white/5 cursor-copy transition-colors group"
@@ -153,7 +153,7 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                                         <a
                                             href={`https://basescan.org/token/${token.token_address}`}
                                             target="_blank"
-                                            className="font-medium text-[#66FCF1] hover:text-[#66FCF1]/80 flex items-center gap-1"
+                                            className="font-medium text-[#45A29E] hover:text-[#C5C6C7] flex items-center gap-1 transition-colors"
                                         >
                                             View Explorer <ExternalLink size={12} />
                                         </a>

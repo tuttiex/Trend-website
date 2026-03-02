@@ -91,7 +91,7 @@ export default function Home() {
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: index * 0.1 }}
-                        className="min-w-[320px] max-w-[350px] flex-none snap-start bg-[#1F2833] backdrop-blur-sm border border-[#45A29E]/20 rounded-2xl p-6 group hover:bg-[#141A22] hover:border-[#66FCF1]/70 transition-all cursor-pointer"
+                        className="min-w-[320px] max-w-[350px] flex-none snap-start bg-[#1F2833] backdrop-blur-sm border border-[#45A29E]/20 rounded-2xl p-6 group hover:bg-[#141A22] hover:border-[#45A29E]/70 transition-all cursor-pointer"
                     >
                         <Link href={`/token/${token.token_address}`}>
                             <div className="flex items-center gap-4 mb-6">
@@ -153,7 +153,7 @@ export default function Home() {
 
             {/* US Trends Header */}
             <div className="flex items-center justify-start mb-6">
-                <div className="text-[#66FCF1] font-bold text-2xl flex items-center gap-2">
+                <div className="text-[#45A29E] font-bold text-2xl flex items-center gap-2">
                     US Trends
                 </div>
             </div>
@@ -161,7 +161,7 @@ export default function Home() {
             <div className="mb-16">
                 {renderTokenGrid(usaTokens, "Waiting for USA Trends...")}
                 <div className="flex justify-end mt-4">
-                    <Link href="/us" className="text-[#66FCF1] font-bold hover:text-[#61cd21] transition-colors flex items-center gap-2 text-sm uppercase tracking-wider">
+                    <Link href="/us" className="text-[#45A29E] font-bold hover:text-[#61cd21] transition-colors flex items-center gap-2 text-sm uppercase tracking-wider">
                         View All US Trends <ArrowRight size={16} />
                     </Link>
                 </div>
@@ -169,7 +169,7 @@ export default function Home() {
 
             {/* NG Trends Header */}
             <div className="flex items-center justify-start mb-6">
-                <div className="text-[#66FCF1] font-bold text-2xl flex items-center gap-2">
+                <div className="text-[#45A29E] font-bold text-2xl flex items-center gap-2">
                     NG Trends
                 </div>
             </div>
@@ -177,7 +177,7 @@ export default function Home() {
             <div className="mb-8">
                 {renderTokenGrid(otherTokens, "Waiting for Nigeria Trends...")}
                 <div className="flex justify-end mt-4">
-                    <Link href="/ng" className="text-[#66FCF1] font-bold hover:text-[#61cd21] transition-colors flex items-center gap-2 text-sm uppercase tracking-wider">
+                    <Link href="/ng" className="text-[#45A29E] font-bold hover:text-[#61cd21] transition-colors flex items-center gap-2 text-sm uppercase tracking-wider">
                         View All NG Trends <ArrowRight size={16} />
                     </Link>
                 </div>
@@ -185,17 +185,17 @@ export default function Home() {
 
             {/* Worldwide Header */}
             <div className="flex items-center justify-start mt-12 mb-16">
-                <div className="text-[#66FCF1] font-bold text-2xl flex items-center gap-3">
+                <div className="text-[#45A29E] font-bold text-2xl flex items-center gap-3">
                     Worldwide
-                    <span className="px-3 py-1 rounded-full bg-[#45A29E]/20 text-[#66FCF1] text-xs font-bold border border-[#45A29E]/50 uppercase tracking-widest">Coming Soon</span>
+                    <span className="px-3 py-1 rounded-full bg-[#45A29E]/20 text-[#45A29E] text-xs font-bold border border-[#45A29E]/50 uppercase tracking-widest">Coming Soon</span>
                 </div>
             </div>
 
             {/* TikTok Trends Header */}
             <div className="flex items-center justify-center mt-12 mb-24">
-                <div className="text-[#66FCF1] font-bold text-2xl flex items-center gap-3">
+                <div className="text-[#45A29E] font-bold text-2xl flex items-center gap-3">
                     TikTok Trends
-                    <span className="px-3 py-1 rounded-full bg-[#45A29E]/20 text-[#66FCF1] text-xs font-bold border border-[#45A29E]/50 uppercase tracking-widest">Coming Soon</span>
+                    <span className="px-3 py-1 rounded-full bg-[#45A29E]/20 text-[#45A29E] text-xs font-bold border border-[#45A29E]/50 uppercase tracking-widest">Coming Soon</span>
                 </div>
             </div>
         </main>

@@ -54,7 +54,7 @@ export default function NGTrends() {
     return (
         <main className="max-w-7xl mx-auto px-4 py-12">
             <nav className="mb-8">
-                <Link href="/" className="text-[#45A29E] hover:text-[#66FCF1] transition-colors flex items-center gap-2 w-fit">
+                <Link href="/" className="text-[#45A29E] hover:text-[#C5C6C7] transition-colors flex items-center gap-2 w-fit">
                     <ChevronLeft size={20} /> Back to Dashboard
                 </Link>
             </nav>
@@ -70,7 +70,7 @@ export default function NGTrends() {
             </header>
 
             <div className="flex items-center justify-start mb-6">
-                <div className="text-[#66FCF1] font-bold text-2xl flex items-center gap-2">
+                <div className="text-[#45A29E] font-bold text-2xl flex items-center gap-2">
                     NG Trends
                 </div>
             </div>
@@ -95,7 +95,7 @@ export default function NGTrends() {
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: index * 0.1 }}
-                            className="bg-[#1F2833] backdrop-blur-sm border border-[#45A29E]/20 rounded-2xl p-6 group hover:bg-[#141A22] hover:border-[#66FCF1]/70 transition-all cursor-pointer"
+                            className="bg-[#1F2833] backdrop-blur-sm border border-[#45A29E]/20 rounded-2xl p-6 group hover:bg-[#141A22] hover:border-[#45A29E]/70 transition-all cursor-pointer"
                         >
                             <Link href={`/token/${token.token_address}`}>
                                 <div className="flex items-center gap-4 mb-6">
