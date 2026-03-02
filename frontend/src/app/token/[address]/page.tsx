@@ -68,7 +68,7 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                         <span className="font-medium">Dashboard</span>
                     </Link>
                     <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-zinc-900/50 overflow-hidden border border-white/10">
+                        <div className="w-8 h-8 rounded-lg bg-[#141A22] overflow-hidden border border-white/10">
                             <img src={`https://ipfs.io/ipfs/${token.image_cid}`} alt={token.symbol} className="w-full h-full object-cover" />
                         </div>
                         <span className="font-bold">{token.symbol}</span>
@@ -82,7 +82,7 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
             <main className="max-w-[1400px] mx-auto px-6 py-8">
                 {/* 1. Dedicated Header Row */}
                 <div className="flex items-center gap-6 mb-8">
-                    <div className="relative w-24 h-24 rounded-full overflow-hidden bg-zinc-900/50 border-2 border-white/10 shrink-0">
+                    <div className="relative w-24 h-24 rounded-full overflow-hidden bg-[#141A22] border-2 border-white/10 shrink-0">
                         <img src={`https://ipfs.io/ipfs/${token.image_cid}`} alt={token.symbol} className="w-full h-full object-cover" />
                     </div>
                     <div>
@@ -178,10 +178,10 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                                             },
                                             palette: {
                                                 mode: 'dark',
-                                                primary: { main: '#66FCF1' }, // green theme
+                                                primary: { main: '#66FCF1' }, // cyan theme
                                                 background: {
-                                                    default: 'rgba(20, 20, 20, 0.8)', // Semi-transparent dark background
-                                                    paper: '#131313',
+                                                    default: '#1F2833', // Match card background
+                                                    paper: '#141A22', // Match internal sub-container neutral layer
                                                 },
                                             },
                                             shape: {
