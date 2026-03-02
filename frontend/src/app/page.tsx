@@ -119,7 +119,7 @@ export default function Home() {
                                     </div>
                                 </div>
 
-                                <button className="w-full py-4 bg-[#45A29E] text-[#0B0C10] font-black rounded-xl hover:bg-[#56C6C2] hover:shadow-[0_4px_20px_rgba(69,162,158,0.3)] active:bg-[#61cd21] active:text-white active:scale-[0.97] active:shadow-none transition-all duration-200 ease-out flex items-center justify-center gap-2">
+                                <button className="w-full py-4 bg-[#45A29E] text-black font-black rounded-xl hover:bg-[#56C6C2] hover:shadow-[0_4px_20px_rgba(69,162,158,0.3)] active:bg-[#61cd21] active:text-white active:scale-[0.97] active:shadow-none transition-all duration-200 ease-out flex items-center justify-center gap-2">
                                     Trade Now
                                     <ExternalLink size={18} />
                                 </button>

@@ -46,11 +46,11 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
         fetchToken();
     }, [address]);
 
-    if (loading) return <div className="min-h-screen bg-[#0B0C10]" />;
+    if (loading) return <div className="min-h-screen bg-black" />;
 
     if (!token) {
         return (
-            <div className="min-h-screen flex flex-col items-center justify-center bg-[#0B0C10] px-4">
+            <div className="min-h-screen flex flex-col items-center justify-center bg-black px-4">
                 <h1 className="text-2xl font-bold mb-4">Token Not Found</h1>
                 <Link href="/" className="text-[#45A29E] hover:text-[#C5C6C7] transition-colors hover:underline flex items-center gap-2">
                     <ChevronLeft size={20} /> Back to dashboard
@@ -60,10 +60,10 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
     }
 
     return (
-        <div className="min-h-screen bg-[#0B0C10]">
-            <nav className="border-b border-white/5 bg-[#0B0C10]/50 backdrop-blur-xl sticky top-0 z-50">
+        <div className="min-h-screen bg-black">
+            <nav className="border-b border-white/5 bg-black/50 backdrop-blur-xl sticky top-0 z-50">
                 <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-                    <Link href="/" className="flex items-center gap-2 text-[#45A29E] hover:text-[#0B0C10] transition-colors">
+                    <Link href="/" className="flex items-center gap-2 text-[#45A29E] hover:text-black transition-colors">
                         <ChevronLeft size={20} />
                         <span className="font-medium">Dashboard</span>
                     </Link>
@@ -98,7 +98,7 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                             <span className="text-sm font-mono text-zinc-300">
                                 {token.token_address.slice(0, 6)}...{token.token_address.slice(-4)}
                             </span>
-                            <span className="text-xs text-[#C5C6C7]/60 group-hover:text-[#0B0C10] transition-colors">Copy</span>
+                            <span className="text-xs text-[#C5C6C7]/60 group-hover:text-black transition-colors">Copy</span>
                         </div>
                     </div>
                 </div>
