@@ -56,18 +56,21 @@ export default function KineticHomepage() {
           </div>
           
           <div className="w-full lg:w-[480px] space-y-4">
-            {/* Asset Cards */}
+            {/* Asset Cards Placeholder */}
             {[
-              { sym: 'BTC', price: '64,281.40', change: '+4.2%', up: true },
-              { sym: 'ETH', price: '3,452.12', change: '+2.8%', up: true },
-              { sym: 'SOL', price: '142.88', change: '-1.5%', up: false }
+              { title: 'Top Trend 1 / USD', price: 'XXXX', mcap: 'XXXX', change: '+X%', up: true },
+              { title: 'Top Trend 2 / USD', price: 'XXXX', mcap: 'XXXX', change: '+X%', up: true },
+              { title: 'Top Spectator Position', price: 'XXXX', mcap: 'XXXX', change: '-X%', up: false }
             ].map((asset, i) => (
               <div key={i} className="bg-surface-container p-6 rounded-2xl flex flex-col gap-4 relative overflow-hidden group hover:bg-surface-bright transition-colors">
                 <div className="flex justify-between items-start z-10">
-                  <span className="font-bold text-sm tracking-wide">{asset.sym}/USDT</span>
+                  <span className="font-bold text-sm tracking-wide uppercase">{asset.title}</span>
                   <span className={`text-sm font-medium ${asset.up ? 'text-secondary drop-shadow-[0_0_8px_rgba(57,255,20,0.6)]' : 'text-error drop-shadow-[0_0_8px_rgba(255,113,108,0.6)]'}`}>{asset.change}</span>
                 </div>
-                <div className="font-space text-3xl font-bold z-10">{asset.price}</div>
+                <div className="z-10 flex items-end gap-3">
+                  <div className="font-space text-3xl font-bold leading-none">{asset.price}</div>
+                  <div className="text-[10px] text-on-surface-variant border border-surface-container-high px-2 py-0.5 rounded-sm uppercase tracking-widest font-bold">MCAP: {asset.mcap}</div>
+                </div>
                 {/* Simulated Sparkline Glow */}
                 <div className={`absolute -bottom-10 -right-10 w-48 h-32 opacity-20 blur-[40px] ${asset.up ? 'bg-secondary' : 'bg-error'}`}></div>
               </div>
