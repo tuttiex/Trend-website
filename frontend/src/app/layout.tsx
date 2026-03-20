@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" });
 
 import { Providers } from "./Providers";
 
@@ -18,7 +19,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${inter.className} bg-black text-[#C5C6C7] antialiased`}>
+            <body className={`${inter.className} ${spaceGrotesk.variable} bg-black text-[#C5C6C7] antialiased`}>
                 <Providers>{children}</Providers>
             </body>
         </html>

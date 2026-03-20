@@ -1,6 +1,25 @@
 @import url('https://fonts.cdnfonts.com/css/sprite-graffiti');
 @import "tailwindcss";
 
+@theme {
+  --color-surface: #0d0e10;
+  --color-surface-bright: #1c1d21;
+  --color-surface-container-lowest: #0a0b0c;
+  --color-surface-container-low: #121316;
+  --color-surface-container: #181a1c;
+  --color-surface-container-high: #1e2023;
+  --color-surface-container-highest: #242629;
+  --color-primary: #00E5FF;
+  --color-primary-container: #00e3fd;
+  --color-secondary: #39FF14;
+  --color-tertiary: #7C4DFF;
+  --color-error: #ff716c;
+  --color-on-surface: #fdfbfe;
+  --color-on-surface-variant: #ababad;
+  --color-outline-variant: rgba(255, 255, 255, 0.15);
+  --font-space: var(--font-space-grotesk);
+}
+
 :root {
   --background: #000000;
   --foreground: #C5C6C7;
