@@ -5,25 +5,25 @@ export default function KineticHomepage() {
     <div className="min-h-screen bg-surface font-sans text-on-surface selection:bg-primary/30">
       {/* Navbar */}
       <div className="fixed top-6 w-full z-50 px-6 flex justify-center pointer-events-none">
-        <nav className="pointer-events-auto w-full max-w-[1400px] bg-surface/80 backdrop-blur-md border border-surface-container-low rounded-full">
-          <div className="px-6 lg:px-8 h-16 lg:h-20 flex items-center justify-between">
-          <div className="flex items-center gap-12">
-            <Link href="/" className="font-space text-2xl font-bold text-on-surface tracking-tighter shadow-primary">
-              Trend<span className="text-secondary">$</span>.
-            </Link>
-            <div className="hidden md:flex items-center gap-8 text-sm font-medium text-on-surface-variant">
-              <Link href="#" className="hover:text-on-surface transition-colors">Attention Market</Link>
-              <Link href="#" className="hover:text-on-surface transition-colors">Spectator Capital</Link>
+        <nav className="pointer-events-auto w-full max-w-[1200px] bg-[#0A0B0C]/90 backdrop-blur-md border border-[rgba(255,255,255,0.05)] rounded-full shadow-2xl">
+          <div className="px-8 h-14 flex items-center justify-between">
+            <div className="flex items-center gap-10">
+              <Link href="/" className="font-space text-xl font-bold text-white tracking-tighter">
+                Trend<span className="text-secondary">$</span>.
+              </Link>
+              <div className="hidden md:flex items-center gap-8 text-sm font-medium text-on-surface-variant">
+                <Link href="#" className="hover:text-white transition-colors">Attention Market</Link>
+                <Link href="#" className="hover:text-white transition-colors">Spectator Capital</Link>
+              </div>
             </div>
-          </div>
-          <div className="flex items-center gap-6">
-            <button className="text-on-surface-variant hover:text-on-surface transition-colors">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-            </button>
-            <button className="bg-gradient-to-br from-primary to-primary-container text-surface-container-lowest font-bold text-sm px-6 py-2.5 rounded-full hover:brightness-110 hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all">
-              Sign Up
-            </button>
-          </div>
+            <div className="flex items-center gap-6">
+              <button className="text-on-surface-variant hover:text-white transition-colors">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+              </button>
+              <button className="bg-primary text-black font-bold text-sm px-6 py-2 rounded-full hover:brightness-110 shadow-[0_0_15px_rgba(0,229,255,0.3)] transition-all">
+                Sign Up
+              </button>
+            </div>
           </div>
         </nav>
       </div>
@@ -37,13 +37,13 @@ export default function KineticHomepage() {
               LIVE TRADING ENGINE ACTIVE
             </div>
             <h1 className="font-space text-5xl lg:text-[5.5rem] font-black leading-[0.9] tracking-tight">
-              INSTITUTIONAL <br className="hidden md:block" />
-              <span className="bg-gradient-to-br from-primary to-primary-container text-transparent bg-clip-text">LIQUIDITY.</span><br className="hidden md:block"/>
-              NANOSECOND <br className="hidden md:block"/>
-              SPEED.
+              ATTENTION IS <br className="hidden md:block" />
+              <span className="bg-gradient-to-br from-primary to-primary-container text-transparent bg-clip-text">THE NEW</span><br className="hidden md:block"/>
+              ASSET <br className="hidden md:block"/>
+              CLASS.
             </h1>
             <p className="text-base lg:text-lg text-on-surface-variant max-w-xl leading-relaxed">
-              The ultimate high-performance trading gateway. Engineered for precision execution, sub-millisecond latency, and cross-chain liquidity aggregation.
+              Don’t just follow trends, trade them on our attention market, and trade their outcomes on our spectator market.
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
               <button className="w-full sm:w-auto bg-gradient-to-br from-primary to-primary-container text-surface-container-lowest font-bold text-base px-8 py-4 rounded-full hover:brightness-110 hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all">
