@@ -85,6 +85,7 @@ export default function KineticHomepage() {
               <span>ATTENTION VOLUME (24H): <strong className="text-secondary drop-shadow-[0_0_4px_rgba(57,255,20,0.4)]">$XXX</strong></span>
               <span>TOKENS DEPLOYED (24H): <strong className="text-primary drop-shadow-[0_0_4px_rgba(0,229,255,0.4)]">XXX</strong></span>
               <span>SPECTATOR VOLUME (24H): <strong className="text-secondary drop-shadow-[0_0_4px_rgba(57,255,20,0.4)]">$XXX</strong></span>
+              <span>ACTIVE POSITIONS: <strong className="text-primary drop-shadow-[0_0_4px_rgba(0,229,255,0.4)]">XXX</strong></span>
               <span>Trend$ SCORE: <strong className="text-primary drop-shadow-[0_0_4px_rgba(0,229,255,0.4)]">99.8</strong></span>
             </div>
             <div>TOTAL VOLUME: <strong className="text-on-surface">$XXX</strong></div>
