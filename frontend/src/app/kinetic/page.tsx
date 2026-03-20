@@ -12,10 +12,8 @@ export default function KineticHomepage() {
               Trend<span className="text-secondary">$</span>.
             </Link>
             <div className="hidden md:flex items-center gap-8 text-sm font-medium text-on-surface-variant">
-              <Link href="#" className="hover:text-on-surface transition-colors">MARKETS</Link>
-              <Link href="#" className="hover:text-on-surface transition-colors">TRADE</Link>
-              <Link href="#" className="hover:text-on-surface transition-colors">PULSE</Link>
-              <Link href="#" className="hover:text-on-surface transition-colors">ALERTS</Link>
+              <Link href="#" className="hover:text-on-surface transition-colors">Attention Market</Link>
+              <Link href="#" className="hover:text-on-surface transition-colors">Spectator Capital</Link>
             </div>
           </div>
           <div className="flex items-center gap-6">
@@ -23,7 +21,7 @@ export default function KineticHomepage() {
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
             </button>
             <button className="bg-gradient-to-br from-primary to-primary-container text-surface-container-lowest font-bold text-sm px-6 py-2.5 rounded-full hover:brightness-110 hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all">
-              CONNECT WALLET
+              Sign Up
             </button>
           </div>
           </div>
