@@ -35,10 +35,6 @@ export default function KineticHomepage() {
           <div className="absolute top-1/2 left-0 w-[800px] h-[600px] bg-primary/15 mix-blend-screen blur-[140px] rounded-full transform -translate-y-1/2 -translate-x-1/4 pointer-events-none z-0"></div>
           
           <div className="flex-1 space-y-8 relative z-10">
-            <div className="flex items-center gap-2 text-xs font-medium tracking-widest text-secondary uppercase">
-              <span className="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_rgba(57,255,20,0.8)] animate-pulse"></span>
-              LIVE TRADING ENGINE ACTIVE
-            </div>
             <h1 className="font-space text-5xl lg:text-[5.5rem] font-black leading-[0.9] tracking-tight">
               ATTENTION IS <br className="hidden md:block" />
               <span className="bg-gradient-to-br from-primary to-primary-container text-transparent bg-clip-text">THE NEW</span><br className="hidden md:block"/>
@@ -52,7 +48,7 @@ export default function KineticHomepage() {
               <button className="w-full sm:w-auto bg-gradient-to-br from-primary to-primary-container text-surface-container-lowest font-bold text-base px-8 py-4 rounded-full hover:brightness-110 hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all">
                 Attention Market
               </button>
-              <button className="w-full sm:w-auto bg-surface-container-highest text-on-surface font-bold text-base px-8 py-4 rounded-full hover:bg-surface-container-high transition-colors">
+              <button className="w-full sm:w-auto bg-secondary text-black font-bold text-base px-8 py-4 rounded-full hover:brightness-110 hover:shadow-[0_0_20px_rgba(57,255,20,0.5)] transition-all">
                 Spectator Market
               </button>
             </div>
@@ -102,11 +98,6 @@ export default function KineticHomepage() {
 
           <div className="max-w-[1400px] mx-auto px-6 relative z-10">
             <div className="flex flex-col max-w-3xl">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-2.5 h-2.5 rounded-full bg-primary/70"></div>
-                <span className="text-xs font-bold tracking-[0.2em] text-[#8ea7cc] uppercase">Live Dynamics</span>
-              </div>
-              
               <h2 className="font-space text-[3.5rem] md:text-[5rem] font-bold leading-[1.05] tracking-tight mb-8">
                 <span className="text-white">Attention</span> <br />
                 <span className="text-primary">Markets</span>
@@ -117,11 +108,8 @@ export default function KineticHomepage() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-5">
-                <button className="bg-primary text-black font-bold text-[15px] px-8 py-4 rounded-xl hover:brightness-110 shadow-[0_0_15px_rgba(0,229,255,0.3)] transition-all">
+                <button className="bg-primary text-black font-bold text-[15px] px-8 py-4 rounded-full hover:brightness-110 shadow-[0_0_15px_rgba(0,229,255,0.3)] transition-all">
                   Explore Trends
-                </button>
-                <button className="bg-[#2D303E] text-white font-bold text-[15px] px-8 py-4 rounded-xl hover:bg-[#383C4D] transition-colors shadow-sm border border-[rgba(255,255,255,0.05)]">
-                  View Analytics
                 </button>
               </div>
             </div>
@@ -135,11 +123,6 @@ export default function KineticHomepage() {
 
           <div className="max-w-[1400px] mx-auto px-6 relative z-10">
             <div className="flex flex-col max-w-3xl">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-2.5 h-2.5 rounded-full bg-primary/70"></div>
-                <span className="text-xs font-bold tracking-[0.2em] text-[#8ea7cc] uppercase">Event Outcomes</span>
-              </div>
-              
               <h2 className="font-space text-[3.5rem] md:text-[5rem] font-bold leading-[1.05] tracking-tight mb-8">
                 <span className="text-white">Spectator</span> <br />
                 <span className="text-primary">Markets</span>
@@ -150,11 +133,8 @@ export default function KineticHomepage() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-5">
-                <button className="bg-primary text-black font-bold text-[15px] px-8 py-4 rounded-xl hover:brightness-110 shadow-[0_0_15px_rgba(0,229,255,0.3)] transition-all">
+                <button className="bg-primary text-black font-bold text-[15px] px-8 py-4 rounded-full hover:brightness-110 shadow-[0_0_15px_rgba(0,229,255,0.3)] transition-all">
                   Spectator Positions
-                </button>
-                <button className="bg-[#2D303E] text-white font-bold text-[15px] px-8 py-4 rounded-xl hover:bg-[#383C4D] transition-colors shadow-sm border border-[rgba(255,255,255,0.05)]">
-                  View Analytics
                 </button>
               </div>
             </div>
@@ -167,7 +147,7 @@ export default function KineticHomepage() {
           <div className="bg-surface-container-low rounded-[2rem] lg:rounded-[3rem] p-8 lg:p-24 text-center relative overflow-hidden border border-[rgba(255,255,255,0.05)]">
             <div className="relative z-10 space-y-8 max-w-3xl mx-auto flex flex-col items-center">
               <h2 className="font-space text-4xl lg:text-[3.5rem] font-black uppercase leading-[1.1]">
-                THE FUTURE OF <br className="hidden sm:block"/> ATTENTION IS Trend<span className="text-secondary drop-shadow-[0_0_12px_rgba(57,255,20,0.4)]">$</span>
+                THE FUTURE OF <br className="hidden sm:block"/> ATTENTION IS <span className="text-primary drop-shadow-[0_0_12px_rgba(0,229,255,0.4)]">Trend</span><span className="text-secondary drop-shadow-[0_0_12px_rgba(57,255,20,0.4)]">$</span>
               </h2>
             </div>
             {/* Fake ambient bloom */}
@@ -180,11 +160,11 @@ export default function KineticHomepage() {
       <footer className="border-t border-surface-container-lowest bg-surface-container-lowest">
         <div className="max-w-[1400px] mx-auto px-6 py-16 flex flex-col md:flex-row justify-between gap-12">
           <div className="space-y-6 max-w-xs">
-             <Link href="/" className="font-space text-3xl font-bold text-on-surface tracking-tighter">
-              Trend<span className="text-secondary">$</span>.
+             <Link href="/" className="font-space text-3xl font-bold tracking-tighter">
+              <span className="text-primary">Trend</span><span className="text-secondary">$</span>
             </Link>
             <p className="text-xs text-on-surface-variant leading-relaxed font-mono">
-              © 2026 TREND$. HIGH-SPEED INSTITUTIONAL LIQUIDITY.
+              © 2026 TREND$.
             </p>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-24 text-sm font-medium">
