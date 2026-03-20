@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { TrendingUp, ExternalLink, ShieldCheck, ArrowRight } from 'lucide-react';
 import localFont from 'next/font/local';
 
-const spriteGraffiti = localFont({ src: '../../public/SpriteGraffitiShadow.woff' });
+const spriteGraffiti = localFont({ src: '../../../public/SpriteGraffitiShadow.woff' });
 
 interface Token {
     token_address: string;
