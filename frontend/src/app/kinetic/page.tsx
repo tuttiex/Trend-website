@@ -161,29 +161,29 @@ export default function KineticHomepage() {
               © 2026 TREND$.
             </p>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-24 text-sm font-medium">
-            <div className="space-y-6">
-              <h4 className="font-bold text-primary tracking-widest text-[10px] uppercase border-b border-surface-container-low pb-2">Platform</h4>
-              <div className="flex flex-col gap-4 text-on-surface-variant">
-                <Link href="#" className="hover:text-on-surface transition-colors">Markets</Link>
-                <Link href="#" className="hover:text-on-surface transition-colors">Trade</Link>
-                <Link href="#" className="hover:text-on-surface transition-colors">Advanced</Link>
+          <div className="flex flex-wrap md:flex-nowrap gap-x-24 gap-y-12 lg:gap-x-48 text-[10px] font-bold tracking-[0.2em] uppercase mt-8 md:mt-0 ml-0 md:ml-12">
+            <div className="space-y-8 min-w-[140px]">
+              <h4 className="text-primary">PLATFORM</h4>
+              <div className="flex flex-col gap-6 text-[#A0ABC0]">
+                <Link href="#" className="hover:text-white transition-colors">MARKETS</Link>
+                <Link href="#" className="hover:text-white transition-colors">TRADE</Link>
+                <Link href="#" className="hover:text-white transition-colors">API DOCS</Link>
               </div>
             </div>
-            <div className="space-y-6">
-              <h4 className="font-bold text-primary tracking-widest text-[10px] uppercase border-b border-surface-container-low pb-2">Legal</h4>
-              <div className="flex flex-col gap-4 text-on-surface-variant">
-                <Link href="#" className="hover:text-on-surface transition-colors">Privacy Policy</Link>
-                <Link href="#" className="hover:text-on-surface transition-colors">Terms of Service</Link>
-                <Link href="#" className="hover:text-on-surface transition-colors">KYC/AML Policy</Link>
+            <div className="space-y-8 min-w-[140px]">
+              <h4 className="text-primary">LEGAL</h4>
+              <div className="flex flex-col gap-6 text-[#A0ABC0]">
+                <Link href="#" className="hover:text-white transition-colors">PRIVACY POLICY</Link>
+                <Link href="#" className="hover:text-white transition-colors">TERMS OF SERVICE</Link>
+                <Link href="#" className="hover:text-white transition-colors">RISK DISCLOSURE</Link>
               </div>
             </div>
-             <div className="space-y-6">
-              <h4 className="font-bold text-primary tracking-widest text-[10px] uppercase border-b border-surface-container-low pb-2">Support</h4>
-              <div className="flex flex-col gap-4 text-on-surface-variant">
-                <Link href="#" className="hover:text-on-surface transition-colors">Help Center</Link>
-                <Link href="#" className="hover:text-on-surface transition-colors">Status</Link>
-                <Link href="#" className="hover:text-on-surface transition-colors">Contact</Link>
+             <div className="space-y-8 min-w-[140px]">
+              <h4 className="text-primary">SUPPORT</h4>
+              <div className="flex flex-col gap-6 text-[#A0ABC0]">
+                <Link href="#" className="hover:text-white transition-colors">HELP CENTER</Link>
+                <Link href="#" className="hover:text-white transition-colors">STATUS</Link>
+                <Link href="#" className="hover:text-white transition-colors">CONTACT</Link>
               </div>
             </div>
           </div>
