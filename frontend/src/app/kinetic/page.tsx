@@ -128,6 +128,38 @@ export default function KineticHomepage() {
           </div>
         </section>
 
+        {/* Spectator Markets Section */}
+        <section className="py-24 relative z-10 bg-surface overflow-hidden">
+          {/* Deep blue/primary aura behind section text */}
+          <div className="absolute top-1/2 left-0 w-[800px] h-[600px] bg-primary/10 mix-blend-screen blur-[140px] rounded-full transform -translate-y-1/2 -translate-x-1/3 pointer-events-none z-0"></div>
+
+          <div className="max-w-[1400px] mx-auto px-6 relative z-10">
+            <div className="flex flex-col max-w-3xl">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-2.5 h-2.5 rounded-full bg-primary/70"></div>
+                <span className="text-xs font-bold tracking-[0.2em] text-[#8ea7cc] uppercase">Event Outcomes</span>
+              </div>
+              
+              <h2 className="font-space text-[3.5rem] md:text-[5rem] font-bold leading-[1.05] tracking-tight mb-8">
+                <span className="text-white">Spectator</span> <br />
+                <span className="text-primary">Markets</span>
+              </h2>
+              
+              <p className="text-[17px] text-[#A0ABC0] leading-[1.7] max-w-2xl mb-12">
+                Spectator markets let you create and trade prediction positions on the outcomes of social trends and other attention-driven events, from sports and reality TV to live streams.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-5">
+                <button className="bg-primary text-black font-bold text-[15px] px-8 py-4 rounded-xl hover:brightness-110 shadow-[0_0_15px_rgba(0,229,255,0.3)] transition-all">
+                  Spectator Positions
+                </button>
+                <button className="bg-[#2D303E] text-white font-bold text-[15px] px-8 py-4 rounded-xl hover:bg-[#383C4D] transition-colors shadow-sm border border-[rgba(255,255,255,0.05)]">
+                  View Analytics
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Built for Professionals */}
         <section className="max-w-[1400px] mx-auto px-6 py-24 space-y-12">
