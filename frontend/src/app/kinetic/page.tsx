@@ -7,8 +7,8 @@ export default function KineticHomepage() {
       <div className="fixed top-6 w-full z-50 px-6 flex justify-center pointer-events-none">
         <nav className="pointer-events-auto w-full max-w-[1200px] bg-[#0A0B0C]/90 backdrop-blur-md border border-[rgba(255,255,255,0.05)] rounded-full shadow-2xl">
           <div className="px-8 h-14 flex items-center justify-between">
-            <Link href="/" className="font-space text-xl font-bold text-white tracking-tighter shrink-0 min-w-[120px]">
-              Trend<span className="text-secondary">$</span>.
+            <Link href="/" className="font-space text-xl font-bold tracking-tighter shrink-0 min-w-[120px]">
+              <span className="text-primary">Trend</span><span className="text-secondary">$</span>
             </Link>
             
             <div className="hidden md:flex flex-1 items-center justify-evenly px-8 text-sm font-medium text-on-surface-variant">
@@ -47,10 +47,10 @@ export default function KineticHomepage() {
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
               <button className="w-full sm:w-auto bg-gradient-to-br from-primary to-primary-container text-surface-container-lowest font-bold text-base px-8 py-4 rounded-full hover:brightness-110 hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all">
-                Trade Now
+                Attention Market
               </button>
               <button className="w-full sm:w-auto bg-surface-container-highest text-on-surface font-bold text-base px-8 py-4 rounded-full hover:bg-surface-container-high transition-colors">
-                View Markets
+                Spectator Market
               </button>
             </div>
           </div>
