@@ -7,7 +7,7 @@ export default function KineticHomepage() {
       <div className="fixed top-6 w-full z-50 px-6 flex justify-center pointer-events-none">
         <nav className="pointer-events-auto w-full max-w-[1200px] bg-[#0A0B0C]/90 backdrop-blur-md border border-[rgba(255,255,255,0.05)] rounded-full shadow-2xl">
           <div className="px-8 h-14 flex items-center justify-between">
-            <Link href="/" className="font-space text-xl font-bold tracking-tighter shrink-0 min-w-[120px]">
+            <Link href="/" className="font-space text-xl font-bold tracking-tighter shrink-0 min-w-[120px] italic">
               <span className="text-primary">Trend</span><span className="text-secondary">$</span>
             </Link>
             
@@ -154,7 +154,7 @@ export default function KineticHomepage() {
       <footer className="border-t border-surface-container-lowest bg-surface-container-lowest">
         <div className="max-w-[1400px] mx-auto px-6 py-16 flex flex-col md:flex-row justify-between gap-12">
           <div className="space-y-6 max-w-xs">
-             <Link href="/" className="font-space text-3xl font-bold tracking-tighter">
+             <Link href="/" className="font-space text-3xl font-bold tracking-tighter italic">
               <span className="text-primary">Trend</span><span className="text-secondary">$</span>
             </Link>
             <p className="text-xs text-on-surface-variant leading-relaxed font-mono">
