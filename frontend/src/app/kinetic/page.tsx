@@ -161,72 +161,14 @@ export default function KineticHomepage() {
           </div>
         </section>
 
-        {/* Built for Professionals */}
-        <section className="max-w-[1400px] mx-auto px-6 py-24 space-y-12">
-          <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
-            <div className="max-w-2xl">
-              <h2 className="font-space text-4xl lg:text-5xl font-black uppercase mb-4">
-                BUILT FOR <span className="text-primary drop-shadow-[0_0_12px_rgba(0,229,255,0.3)]">PROFESSIONALS</span>
-              </h2>
-              <p className="text-on-surface-variant text-lg">Sophisticated tools for sophisticated traders. Kinetic Pulse provides the infrastructure you need to execute complex strategies at scale.</p>
-            </div>
-            <button className="flex items-center gap-2 text-primary font-bold hover:brightness-125 transition-all text-sm uppercase tracking-wider">
-              EXPLORE ALL FEATURES <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-surface-container-low p-8 rounded-3xl flex flex-col gap-24 hover:bg-surface-container transition-colors group">
-              <div className="text-on-surface-variant group-hover:text-primary transition-colors">
-                <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" /></svg>
-              </div>
-              <div>
-                <div className="bg-surface-container-lowest text-[10px] font-bold px-4 py-2 rounded-full inline-block mb-6 tracking-widest text-primary border border-primary/20">ADVANCED CHARTING</div>
-                <h3 className="font-space text-xl font-bold mb-3">Real-time Order Book Depth</h3>
-                <p className="text-sm text-on-surface-variant leading-relaxed">Visualize market liquidity with precision. Our heatmap and order-flow tools provide insight into institutional positioning.</p>
-              </div>
-            </div>
-            <div className="bg-surface-container-low p-8 rounded-3xl flex flex-col gap-24 hover:bg-surface-container transition-colors group">
-              <div className="text-on-surface-variant group-hover:text-tertiary transition-colors">
-                <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" /></svg>
-              </div>
-              <div>
-                <div className="bg-surface-container-lowest text-[10px] font-bold px-4 py-2 rounded-full inline-block mb-6 tracking-widest text-tertiary border border-tertiary/20">MULTI-ASSET WALLET</div>
-                <h3 className="font-space text-xl font-bold mb-3">Unified Portfolio View</h3>
-                <p className="text-sm text-on-surface-variant leading-relaxed">Manage Spot, Futures, and Staked assets from a single command center. Integrated cross-margin capabilities.</p>
-              </div>
-            </div>
-            <div className="bg-surface-container-low p-8 rounded-3xl flex flex-col gap-24 hover:bg-surface-container transition-colors group">
-               <div className="text-on-surface-variant group-hover:text-secondary transition-colors">
-                <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-              </div>
-              <div>
-                <div className="bg-surface-container-lowest text-[10px] font-bold px-4 py-2 rounded-full inline-block mb-6 tracking-widest text-secondary border border-secondary/20">ALGO-READY</div>
-                <h3 className="font-space text-xl font-bold mb-3">Custom Order Types</h3>
-                <p className="text-sm text-on-surface-variant leading-relaxed">TWAP, VWAP, and iceberg orders standard. Build and deploy custom execution bots via our SDK.</p>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* Bottom CTA */}
         <section className="max-w-[1200px] mx-auto px-6 py-12 lg:py-24">
           <div className="bg-surface-container-low rounded-[2rem] lg:rounded-[3rem] p-8 lg:p-24 text-center relative overflow-hidden border border-[rgba(255,255,255,0.05)]">
             <div className="relative z-10 space-y-8 max-w-3xl mx-auto flex flex-col items-center">
               <h2 className="font-space text-4xl lg:text-[3.5rem] font-black uppercase leading-[1.1]">
-                THE FUTURE OF <br className="hidden sm:block"/> TRADING IS <span className="text-primary drop-shadow-[0_0_12px_rgba(0,229,255,0.4)]">Trend$</span>.
+                THE FUTURE OF <br className="hidden sm:block"/> ATTENTION IS Trend<span className="text-secondary drop-shadow-[0_0_12px_rgba(57,255,20,0.4)]">$</span>
               </h2>
-              <p className="text-on-surface-variant text-base lg:text-lg max-w-xl">
-                Join 50,000+ institutional and professional traders already leveraging the Pulse ecosystem.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 w-full sm:w-auto">
-                <button className="w-full sm:w-auto bg-gradient-to-br from-primary to-primary-container text-surface-container-lowest font-bold text-lg px-12 py-4 rounded-full hover:brightness-110 hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all">
-                  Get Started
-                </button>
-                <button className="w-full sm:w-auto bg-surface-container-highest text-on-surface font-bold text-lg px-12 py-4 rounded-full hover:bg-surface-container-high transition-colors">
-                  Institutional API
-                </button>
-              </div>
             </div>
             {/* Fake ambient bloom */}
             <div className="absolute inset-0 bg-primary/5 blur-[100px] pointer-events-none mix-blend-screen"></div>
