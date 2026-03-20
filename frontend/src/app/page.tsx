@@ -1,203 +1,194 @@
-'use client';
-
-import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { TrendingUp, ExternalLink, ShieldCheck, ArrowRight } from 'lucide-react';
-import localFont from 'next/font/local';
 
-const spriteGraffiti = localFont({ src: '../../public/SpriteGraffitiShadow.woff' });
-
-interface Token {
-    token_address: string;
-    symbol: string;
-    topic: string;
-    image_cid: string;
-    timestamp: string;
-    region?: string;
-}
-
-export default function Home() {
-    const [usaTokens, setUsaTokens] = useState<Token[]>([]);
-    const [otherTokens, setOtherTokens] = useState<Token[]>([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        async function fetchTokens() {
-            try {
-                const baseUrl = (process.env.NEXT_PUBLIC_API_URL || '').replace(/\/$/, '');
-                const apiUrl = `${baseUrl}/api/public/tokens`;
-                console.log('Fetching from:', apiUrl);
-                const res = await fetch(apiUrl);
-                const data = await res.json();
-                if (data.success) {
-                    const filteredTokens = data.data.filter((t: Token) => t.symbol !== 'JXSN' && t.symbol !== 'TENI' && t.symbol !== 'VERIFY');
-
-                    const usaSymbols = ['SOTU', 'WWRW', 'SPCX'];
-                    const usa = filteredTokens.filter((t: Token) => {
-                        if (t.region) {
-                            const r = t.region.toUpperCase();
-                            return r === 'US' || r === 'USA' || r === 'UNITED STATES';
-                        }
-                        return usaSymbols.includes(t.symbol.toUpperCase());
-                    });
-                    const others = filteredTokens.filter((t: Token) => {
-                        if (t.region) {
-                            const r = t.region.toUpperCase();
-                            return r === 'NG' || r === 'NIGERIA';
-                        }
-                        return !usaSymbols.includes(t.symbol.toUpperCase());
-                    });
-
-                    setUsaTokens(usa.slice(0, 5));
-                    setOtherTokens(others.slice(0, 5));
-                }
-            } catch (err) {
-                console.error('Failed to fetch tokens:', err);
-            } finally {
-                setLoading(false);
-            }
-        }
-        fetchTokens();
-        const interval = setInterval(fetchTokens, 10000); // Polling every 10s
-        return () => clearInterval(interval);
-    }, []);
-
-    const renderTokenGrid = (tokens: Token[], emptyMessage: string) => {
-        if (loading && tokens.length === 0) {
-            return (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-pulse">
-                    {[1, 2, 3].map(i => (
-                        <div key={i} className="h-64 bg-[#1F2833] backdrop-blur-sm border border-[#45A29E]/20 rounded-2xl" />
-                    ))}
-                </div>
-            );
-        }
-
-        if (tokens.length === 0) {
-            return (
-                <div className="text-center py-16 bg-[#1F2833] backdrop-blur-sm border border-[#45A29E]/20 rounded-2xl">
-                    <TrendingUp className="mx-auto mb-4 text-zinc-600" size={40} />
-                    <p className="text-[#C5C6C7]/60">{emptyMessage}</p>
-                </div>
-            );
-        }
-
-        return (
-            <div className="flex overflow-x-auto gap-6 pb-6 hide-scrollbar snap-x snap-mandatory">
-                {tokens.map((token, index) => (
-                    <motion.div
-                        key={token.token_address}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: index * 0.1 }}
-                        className="min-w-[320px] max-w-[350px] flex-none snap-start bg-[#1F2833] backdrop-blur-sm border border-[#45A29E]/20 rounded-2xl p-6 group hover:bg-[#141A22] hover:border-[#45A29E]/70 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(69,162,158,0.12)] transition-all duration-300 cursor-pointer"
-                    >
-                        <Link href={`/token/${token.token_address}`}>
-                            <div className="flex items-center gap-4 mb-6">
-                                <div className="relative w-16 h-16 rounded-2xl overflow-hidden bg-[#141A22] border border-white/5">
-                                    <img
-                                        src={`https://gateway.pinata.cloud/ipfs/${token.image_cid}`}
-                                        alt={token.symbol}
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                    />
-                                </div>
-                                <div>
-                                    <h3 className="text-xl font-bold mb-1">{token.symbol}</h3>
-                                    <div className="flex items-center gap-2 text-[#C5C6C7]/60 text-sm">
-                                        <TrendingUp size={14} className="text-emerald-400" />
-                                        Trend: {token.topic}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="space-y-4">
-                                <div className="flex justify-between items-end">
-                                    <div className="text-xs text-[#C5C6C7]/60 font-medium">Address</div>
-                                    <div className="text-sm text-[#45A29E] font-mono tabular-nums tracking-tight">
-                                        {token.token_address.slice(0, 6)}...{token.token_address.slice(-4)}
-                                    </div>
-                                </div>
-
-                                <button className="w-full py-4 bg-[#45A29E] text-black font-black rounded-xl hover:bg-[#56C6C2] hover:shadow-[0_4px_20px_rgba(69,162,158,0.3)] active:bg-[#61cd21] active:text-white active:scale-[0.97] active:shadow-none transition-all duration-200 ease-out flex items-center justify-center gap-2">
-                                    Trade Now
-                                    <ExternalLink size={18} />
-                                </button>
-                            </div>
-                        </Link>
-                    </motion.div>
-                ))}
-            </div>
-        );
-    };
-
-    return (
-        <main className="max-w-7xl mx-auto px-4 py-12">
-            <header className="mb-16 text-center">
-                <h1 className={`text-[5rem] md:text-[8rem] font-black mb-4 tracking-tighter leading-none ${spriteGraffiti.className}`}>
-                    <span style={{ color: '#61cd21' }}>Trend</span>
-                    <span style={{ color: '#61cd21' }}>$</span>
-                </h1>
-                <p className="text-[#45A29E] text-xl max-w-2xl mx-auto">
-                    Tokens listed below were deployed by Trend$ agent based on real time social media trends.
-                </p>
-            </header>
-
-            {/* Main X Trends Header */}
-            <div className="flex items-center justify-center mb-12">
-                <h2 className="text-3xl font-black tracking-tight flex items-center justify-center gap-3 whitespace-nowrap">
-                    <span className="text-[#66FCF1]">X Trends</span>
-                    <span className="px-3 py-1 rounded-full bg-[#45A29E]/20 text-[#66FCF1] text-xs font-bold border border-[#45A29E]/50 uppercase tracking-widest">Live Updates</span>
-                </h2>
+export default function KineticHomepage() {
+  return (
+    <div className="min-h-screen bg-surface font-sans text-on-surface selection:bg-primary/30">
+      {/* Navbar */}
+      <div className="fixed top-6 w-full z-50 px-6 flex justify-center pointer-events-none">
+        <nav className="pointer-events-auto w-full max-w-[1200px] bg-[#0A0B0C]/90 backdrop-blur-md border border-[rgba(255,255,255,0.05)] rounded-full shadow-2xl">
+          <div className="px-8 h-14 flex items-center justify-between">
+            <Link href="/" className="font-space text-xl font-bold tracking-tighter shrink-0 min-w-[120px] italic">
+              <span className="text-primary">Trend</span><span className="text-secondary">$</span>
+            </Link>
+            
+            <div className="hidden md:flex flex-1 items-center justify-evenly px-8 text-sm font-medium text-on-surface-variant">
+              <Link href="#" className="hover:text-white transition-colors">Attention Market</Link>
+              <Link href="#" className="hover:text-white transition-colors">Spectator Market</Link>
             </div>
 
-            {/* US Trends Header */}
-            <div className="flex items-center justify-start mb-6">
-                <div className="text-[#45A29E] font-bold text-2xl tracking-tight flex items-center gap-2">
-                    US Trends
-                </div>
+            <div className="flex items-center justify-end gap-6 shrink-0 min-w-[120px]">
+              <button className="text-on-surface-variant hover:text-white transition-colors">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+              </button>
+              <button className="bg-primary text-black font-bold text-sm px-6 py-2 rounded-full hover:brightness-110 shadow-[0_0_15px_rgba(0,229,255,0.3)] transition-all">
+                Sign Up
+              </button>
             </div>
+          </div>
+        </nav>
+      </div>
 
-            <div className="mb-16">
-                {renderTokenGrid(usaTokens, "Waiting for USA Trends...")}
-                <div className="flex justify-end mt-4">
-                    <Link href="/us" className="text-[#45A29E] font-bold hover:text-[#61cd21] transition-colors flex items-center gap-2 text-sm uppercase tracking-wider">
-                        View All US Trends <ArrowRight size={16} />
-                    </Link>
-                </div>
+      <main className="pt-32 lg:pt-40 pb-24">
+        {/* Hero Section */}
+        <section className="max-w-[1400px] mx-auto px-6 py-12 flex flex-col lg:flex-row gap-16 items-center relative">
+          {/* Deep blue/primary aura behind hero text */}
+          <div className="absolute top-1/2 left-0 w-[800px] h-[600px] bg-primary/15 mix-blend-screen blur-[140px] rounded-full transform -translate-y-1/2 -translate-x-1/4 pointer-events-none z-0"></div>
+          
+          <div className="flex-1 space-y-8 relative z-10">
+            <h1 className="font-space text-5xl lg:text-[5.5rem] font-black leading-[0.9] tracking-tight">
+              ATTENTION IS <br className="hidden md:block" />
+              <span className="bg-gradient-to-br from-primary to-primary-container text-transparent bg-clip-text">THE NEW</span><br className="hidden md:block"/>
+              ASSET <br className="hidden md:block"/>
+              CLASS.
+            </h1>
+            <p className="text-base lg:text-lg text-on-surface-variant max-w-xl leading-relaxed">
+              Don’t just follow trends, trade them on our attention market, and trade their outcomes on our spectator market.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
+              <button className="w-full sm:w-auto bg-gradient-to-br from-primary to-primary-container text-surface-container-lowest font-bold text-base px-8 py-4 rounded-full hover:brightness-110 hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all">
+                Attention Market
+              </button>
+              <button className="w-full sm:w-auto bg-secondary text-black font-bold text-base px-8 py-4 rounded-full hover:brightness-110 hover:shadow-[0_0_20px_rgba(57,255,20,0.5)] transition-all">
+                Spectator Market
+              </button>
             </div>
+          </div>
+          
+          <div className="w-full lg:w-[480px] space-y-4">
+            {/* Asset Cards Placeholder */}
+            {[
+              { title: 'Top Trend 1 / USD', price: 'XXXX', mcap: 'XXXX', change: '+X%', up: true },
+              { title: 'Top Trend 2 / USD', price: 'XXXX', mcap: 'XXXX', change: '+X%', up: true },
+              { title: 'Top Spectator Position', price: 'XXXX', mcap: 'XXXX', change: '-X%', up: false }
+            ].map((asset, i) => (
+              <div key={i} className="bg-surface-container p-6 rounded-2xl flex flex-col gap-4 relative overflow-hidden group hover:bg-surface-bright transition-colors">
+                <div className="flex justify-between items-start z-10">
+                  <span className="font-bold text-sm tracking-wide uppercase">{asset.title}</span>
+                  <span className={`text-sm font-medium ${asset.up ? 'text-secondary drop-shadow-[0_0_8px_rgba(57,255,20,0.6)]' : 'text-error drop-shadow-[0_0_8px_rgba(255,113,108,0.6)]'}`}>{asset.change}</span>
+                </div>
+                <div className="z-10 flex items-end gap-3">
+                  <div className="font-space text-3xl font-bold leading-none">{asset.price}</div>
+                  <div className="text-[10px] text-on-surface-variant border border-surface-container-high px-2 py-0.5 rounded-sm uppercase tracking-widest font-bold">MCAP: {asset.mcap}</div>
+                </div>
+                {/* Simulated Sparkline Glow */}
+                <div className={`absolute -bottom-10 -right-10 w-48 h-32 opacity-20 blur-[40px] ${asset.up ? 'bg-secondary' : 'bg-error'}`}></div>
+              </div>
+            ))}
+          </div>
+        </section>
 
-            {/* NG Trends Header */}
-            <div className="flex items-center justify-start mb-6">
-                <div className="text-[#45A29E] font-bold text-2xl tracking-tight flex items-center gap-2">
-                    NG Trends
-                </div>
+        {/* Dense Data Ticker */}
+        <section className="border-y border-surface-container bg-surface-container-lowest py-4 my-12 overflow-x-auto hide-scrollbar">
+          <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between text-xs font-mono text-on-surface-variant tracking-wider min-w-[1200px]">
+            <div className="flex gap-12">
+              <span>ATTENTION VOLUME (24H): <strong className="text-secondary drop-shadow-[0_0_4px_rgba(57,255,20,0.4)]">$XXX</strong></span>
+              <span>TOKENS DEPLOYED (24H): <strong className="text-primary drop-shadow-[0_0_4px_rgba(0,229,255,0.4)]">XXX</strong></span>
+              <span>SPECTATOR VOLUME (24H): <strong className="text-secondary drop-shadow-[0_0_4px_rgba(57,255,20,0.4)]">$XXX</strong></span>
+              <span>ACTIVE POSITIONS: <strong className="text-primary drop-shadow-[0_0_4px_rgba(0,229,255,0.4)]">XXX</strong></span>
+              <span>Trend$ SCORE: <strong className="text-primary drop-shadow-[0_0_4px_rgba(0,229,255,0.4)]">99.8</strong></span>
             </div>
+            <div>TOTAL VOLUME: <strong className="text-on-surface">$XXX</strong></div>
+          </div>
+        </section>
 
-            <div className="mb-8">
-                {renderTokenGrid(otherTokens, "Waiting for Nigeria Trends...")}
-                <div className="flex justify-end mt-4">
-                    <Link href="/ng" className="text-[#45A29E] font-bold hover:text-[#61cd21] transition-colors flex items-center gap-2 text-sm uppercase tracking-wider">
-                        View All NG Trends <ArrowRight size={16} />
-                    </Link>
-                </div>
+        {/* Attention Markets Section */}
+        <section className="py-24 relative z-10 bg-surface overflow-hidden">
+          <div className="max-w-[1400px] mx-auto px-6 relative z-10">
+            <div className="flex flex-col max-w-3xl">
+              <h2 className="font-space text-[3.5rem] md:text-[5rem] font-bold leading-[1.05] tracking-tight mb-8">
+                <span className="text-white">Attention</span> <br />
+                <span className="text-primary">Markets</span>
+              </h2>
+              
+              <p className="text-[17px] text-[#A0ABC0] leading-[1.7] max-w-2xl mb-12">
+                Attention markets consist of tokens representing live social trends across the internet. As attention grows or fades, so does their value, allowing you to trade and participate in global internet attention as it happens.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-5">
+                <button className="bg-primary text-black font-bold text-[15px] px-8 py-4 rounded-full hover:brightness-110 shadow-[0_0_15px_rgba(0,229,255,0.3)] transition-all">
+                  Explore Trends
+                </button>
+              </div>
             </div>
+          </div>
+        </section>
 
-            {/* Worldwide Header */}
-            <div className="flex items-center justify-start mt-12 mb-16">
-                <div className="text-[#45A29E] font-bold text-2xl tracking-tight flex items-center gap-3">
-                    Worldwide
-                    <span className="px-3 py-1 rounded-full bg-[#45A29E]/20 text-[#45A29E] text-xs font-bold border border-[#45A29E]/50 uppercase tracking-widest">Coming Soon</span>
-                </div>
+        {/* Spectator Markets Section */}
+        <section className="py-24 relative z-10 bg-surface overflow-hidden">
+          <div className="max-w-[1400px] mx-auto px-6 relative z-10">
+            <div className="flex flex-col max-w-3xl">
+              <h2 className="font-space text-[3.5rem] md:text-[5rem] font-bold leading-[1.05] tracking-tight mb-8">
+                <span className="text-white">Spectator</span> <br />
+                <span className="text-primary">Markets</span>
+              </h2>
+              
+              <p className="text-[17px] text-[#A0ABC0] leading-[1.7] max-w-2xl mb-12">
+                Spectator markets let you create and trade prediction positions on the outcomes of social trends and other attention-driven events, from sports and reality TV to live streams.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-5">
+                <button className="bg-primary text-black font-bold text-[15px] px-8 py-4 rounded-full hover:brightness-110 shadow-[0_0_15px_rgba(0,229,255,0.3)] transition-all">
+                  Spectator Positions
+                </button>
+              </div>
             </div>
+          </div>
+        </section>
 
-            {/* TikTok Trends Header */}
-            <div className="flex items-center justify-center mt-12 mb-24">
-                <div className="text-[#45A29E] font-bold text-2xl tracking-tight flex items-center gap-3">
-                    TikTok Trends
-                    <span className="px-3 py-1 rounded-full bg-[#45A29E]/20 text-[#45A29E] text-xs font-bold border border-[#45A29E]/50 uppercase tracking-widest">Coming Soon</span>
-                </div>
+
+        {/* Bottom CTA */}
+        <section className="max-w-[1200px] mx-auto px-6 py-12 lg:py-24">
+          <div className="bg-surface-container-low rounded-[2rem] lg:rounded-[3rem] p-8 lg:p-24 text-center relative overflow-hidden border border-[rgba(255,255,255,0.05)]">
+            <div className="relative z-10 space-y-8 max-w-3xl mx-auto flex flex-col items-center">
+              <h2 className="font-space text-4xl lg:text-[3.5rem] font-black uppercase leading-[1.1]">
+                THE FUTURE OF <br className="hidden sm:block"/> ATTENTION IS <span className="text-primary drop-shadow-[0_0_12px_rgba(0,229,255,0.4)]">Trend</span><span className="text-secondary drop-shadow-[0_0_12px_rgba(57,255,20,0.4)]">$</span>
+              </h2>
             </div>
-        </main>
-    );
+            {/* Fake ambient bloom */}
+            <div className="absolute inset-0 bg-primary/5 blur-[100px] pointer-events-none mix-blend-screen"></div>
+          </div>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className="border-t border-surface-container-lowest bg-surface-container-lowest">
+        <div className="max-w-[1400px] mx-auto px-6 py-16 flex flex-col md:flex-row justify-between gap-12">
+          <div className="space-y-6 max-w-xs">
+             <Link href="/" className="font-space text-3xl font-bold tracking-tighter italic">
+              <span className="text-primary">Trend</span><span className="text-secondary">$</span>
+            </Link>
+            <p className="text-xs text-on-surface-variant leading-relaxed font-mono">
+              © 2026 TREND$.
+            </p>
+          </div>
+          <div className="flex flex-wrap md:flex-nowrap gap-x-24 gap-y-12 lg:gap-x-48 text-[10px] font-bold tracking-[0.2em] uppercase mt-8 md:mt-0 ml-0 md:ml-12">
+            <div className="space-y-8 min-w-[140px]">
+              <h4 className="text-primary">PLATFORM</h4>
+              <div className="flex flex-col gap-6 text-[#A0ABC0]">
+                <Link href="#" className="hover:text-white transition-colors">MARKETS</Link>
+                <Link href="#" className="hover:text-white transition-colors">TRADE</Link>
+                <Link href="#" className="hover:text-white transition-colors">API DOCS</Link>
+              </div>
+            </div>
+            <div className="space-y-8 min-w-[140px]">
+              <h4 className="text-primary">LEGAL</h4>
+              <div className="flex flex-col gap-6 text-[#A0ABC0]">
+                <Link href="#" className="hover:text-white transition-colors">PRIVACY POLICY</Link>
+                <Link href="#" className="hover:text-white transition-colors">TERMS OF SERVICE</Link>
+                <Link href="#" className="hover:text-white transition-colors">RISK DISCLOSURE</Link>
+              </div>
+            </div>
+             <div className="space-y-8 min-w-[140px]">
+              <h4 className="text-primary">SUPPORT</h4>
+              <div className="flex flex-col gap-6 text-[#A0ABC0]">
+                <Link href="#" className="hover:text-white transition-colors">HELP CENTER</Link>
+                <Link href="#" className="hover:text-white transition-colors">STATUS</Link>
+                <Link href="#" className="hover:text-white transition-colors">CONTACT</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
 }
