@@ -92,63 +92,36 @@ export default function KineticHomepage() {
           </div>
         </section>
 
-        {/* Feature Grid */}
-        <section className="max-w-[1400px] mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-surface-container-low p-8 rounded-3xl md:col-span-1 flex flex-col justify-between min-h-[240px]">
-            <div className="text-xs font-semibold tracking-widest text-on-surface-variant mb-4 uppercase">ENGINE PERFORMANCE</div>
-            <div>
-              <div className="font-space text-5xl font-bold mb-2">1.2M <span className="text-lg text-on-surface-variant font-sans">TPS</span></div>
-              <p className="text-sm text-on-surface-variant">Proprietary matching engine built for the most demanding institutional workflows.</p>
+        {/* Attention Markets Section */}
+        <section className="py-24 relative z-10 bg-surface">
+          <div className="max-w-[1400px] mx-auto px-6">
+            <div className="flex flex-col max-w-3xl">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-2.5 h-2.5 rounded-full bg-primary/70"></div>
+                <span className="text-xs font-bold tracking-[0.2em] text-[#8ea7cc] uppercase">Live Dynamics</span>
+              </div>
+              
+              <h2 className="font-space text-[3.5rem] md:text-[5rem] font-bold leading-[1.05] tracking-tight mb-8">
+                <span className="text-white">Attention</span> <br />
+                <span className="text-primary">Markets</span>
+              </h2>
+              
+              <p className="text-[17px] text-[#A0ABC0] leading-[1.7] max-w-2xl mb-12">
+                Attention markets consist of tokens representing live social trends across the internet. As attention grows or fades, so does their value, allowing you to trade and participate in global internet attention as it happens.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-5">
+                <button className="bg-primary text-black font-bold text-[15px] px-8 py-4 rounded-xl hover:brightness-110 shadow-[0_0_15px_rgba(0,229,255,0.3)] transition-all">
+                  Explore Trends
+                </button>
+                <button className="bg-[#2D303E] text-white font-bold text-[15px] px-8 py-4 rounded-xl hover:bg-[#383C4D] transition-colors shadow-sm border border-[rgba(255,255,255,0.05)]">
+                  View Analytics
+                </button>
+              </div>
             </div>
-          </div>
-          <div className="bg-surface-container-low p-8 rounded-3xl md:col-span-1 flex flex-col gap-4">
-            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-2">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-            </div>
-            <h3 className="font-space text-xl font-bold">Secured by PulseVault</h3>
-            <p className="text-sm text-on-surface-variant">Multi-layer cold storage with hardware-level encryption.</p>
-          </div>
-          <div className="bg-surface-container-low p-8 rounded-3xl md:col-span-1 flex flex-col gap-4">
-            <div className="w-12 h-12 rounded-xl bg-tertiary/10 flex items-center justify-center text-tertiary mb-2">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-            </div>
-            <h3 className="font-space text-xl font-bold">Ultra-Low API Latency</h3>
-            <p className="text-sm text-on-surface-variant">WebSockets and FIX protocol support for automated strategies.</p>
           </div>
         </section>
 
-        {/* Split Features */}
-        <section className="max-w-[1400px] mx-auto px-6 py-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="bg-surface-container-lowest p-8 rounded-3xl lg:col-span-1 border border-outline-variant flex flex-col relative overflow-hidden h-[300px] lg:h-auto">
-             <div className="relative z-10 flex-1">
-               <h3 className="font-space text-2xl font-bold mb-2">Global Reach</h3>
-               <p className="text-sm text-on-surface-variant leading-relaxed">Serving institutional clients across 40 countries with cross-fiat clearing.</p>
-             </div>
-             <div className="absolute -bottom-20 -right-20 opacity-30 pointer-events-none">
-                <svg className="w-64 h-64 text-on-surface-variant" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                </svg>
-             </div>
-          </div>
-          <div className="bg-surface-container p-8 lg:p-12 rounded-3xl lg:col-span-2 flex flex-col md:flex-row items-center justify-between gap-12 border border-transparent hover:border-surface-container-high transition-colors">
-            <div className="flex-1">
-              <h2 className="font-space text-3xl lg:text-4xl font-bold mb-4 uppercase">Deep Liquidity Aggregation</h2>
-              <p className="text-on-surface-variant text-base leading-relaxed">
-                We bridge fragmented markets into a single high-density order book. Get the best prices across Spot, Futures, and Perpetual markets with minimal slippage.
-              </p>
-            </div>
-            <div className="flex gap-4">
-              <div className="bg-surface-container-highest p-6 rounded-2xl text-center border border-[rgba(255,255,255,0.05)] w-32">
-                <div className="text-2xl font-bold text-secondary mb-1">0.01%</div>
-                <div className="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">Maker Fee</div>
-              </div>
-              <div className="bg-surface-container-highest p-6 rounded-2xl text-center border border-[rgba(255,255,255,0.05)] w-32">
-                <div className="text-2xl font-bold text-primary mb-1">0.04%</div>
-                <div className="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">Taker Fee</div>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* Built for Professionals */}
         <section className="max-w-[1400px] mx-auto px-6 py-24 space-y-12">
