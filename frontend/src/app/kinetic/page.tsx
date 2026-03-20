@@ -4,8 +4,9 @@ export default function KineticHomepage() {
   return (
     <div className="min-h-screen bg-surface font-sans text-on-surface selection:bg-primary/30">
       {/* Navbar */}
-      <nav className="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-surface-container-low">
-        <div className="max-w-[1400px] mx-auto px-6 h-16 lg:h-20 flex items-center justify-between">
+      <div className="fixed top-6 w-full z-50 px-6 flex justify-center pointer-events-none">
+        <nav className="pointer-events-auto w-full max-w-[1400px] bg-surface/80 backdrop-blur-md border border-surface-container-low rounded-full">
+          <div className="px-6 lg:px-8 h-16 lg:h-20 flex items-center justify-between">
           <div className="flex items-center gap-12">
             <Link href="/" className="font-space text-2xl font-bold text-on-surface tracking-tighter shadow-primary">
               Trend<span className="text-secondary">$</span>.
@@ -21,14 +22,15 @@ export default function KineticHomepage() {
             <button className="text-on-surface-variant hover:text-on-surface transition-colors">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
             </button>
-            <button className="bg-gradient-to-br from-primary to-primary-container text-surface-container-lowest font-bold text-sm px-6 py-2.5 rounded-md hover:brightness-110 hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all">
+            <button className="bg-gradient-to-br from-primary to-primary-container text-surface-container-lowest font-bold text-sm px-6 py-2.5 rounded-full hover:brightness-110 hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all">
               CONNECT WALLET
             </button>
           </div>
-        </div>
-      </nav>
+          </div>
+        </nav>
+      </div>
 
-      <main className="pt-28 lg:pt-32 pb-24">
+      <main className="pt-32 lg:pt-40 pb-24">
         {/* Hero Section */}
         <section className="max-w-[1400px] mx-auto px-6 py-12 flex flex-col lg:flex-row gap-16 items-center">
           <div className="flex-1 space-y-8">
@@ -46,10 +48,10 @@ export default function KineticHomepage() {
               The ultimate high-performance trading gateway. Engineered for precision execution, sub-millisecond latency, and cross-chain liquidity aggregation.
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
-              <button className="w-full sm:w-auto bg-gradient-to-br from-primary to-primary-container text-surface-container-lowest font-bold text-base px-8 py-4 rounded-md hover:brightness-110 hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all">
+              <button className="w-full sm:w-auto bg-gradient-to-br from-primary to-primary-container text-surface-container-lowest font-bold text-base px-8 py-4 rounded-full hover:brightness-110 hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all">
                 Trade Now
               </button>
-              <button className="w-full sm:w-auto bg-surface-container-highest text-on-surface font-bold text-base px-8 py-4 rounded-md hover:bg-surface-container-high transition-colors">
+              <button className="w-full sm:w-auto bg-surface-container-highest text-on-surface font-bold text-base px-8 py-4 rounded-full hover:bg-surface-container-high transition-colors">
                 View Markets
               </button>
             </div>
@@ -205,10 +207,10 @@ export default function KineticHomepage() {
                 Join 50,000+ institutional and professional traders already leveraging the Pulse ecosystem.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 w-full sm:w-auto">
-                <button className="w-full sm:w-auto bg-gradient-to-br from-primary to-primary-container text-surface-container-lowest font-bold text-lg px-12 py-4 rounded-md hover:brightness-110 hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all">
+                <button className="w-full sm:w-auto bg-gradient-to-br from-primary to-primary-container text-surface-container-lowest font-bold text-lg px-12 py-4 rounded-full hover:brightness-110 hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all">
                   Get Started
                 </button>
-                <button className="w-full sm:w-auto bg-surface-container-highest text-on-surface font-bold text-lg px-12 py-4 rounded-md hover:bg-surface-container-high transition-colors">
+                <button className="w-full sm:w-auto bg-surface-container-highest text-on-surface font-bold text-lg px-12 py-4 rounded-full hover:bg-surface-container-high transition-colors">
                   Institutional API
                 </button>
               </div>
