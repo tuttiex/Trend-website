@@ -7,16 +7,16 @@ export default function KineticHomepage() {
       <div className="fixed top-6 w-full z-50 px-6 flex justify-center pointer-events-none">
         <nav className="pointer-events-auto w-full max-w-[1200px] bg-[#0A0B0C]/90 backdrop-blur-md border border-[rgba(255,255,255,0.05)] rounded-full shadow-2xl">
           <div className="px-8 h-14 flex items-center justify-between">
-            <div className="flex items-center gap-10">
-              <Link href="/" className="font-space text-xl font-bold text-white tracking-tighter">
-                Trend<span className="text-secondary">$</span>.
-              </Link>
-              <div className="hidden md:flex items-center gap-8 text-sm font-medium text-on-surface-variant">
-                <Link href="#" className="hover:text-white transition-colors">Attention Market</Link>
-                <Link href="#" className="hover:text-white transition-colors">Spectator Capital</Link>
-              </div>
+            <Link href="/" className="font-space text-xl font-bold text-white tracking-tighter shrink-0 min-w-[120px]">
+              Trend<span className="text-secondary">$</span>.
+            </Link>
+            
+            <div className="hidden md:flex flex-1 items-center justify-evenly px-8 text-sm font-medium text-on-surface-variant">
+              <Link href="#" className="hover:text-white transition-colors">Attention Market</Link>
+              <Link href="#" className="hover:text-white transition-colors">Spectator Market</Link>
             </div>
-            <div className="flex items-center gap-6">
+
+            <div className="flex items-center justify-end gap-6 shrink-0 min-w-[120px]">
               <button className="text-on-surface-variant hover:text-white transition-colors">
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
               </button>
