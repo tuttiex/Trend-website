@@ -30,8 +30,11 @@ export default function KineticHomepage() {
 
       <main className="pt-32 lg:pt-40 pb-24">
         {/* Hero Section */}
-        <section className="max-w-[1400px] mx-auto px-6 py-12 flex flex-col lg:flex-row gap-16 items-center">
-          <div className="flex-1 space-y-8">
+        <section className="max-w-[1400px] mx-auto px-6 py-12 flex flex-col lg:flex-row gap-16 items-center relative">
+          {/* Deep blue/primary aura behind hero text */}
+          <div className="absolute top-1/2 left-0 w-[800px] h-[600px] bg-primary/15 mix-blend-screen blur-[140px] rounded-full transform -translate-y-1/2 -translate-x-1/4 pointer-events-none z-0"></div>
+          
+          <div className="flex-1 space-y-8 relative z-10">
             <div className="flex items-center gap-2 text-xs font-medium tracking-widest text-secondary uppercase">
               <span className="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_rgba(57,255,20,0.8)] animate-pulse"></span>
               LIVE TRADING ENGINE ACTIVE
