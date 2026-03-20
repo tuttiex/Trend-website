@@ -94,7 +94,7 @@ export default function KineticHomepage() {
         {/* Attention Markets Section */}
         <section className="py-24 relative z-10 bg-surface overflow-hidden">
           {/* Deep blue/primary aura behind section text */}
-          <div className="absolute top-1/2 left-0 w-[800px] h-[600px] bg-primary/15 mix-blend-screen blur-[140px] rounded-full transform -translate-y-1/2 -translate-x-1/3 pointer-events-none z-0"></div>
+          <div className="absolute top-1/2 left-0 w-[800px] h-[600px] bg-primary/10 mix-blend-screen blur-[180px] rounded-full transform -translate-y-1/2 -translate-x-1/3 pointer-events-none z-0"></div>
 
           <div className="max-w-[1400px] mx-auto px-6 relative z-10">
             <div className="flex flex-col max-w-3xl">
@@ -119,7 +119,7 @@ export default function KineticHomepage() {
         {/* Spectator Markets Section */}
         <section className="py-24 relative z-10 bg-surface overflow-hidden">
           {/* Deep blue/primary aura behind section text */}
-          <div className="absolute top-1/2 left-0 w-[800px] h-[600px] bg-primary/10 mix-blend-screen blur-[140px] rounded-full transform -translate-y-1/2 -translate-x-1/3 pointer-events-none z-0"></div>
+          <div className="absolute top-1/2 left-0 w-[800px] h-[600px] bg-primary/10 mix-blend-screen blur-[180px] rounded-full transform -translate-y-1/2 -translate-x-1/3 pointer-events-none z-0"></div>
 
           <div className="max-w-[1400px] mx-auto px-6 relative z-10">
             <div className="flex flex-col max-w-3xl">
