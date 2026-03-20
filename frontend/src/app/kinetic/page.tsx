@@ -80,14 +80,14 @@ export default function KineticHomepage() {
 
         {/* Dense Data Ticker */}
         <section className="border-y border-surface-container bg-surface-container-lowest py-4 my-12 overflow-x-auto hide-scrollbar">
-          <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between text-xs font-mono text-on-surface-variant tracking-wider min-w-[800px]">
+          <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between text-xs font-mono text-on-surface-variant tracking-wider min-w-[1200px]">
             <div className="flex gap-12">
-              <span>AVG LATENCY: <strong className="text-secondary drop-shadow-[0_0_4px_rgba(57,255,20,0.4)]">0.4ms</strong></span>
-              <span>OPEN INTEREST: <strong className="text-primary drop-shadow-[0_0_4px_rgba(0,229,255,0.4)]">512.4M</strong></span>
-              <span>LIQUIDITY DEPTH: <strong className="text-secondary drop-shadow-[0_0_4px_rgba(57,255,20,0.4)]">HIGH</strong></span>
+              <span>ATTENTION VOLUME (24H): <strong className="text-secondary drop-shadow-[0_0_4px_rgba(57,255,20,0.4)]">$XXX</strong></span>
+              <span>TOKENS DEPLOYED (24H): <strong className="text-primary drop-shadow-[0_0_4px_rgba(0,229,255,0.4)]">XXX</strong></span>
+              <span>SPECTATOR VOLUME (24H): <strong className="text-secondary drop-shadow-[0_0_4px_rgba(57,255,20,0.4)]">$XXX</strong></span>
               <span>Trend$ SCORE: <strong className="text-primary drop-shadow-[0_0_4px_rgba(0,229,255,0.4)]">99.8</strong></span>
             </div>
-            <div>TOTAL VOLUME (24H): <strong className="text-on-surface">5.2B</strong></div>
+            <div>TOTAL VOLUME: <strong className="text-on-surface">$XXX</strong></div>
           </div>
         </section>
 
