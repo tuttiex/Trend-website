@@ -76,7 +76,7 @@ export default function AttentionMarket() {
         return () => clearInterval(interval);
     }, []);
 
-    const renderTokenList = (tokens: Token[]) => {
+    const renderTokenList = (tokens: Token[], forcedRegion?: string) => {
         if (loading && tokens.length === 0) {
             return (
                 <div className="space-y-2 animate-pulse">
@@ -119,7 +119,7 @@ export default function AttentionMarket() {
                                                 <span className="font-bold text-white group-hover:text-[#66FCF1] transition-colors truncate">{token.topic}</span>
                                                 <span className="text-[10px] text-[#A0ABC0] bg-[#1F2833] px-1.5 py-0.5 rounded font-mono shrink-0">{token.symbol}</span>
                                             </div>
-                                            <div className="text-[11px] text-[#A0ABC0] mt-0.5 truncate">Region: {token.region || 'Global'}</div>
+                                            <div className="text-[11px] text-[#A0ABC0] mt-0.5 truncate">Region: {forcedRegion || token.region || 'Global'}</div>
                                         </div>
                                     </div>
                                     
@@ -283,8 +283,8 @@ export default function AttentionMarket() {
 
                         {/* Table Body */}
                         <div className="md:p-2">
-                            {activeTab === 'US Trends' && renderTokenList(usaTokens)}
-                            {activeTab === 'NG Trends' && renderTokenList(otherTokens)}
+                            {activeTab === 'US Trends' && renderTokenList(usaTokens, 'US')}
+                            {activeTab === 'NG Trends' && renderTokenList(otherTokens, 'NG')}
                             {activeTab !== 'US Trends' && activeTab !== 'NG Trends' && renderTokenList([])}
                         </div>
                     </div>
