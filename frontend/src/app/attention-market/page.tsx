@@ -190,16 +190,6 @@ export default function AttentionMarket() {
                 
                 {/* Left Sidebar */}
                 <aside className="hidden lg:flex w-64 flex-col gap-6 shrink-0">
-                    {/* Command Center */}
-                    <div className="bg-[#141A22] rounded-2xl p-4 flex items-center gap-3 border border-white/5">
-                        <div className="w-10 h-10 rounded-full bg-[#1F2833] flex items-center justify-center text-[#66FCF1]">
-                            <ShieldCheck size={20} />
-                        </div>
-                        <div>
-                            <div className="font-bold text-white text-sm">Command Center</div>
-                            <div className="text-xs text-[#A0ABC0]">Verified Node</div>
-                        </div>
-                    </div>
 
                     {/* Navigation */}
                     <nav className="flex flex-col gap-1">
@@ -220,14 +210,6 @@ export default function AttentionMarket() {
                         </button>
                     </nav>
 
-                    {/* Portfolio Value */}
-                    <div className="mt-8 bg-[#141A22] rounded-2xl p-5 border border-white/5 mx-2 shadow-[0_0_20px_rgba(0,229,255,0.05)]">
-                        <div className="text-xs text-[#A0ABC0] mb-1">Portfolio Value</div>
-                        <div className="text-xl font-bold text-white mb-4">$124,592.00</div>
-                        <button className="w-full py-2.5 bg-[#1F2833] hover:bg-[#2A3441] text-white font-medium rounded-lg text-sm transition-colors border border-white/5 text-center">
-                            Trade Now
-                        </button>
-                    </div>
                 </aside>
 
                 {/* Main Content Area */}
@@ -236,8 +218,8 @@ export default function AttentionMarket() {
                     {/* Top Stats */}
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                         <div>
-                            <h1 className="text-4xl lg:text-5xl font-black uppercase tracking-tight text-white mb-2">
-                                ATTENTION MARKET
+                            <h1 className="text-4xl lg:text-5xl font-black uppercase tracking-tight mb-2">
+                                <span className="text-white">ATTENTION</span> <span className="text-[#66FCF1] drop-shadow-[0_0_12px_rgba(102,252,241,0.4)]">MARKET</span>
                             </h1>
                             <p className="text-[#A0ABC0] text-sm md:text-base">
                                 Real-time trends tracked by global agents.
@@ -256,17 +238,16 @@ export default function AttentionMarket() {
                     </div>
 
                     {/* X Trends Section Header */}
-                    <div className="flex items-center gap-3 mt-2">
+                    <div className="flex items-center gap-3 mt-2 mb-2">
                         <h2 className="text-2xl font-black tracking-tight flex items-center gap-2">
-                            <span className="text-[#66FCF1] uppercase">X Trends</span>
+                            <span className="text-[#66FCF1] uppercase drop-shadow-[0_0_8px_rgba(102,252,241,0.5)]">X Trends</span>
                         </h2>
-                        <span className="px-2 py-0.5 rounded bg-[#45A29E]/20 text-[#66FCF1] text-[10px] font-bold border border-[#45A29E]/50 uppercase tracking-widest">Live Updates</span>
                     </div>
 
                     {/* Controls Bar */}
                     <div className="flex flex-col xl:flex-row justify-between gap-4">
                         <div className="flex p-1 bg-[#141A22] rounded-xl border border-white/5 overflow-x-auto hide-scrollbar">
-                            {['Favorites', 'US Trends', 'NG Trends', 'New'].map(tab => (
+                            {['Favorites', 'US Trends', 'NG Trends', 'Global', 'New'].map(tab => (
                                 <button 
                                     key={tab}
                                     onClick={() => setActiveTab(tab)}
@@ -285,9 +266,6 @@ export default function AttentionMarket() {
                                     className="pl-9 pr-4 py-2 bg-[#141A22] border border-white/5 rounded-xl text-sm text-white placeholder:text-[#5A6B80] focus:outline-none focus:border-[#66FCF1]/50 w-full xl:w-64 transition-colors"
                                 />
                             </div>
-                            <button className="p-2 px-3 bg-[#141A22] border border-white/5 rounded-xl text-[#A0ABC0] hover:text-white hover:bg-[#1F2833] transition-colors shrink-0">
-                                <SlidersHorizontal size={18} />
-                            </button>
                         </div>
                     </div>
 
