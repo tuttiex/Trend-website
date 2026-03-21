@@ -89,30 +89,8 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                 </nav>
             </div>
 
-            <main className="pt-32 lg:pt-40 pb-24 max-w-[1400px] mx-auto px-4 lg:px-6 flex flex-col lg:flex-row gap-8">
-                
-                {/* Left Sidebar */}
-                <aside className="hidden lg:flex w-64 flex-col gap-6 shrink-0">
-                    <nav className="flex flex-col gap-1">
-                        <Link href="/" className="flex items-center gap-3 px-4 py-3 text-sm text-[#A0ABC0] hover:text-white rounded-lg hover:bg-[#141A22] transition-colors">
-                            <Home size={18} /> Dashboard
-                        </Link>
-                        <Link href="/attention-market" className="flex items-center gap-3 px-4 py-3 text-sm text-[#A0ABC0] hover:text-white rounded-lg hover:bg-[#141A22] transition-colors">
-                            <Activity size={18} /> Attention Market
-                        </Link>
-                        <button className="flex items-center gap-3 px-4 py-3 text-sm text-[#A0ABC0] hover:text-white rounded-lg hover:bg-[#141A22] transition-colors text-left">
-                            <Eye size={18} /> Spectator Market
-                        </button>
-                        <button className="flex items-center gap-3 px-4 py-3 text-sm text-[#A0ABC0] hover:text-white rounded-lg hover:bg-[#141A22] transition-colors text-left">
-                            <Wallet size={18} /> Staking
-                        </button>
-                        <button className="flex items-center gap-3 px-4 py-3 text-sm text-[#A0ABC0] hover:text-white rounded-lg hover:bg-[#141A22] transition-colors text-left">
-                            <History size={18} /> History
-                        </button>
-                    </nav>
-                </aside>
-
-                <div className="flex-1 min-w-0">
+            <main className="pt-32 lg:pt-40 pb-24 max-w-[1400px] mx-auto px-4 lg:px-6">
+                <div className="w-full">
                     {/* Token Info Header */}
                     <div className="flex flex-col md:flex-row items-center gap-6 mb-12">
                         <div className="relative w-24 h-24 rounded-full overflow-hidden bg-[#141A22] border-2 border-white/5 shadow-[0_0_20px_rgba(0,229,255,0.1)] shrink-0 group">
