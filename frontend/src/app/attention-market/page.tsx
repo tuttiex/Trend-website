@@ -108,45 +108,45 @@ export default function AttentionMarket() {
                             transition={{ delay: index * 0.05 }}
                         >
                             <Link href={`/token/${token.token_address}`}>
-                                <div className="grid grid-cols-[3fr_1fr_1fr_1.5fr_1fr_1fr] md:grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr] gap-4 items-center p-4 bg-[#141A22] hover:bg-[#1A222C] rounded-xl border border-transparent hover:border-white/5 transition-colors cursor-pointer group">
+                                <div className="flex md:grid md:grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr] justify-between gap-4 items-center p-4 bg-[#141A22] hover:bg-[#1A222C] rounded-xl border border-transparent hover:border-white/5 transition-colors cursor-pointer group">
                                     {/* ASSET */}
-                                    <div className="flex items-center gap-4 min-w-0">
+                                    <div className="flex items-center gap-3 min-w-0 flex-1 md:flex-none">
                                         <div className="w-10 h-10 rounded-full overflow-hidden bg-[#1F2833] shrink-0 border border-white/5">
                                             <img src={`https://gateway.pinata.cloud/ipfs/${token.image_cid}`} alt={token.symbol} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                                         </div>
-                                        <div className="min-w-0">
-                                            <div className="flex items-center gap-2">
-                                                <span className="font-bold text-white group-hover:text-[#66FCF1] transition-colors truncate">{token.topic}</span>
-                                                <span className="text-[10px] text-[#A0ABC0] bg-[#1F2833] px-1.5 py-0.5 rounded font-mono shrink-0">{token.symbol}</span>
+                                        <div className="min-w-0 flex flex-col">
+                                            <div className="flex items-center gap-2 overflow-hidden">
+                                                <span className="font-bold text-white group-hover:text-[#66FCF1] transition-colors truncate text-sm md:text-base">{token.topic}</span>
+                                                <span className="text-[9px] md:text-[10px] text-[#A0ABC0] bg-[#1F2833] px-1.5 py-0.5 rounded font-mono shrink-0">{token.symbol}</span>
                                             </div>
-                                            <div className="text-[11px] text-[#A0ABC0] mt-0.5 truncate">Region: {forcedRegion || token.region || 'Global'}</div>
+                                            <div className="text-[10px] md:text-[11px] text-[#A0ABC0] mt-0.5 truncate">Region: {forcedRegion || token.region || 'Global'}</div>
                                         </div>
                                     </div>
                                     
-                                    {/* PRICE */}
+                                    {/* PRICE - Hide on mobile */}
                                     <div className="hidden sm:block">
-                                        <div className="font-bold text-white tracking-tight">$0.0012</div>
-                                        <div className="text-[11px] text-[#A0ABC0] font-mono">≈ 0.0001 BTC</div>
+                                        <div className="font-bold text-white tracking-tight text-sm md:text-base">$0.0012</div>
+                                        <div className="text-[10px] md:text-[11px] text-[#A0ABC0] font-mono">≈ 0.0001 BTC</div>
                                     </div>
 
-                                    {/* 24H CHANGE */}
-                                    <div className={`font-bold flex items-center gap-1 text-sm ${isUp ? 'text-[#39FF14]' : 'text-[#ff716c]'}`}>
+                                    {/* 24H CHANGE - Always visible, pin to right on mobile */}
+                                    <div className={`font-bold flex items-center justify-end md:justify-start gap-1 text-xs md:text-sm shrink-0 min-w-[70px] ${isUp ? 'text-[#39FF14]' : 'text-[#ff716c]'}`}>
                                         {isUp ? <TrendingUp size={14} /> : <TrendingDown size={14} />}
                                         {isUp ? '+14.2%' : '-1.12%'}
                                     </div>
 
-                                    {/* 24H VOLUME */}
+                                    {/* 24H VOLUME - Hide on mobile/tablet */}
                                     <div className="hidden md:block">
                                         <div className="font-bold text-white tracking-tight">$892,104,000</div>
                                         <div className="text-[11px] text-[#A0ABC0] font-mono">71,712,000 VOL</div>
                                     </div>
 
-                                    {/* MARKET CAP */}
+                                    {/* MARKET CAP - Hide on mobile/tablet/medium laptop */}
                                     <div className="text-[#A0ABC0] font-medium tracking-tight hidden lg:block">
                                         $1.2B
                                     </div>
 
-                                    {/* LAST 7 DAYS */}
+                                    {/* LAST 7 DAYS - Hide on mobile/tablet/medium laptop */}
                                     <div className="hidden lg:block">
                                         <Sparkline up={isUp} />
                                     </div>
