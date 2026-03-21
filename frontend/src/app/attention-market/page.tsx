@@ -255,6 +255,14 @@ export default function AttentionMarket() {
                         </div>
                     </div>
 
+                    {/* X Trends Section Header */}
+                    <div className="flex items-center gap-3 mt-2">
+                        <h2 className="text-2xl font-black tracking-tight flex items-center gap-2">
+                            <span className="text-[#66FCF1] uppercase">X Trends</span>
+                        </h2>
+                        <span className="px-2 py-0.5 rounded bg-[#45A29E]/20 text-[#66FCF1] text-[10px] font-bold border border-[#45A29E]/50 uppercase tracking-widest">Live Updates</span>
+                    </div>
+
                     {/* Controls Bar */}
                     <div className="flex flex-col xl:flex-row justify-between gap-4">
                         <div className="flex p-1 bg-[#141A22] rounded-xl border border-white/5 overflow-x-auto hide-scrollbar">
@@ -308,6 +316,43 @@ export default function AttentionMarket() {
                         <button className="px-8 py-3 bg-[#141A22] hover:bg-[#1F2833] text-[#A0ABC0] hover:text-white text-sm font-medium rounded-full transition-all border border-white/5 hover:border-white/10 active:scale-95 shadow-sm">
                             Load More Assets
                         </button>
+                    </div>
+
+                    {/* TikTok Trends Upcoming */}
+                    <div className="mt-12 opacity-50 pointer-events-none grayscale">
+                        <div className="flex items-center gap-3 mb-4">
+                            <h2 className="text-2xl font-black tracking-tight flex items-center gap-2">
+                                <span className="text-[#c4b5fd] uppercase">TikTok Trends</span>
+                            </h2>
+                            <span className="px-2 py-0.5 rounded bg-[#c4b5fd]/20 text-[#c4b5fd] text-[10px] font-bold border border-[#c4b5fd]/50 uppercase tracking-widest">Coming Soon</span>
+                        </div>
+                        
+                        <div className="bg-transparent md:bg-[#0C1014] md:border border-white/5 rounded-2xl overflow-hidden">
+                            {/* Table Header */}
+                            <div className="hidden md:grid grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr] gap-4 p-4 border-b border-white/5 text-[10px] font-bold text-[#5A6B80] tracking-wider uppercase">
+                                <div>Asset</div>
+                                <div>Price</div>
+                                <div>24H Change</div>
+                                <div>24H Volume</div>
+                                <div className="hidden lg:block">Market Cap</div>
+                                <div className="hidden lg:block">Last 7 Days</div>
+                            </div>
+
+                            {/* Table Body - Mock Skeleton Data */}
+                            <div className="md:p-2 space-y-2">
+                                {[1, 2, 3].map(i => (
+                                    <div key={i} className="flex md:grid md:grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr] gap-4 items-center p-4 bg-[#141A22] rounded-xl border border-transparent">
+                                        <div className="flex items-center gap-4 min-w-0">
+                                            <div className="w-10 h-10 rounded-full overflow-hidden bg-[#1F2833] shrink-0 border border-white/5"></div>
+                                            <div className="min-w-0 space-y-2">
+                                                <div className="h-3 w-24 bg-[#1F2833] rounded"></div>
+                                                <div className="h-2 w-16 bg-[#1F2833] rounded"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </main>
