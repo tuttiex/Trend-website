@@ -219,7 +219,7 @@ export default function AttentionMarket() {
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                         <div>
                             <h1 className="text-4xl lg:text-5xl font-black uppercase tracking-tight mb-2">
-                                <span className="text-white">ATTENTION</span> <span className="text-[#66FCF1] drop-shadow-[0_0_12px_rgba(102,252,241,0.4)]">MARKET</span>
+                                <span className="text-white">ATTENTION</span> <span className="bg-gradient-to-br from-primary to-primary-container text-transparent bg-clip-text inline-block">MARKET</span>
                             </h1>
                             <p className="text-[#A0ABC0] text-sm md:text-base">
                                 Real-time trends tracked by global agents.
@@ -240,7 +240,7 @@ export default function AttentionMarket() {
                     {/* X Trends Section Header */}
                     <div className="flex items-center gap-3 mt-2 mb-2">
                         <h2 className="text-2xl font-black tracking-tight flex items-center gap-2">
-                            <span className="text-[#66FCF1] uppercase drop-shadow-[0_0_8px_rgba(102,252,241,0.5)]">X Trends</span>
+                            <span className="bg-gradient-to-br from-primary to-primary-container text-transparent bg-clip-text inline-block uppercase">X Trends</span>
                         </h2>
                     </div>
 
