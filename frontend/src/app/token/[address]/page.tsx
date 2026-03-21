@@ -7,7 +7,6 @@ import {
     Home, Activity, Eye, History, Wallet, Search, SlidersHorizontal, ShieldCheck
 } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { LiFiWidget } from '@lifi/widget';
 
 interface Token {
@@ -78,9 +77,6 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                         </div>
 
                         <div className="flex items-center justify-end gap-6 shrink-0 min-w-[120px]">
-                            <div className="hidden sm:block">
-                                <ConnectButton showBalance={false} chainStatus="icon" />
-                            </div>
                             <button className="bg-primary text-black font-bold text-sm px-6 py-2 rounded-full hover:brightness-110 shadow-[0_0_15px_rgba(0,229,255,0.3)] transition-all">
                                 Sign Up
                             </button>
