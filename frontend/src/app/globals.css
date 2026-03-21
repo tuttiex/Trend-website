@@ -59,31 +59,3 @@ body {
   display: none;
   /* Chrome, Safari and Opera */
 }
-
-@keyframes kinetic-glow {
-  0%, 100% { 
-    filter: drop-shadow(0 0 4px rgba(0, 229, 255, 0.3));
-  }
-  50% { 
-    filter: drop-shadow(0 0 12px rgba(0, 229, 255, 0.7));
-  }
-}
-
-@keyframes kinetic-card-glow {
-  0%, 100% { 
-    box-shadow: 0 0 0px rgba(0, 229, 255, 0);
-    border-color: rgba(255, 255, 255, 0.05);
-  }
-  50% { 
-    box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);
-    border-color: rgba(0, 229, 255, 0.3);
-  }
-}
-
-.animate-kinetic-glow {
-  animation: kinetic-glow 3s ease-in-out infinite;
-}
-
-.animate-kinetic-card-glow {
-  animation: kinetic-card-glow 3s ease-in-out infinite;
-}
