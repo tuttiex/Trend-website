@@ -108,8 +108,11 @@ export default function SpectatorMarkets() {
                 <div className="flex-1 flex flex-col gap-8 min-w-0">
                     
                     {/* Top Stats */}
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-                        <div>
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 relative">
+                        {/* Kinetic Aura Background Glow */}
+                        <div className="absolute top-1/2 left-0 w-[500px] h-[300px] bg-primary/10 mix-blend-screen blur-[100px] rounded-full transform -translate-y-1/2 -translate-x-1/2 pointer-events-none z-0"></div>
+                        
+                        <div className="relative z-10">
                             <h1 className="text-4xl lg:text-5xl font-black uppercase tracking-tight mb-2">
                                 <span className="text-white">SPECTATOR</span> <span className="bg-gradient-to-br from-primary to-primary-container text-transparent bg-clip-text inline-block">MARKET</span>
                             </h1>
@@ -117,7 +120,7 @@ export default function SpectatorMarkets() {
                                 Trade on the outcomes of trends and global events.
                             </p>
                         </div>
-                        <div className="flex gap-4 self-stretch md:self-auto">
+                        <div className="flex gap-4 self-stretch md:self-auto relative z-10">
                             <div className="bg-[#141A22] rounded-2xl p-4 md:p-5 border border-white/5 min-w-[140px] md:min-w-[160px] flex-1">
                                 <div className="text-[10px] font-bold tracking-wider text-[#A0ABC0] uppercase mb-1">Total PoP</div>
                                 <div className="text-lg md:text-xl font-bold text-[#66FCF1]">$18.4M</div>
