@@ -219,18 +219,18 @@ export default function AttentionMarket() {
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                         <div>
                             <h1 className="text-4xl lg:text-5xl font-black uppercase tracking-tight mb-2">
-                                <span className="text-white">ATTENTION</span> <span className="bg-gradient-to-br from-primary to-primary-container text-transparent bg-clip-text inline-block">MARKET</span>
+                                <span className="text-white">ATTENTION</span> <span className="bg-gradient-to-br from-primary to-primary-container text-transparent bg-clip-text inline-block animate-kinetic-glow">MARKET</span>
                             </h1>
                             <p className="text-[#A0ABC0] text-sm md:text-base">
                                 Real-time trends tracked by global agents.
                             </p>
                         </div>
                         <div className="flex gap-4 self-stretch md:self-auto">
-                            <div className="bg-[#141A22] rounded-2xl p-4 md:p-5 border border-white/5 min-w-[140px] md:min-w-[160px] flex-1">
+                            <div className="bg-[#141A22] rounded-2xl p-4 md:p-5 border border-white/5 min-w-[140px] md:min-w-[160px] flex-1 animate-kinetic-card-glow [animation-delay:0.2s]">
                                 <div className="text-[10px] font-bold tracking-wider text-[#A0ABC0] uppercase mb-1">24H Volume</div>
                                 <div className="text-lg md:text-xl font-bold text-[#66FCF1]">$4.2B</div>
                             </div>
-                            <div className="bg-[#141A22] rounded-2xl p-4 md:p-5 border border-white/5 min-w-[140px] md:min-w-[160px] flex-1">
+                            <div className="bg-[#141A22] rounded-2xl p-4 md:p-5 border border-white/5 min-w-[140px] md:min-w-[160px] flex-1 animate-kinetic-card-glow [animation-delay:0.4s]">
                                 <div className="text-[10px] font-bold tracking-wider text-[#A0ABC0] uppercase mb-1">Trend$ Dominance</div>
                                 <div className="text-lg md:text-xl font-bold text-[#c4b5fd]">52.4%</div>
                             </div>
