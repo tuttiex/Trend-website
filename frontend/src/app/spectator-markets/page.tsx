@@ -251,6 +251,32 @@ export default function SpectatorMarkets() {
                             © 2026 TREND$.
                         </p>
                     </div>
+                    <div className="flex flex-wrap md:flex-nowrap gap-x-24 gap-y-12 lg:gap-x-48 text-[10px] font-bold tracking-[0.2em] uppercase mt-8 md:mt-0 ml-0 md:ml-12">
+                        <div className="space-y-8 min-w-[140px]">
+                            <h4 className="text-primary">PLATFORM</h4>
+                            <div className="flex flex-col gap-6 text-[#A0ABC0]">
+                                <Link href="#" className="hover:text-white transition-colors">MARKETS</Link>
+                                <Link href="#" className="hover:text-white transition-colors">TRADE</Link>
+                                <Link href="#" className="hover:text-white transition-colors">API DOCS</Link>
+                            </div>
+                        </div>
+                        <div className="space-y-8 min-w-[140px]">
+                            <h4 className="text-primary">LEGAL</h4>
+                            <div className="flex flex-col gap-6 text-[#A0ABC0]">
+                                <Link href="#" className="hover:text-white transition-colors">PRIVACY POLICY</Link>
+                                <Link href="#" className="hover:text-white transition-colors">TERMS OF SERVICE</Link>
+                                <Link href="#" className="hover:text-white transition-colors">RISK DISCLOSURE</Link>
+                            </div>
+                        </div>
+                        <div className="space-y-8 min-w-[140px]">
+                            <h4 className="text-primary">SUPPORT</h4>
+                            <div className="flex flex-col gap-6 text-[#A0ABC0]">
+                                <Link href="#" className="hover:text-white transition-colors">HELP CENTER</Link>
+                                <Link href="#" className="hover:text-white transition-colors">STATUS</Link>
+                                <Link href="#" className="hover:text-white transition-colors">CONTACT</Link>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </footer>
         </div>
