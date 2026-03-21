@@ -196,7 +196,7 @@ export default function AttentionMarket() {
                         <button className="flex items-center gap-3 px-4 py-3 text-sm text-[#A0ABC0] hover:text-white rounded-lg hover:bg-[#141A22] transition-colors text-left">
                             <Home size={18} /> Dashboard
                         </button>
-                        <button className="flex items-center gap-3 px-4 py-3 text-sm text-[#66FCF1] bg-[#141A22] rounded-r-lg border-l-2 border-[#66FCF1] font-medium text-left">
+                        <button className="flex items-center gap-3 px-4 py-3 text-sm text-[#00E5FF] bg-[#141A22] rounded-r-lg border-l-2 border-[#00E5FF] font-medium text-left">
                             <Activity size={18} /> Attention Market
                         </button>
                         <button className="flex items-center gap-3 px-4 py-3 text-sm text-[#A0ABC0] hover:text-white rounded-lg hover:bg-[#141A22] transition-colors text-left">
@@ -263,7 +263,7 @@ export default function AttentionMarket() {
                                 <input 
                                     type="text" 
                                     placeholder="Search by asset or ticker" 
-                                    className="pl-9 pr-4 py-2 bg-[#141A22] border border-white/5 rounded-xl text-sm text-white placeholder:text-[#5A6B80] focus:outline-none focus:border-[#66FCF1]/50 w-full xl:w-64 transition-colors"
+                                    className="pl-9 pr-4 py-2 bg-[#141A22] border border-white/5 rounded-xl text-sm text-white placeholder:text-[#5A6B80] focus:outline-none focus:border-[#00E5FF]/50 w-full xl:w-64 transition-colors"
                                 />
                             </div>
                         </div>

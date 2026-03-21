@@ -180,7 +180,7 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                                             },
                                             palette: {
                                                 mode: 'dark',
-                                                primary: { main: '#66FCF1' },
+                                                primary: { main: '#00E5FF' },
                                                 background: {
                                                     default: '#141A22',
                                                     paper: '#0C1014',
