@@ -4,9 +4,6 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { TrendingUp, ExternalLink, ShieldCheck, ArrowRight } from 'lucide-react';
-import localFont from 'next/font/local';
-
-const spriteGraffiti = localFont({ src: '../../../public/SpriteGraffitiShadow.woff' });
 
 interface Token {
     token_address: string;
@@ -132,16 +129,41 @@ export default function Home() {
     };
 
     return (
-        <main className="max-w-7xl mx-auto px-4 py-12">
-            <header className="mb-16 text-center">
-                <h1 className={`text-[5rem] md:text-[8rem] font-black mb-4 tracking-tighter leading-none ${spriteGraffiti.className}`}>
-                    <span style={{ color: '#61cd21' }}>Trend</span>
-                    <span style={{ color: '#61cd21' }}>$</span>
-                </h1>
-                <p className="text-[#45A29E] text-xl max-w-2xl mx-auto">
-                    Tokens listed below were deployed by Trend$ agent based on real time social media trends.
-                </p>
-            </header>
+        <div className="min-h-screen bg-surface font-sans text-on-surface selection:bg-primary/30">
+            {/* Navbar */}
+            <div className="fixed top-6 w-full z-50 px-6 flex justify-center pointer-events-none">
+                <nav className="pointer-events-auto w-full max-w-[1200px] bg-[#0A0B0C]/90 backdrop-blur-md border border-[rgba(255,255,255,0.05)] rounded-full shadow-2xl">
+                    <div className="px-8 h-14 flex items-center justify-between">
+                        <Link href="/" className="font-space text-xl font-bold tracking-tighter shrink-0 min-w-[120px] italic">
+                            <span className="text-primary">Trend</span><span className="text-secondary">$</span>
+                        </Link>
+                        
+                        <div className="hidden md:flex flex-1 items-center justify-evenly px-8 text-sm font-medium text-on-surface-variant">
+                            <Link href="/attention-market" className="hover:text-white transition-colors">Attention Market</Link>
+                            <Link href="#" className="hover:text-white transition-colors">Spectator Market</Link>
+                        </div>
+
+                        <div className="flex items-center justify-end gap-6 shrink-0 min-w-[120px]">
+                            <button className="text-on-surface-variant hover:text-white transition-colors">
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                            </button>
+                            <button className="bg-primary text-black font-bold text-sm px-6 py-2 rounded-full hover:brightness-110 shadow-[0_0_15px_rgba(0,229,255,0.3)] transition-all">
+                                Sign Up
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+
+            <main className="pt-32 lg:pt-40 pb-24 max-w-7xl mx-auto px-4">
+                <div className="text-center mb-16 space-y-4">
+                    <h1 className="font-space text-4xl lg:text-5xl font-black uppercase leading-[1.1] tracking-tight">
+                        <span className="text-white">Attention</span> <span className="text-primary drop-shadow-[0_0_12px_rgba(0,229,255,0.4)]">Market</span>
+                    </h1>
+                    <p className="text-on-surface-variant text-lg max-w-2xl mx-auto">
+                        Tokens listed below were deployed by Trend$ agent based on real time social media trends.
+                    </p>
+                </div>
 
             {/* Main X Trends Header */}
             <div className="flex items-center justify-center mb-12">
@@ -198,6 +220,47 @@ export default function Home() {
                     <span className="px-3 py-1 rounded-full bg-[#45A29E]/20 text-[#45A29E] text-xs font-bold border border-[#45A29E]/50 uppercase tracking-widest">Coming Soon</span>
                 </div>
             </div>
-        </main>
+            </main>
+
+            {/* Footer */}
+            <footer className="border-t border-surface-container-lowest bg-surface-container-lowest">
+                <div className="max-w-[1400px] mx-auto px-6 py-16 flex flex-col md:flex-row justify-between gap-12">
+                    <div className="space-y-6 max-w-xs">
+                        <Link href="/" className="font-space text-3xl font-bold tracking-tighter italic">
+                            <span className="text-primary">Trend</span><span className="text-secondary">$</span>
+                        </Link>
+                        <p className="text-xs text-on-surface-variant leading-relaxed font-mono">
+                            © 2026 TREND$.
+                        </p>
+                    </div>
+                    <div className="flex flex-wrap md:flex-nowrap gap-x-24 gap-y-12 lg:gap-x-48 text-[10px] font-bold tracking-[0.2em] uppercase mt-8 md:mt-0 ml-0 md:ml-12">
+                        <div className="space-y-8 min-w-[140px]">
+                            <h4 className="text-primary">PLATFORM</h4>
+                            <div className="flex flex-col gap-6 text-[#A0ABC0]">
+                                <Link href="#" className="hover:text-white transition-colors">MARKETS</Link>
+                                <Link href="#" className="hover:text-white transition-colors">TRADE</Link>
+                                <Link href="#" className="hover:text-white transition-colors">API DOCS</Link>
+                            </div>
+                        </div>
+                        <div className="space-y-8 min-w-[140px]">
+                            <h4 className="text-primary">LEGAL</h4>
+                            <div className="flex flex-col gap-6 text-[#A0ABC0]">
+                                <Link href="#" className="hover:text-white transition-colors">PRIVACY POLICY</Link>
+                                <Link href="#" className="hover:text-white transition-colors">TERMS OF SERVICE</Link>
+                                <Link href="#" className="hover:text-white transition-colors">RISK DISCLOSURE</Link>
+                            </div>
+                        </div>
+                        <div className="space-y-8 min-w-[140px]">
+                            <h4 className="text-primary">SUPPORT</h4>
+                            <div className="flex flex-col gap-6 text-[#A0ABC0]">
+                                <Link href="#" className="hover:text-white transition-colors">HELP CENTER</Link>
+                                <Link href="#" className="hover:text-white transition-colors">STATUS</Link>
+                                <Link href="#" className="hover:text-white transition-colors">CONTACT</Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
     );
 }
