@@ -171,7 +171,7 @@ export default function AttentionMarket() {
                         
                         <div className="hidden md:flex flex-1 items-center justify-evenly px-8 text-sm font-medium text-on-surface-variant">
                             <Link href="/attention-market" className="hover:text-white transition-colors">Attention Market</Link>
-                            <Link href="#" className="hover:text-white transition-colors">Spectator Market</Link>
+                            <Link href="/spectator-markets" className="hover:text-white transition-colors">Spectator Market</Link>
                         </div>
 
                         <div className="flex items-center justify-end gap-6 shrink-0 min-w-[120px]">
@@ -199,9 +199,9 @@ export default function AttentionMarket() {
                         <button className="flex items-center gap-3 px-4 py-3 text-sm text-[#00E5FF] bg-[#141A22] rounded-r-lg border-l-2 border-[#00E5FF] font-medium text-left">
                             <Activity size={18} /> Attention Market
                         </button>
-                        <button className="flex items-center gap-3 px-4 py-3 text-sm text-[#A0ABC0] hover:text-white rounded-lg hover:bg-[#141A22] transition-colors text-left">
+                        <Link href="/spectator-markets" className="flex items-center gap-3 px-4 py-3 text-sm text-[#A0ABC0] hover:text-white rounded-lg hover:bg-[#141A22] transition-colors text-left">
                             <Eye size={18} /> Spectator Market
-                        </button>
+                        </Link>
                         <button className="flex items-center gap-3 px-4 py-3 text-sm text-[#A0ABC0] hover:text-white rounded-lg hover:bg-[#141A22] transition-colors text-left">
                             <Wallet size={18} /> Staking
                         </button>

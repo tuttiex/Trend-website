@@ -13,7 +13,7 @@ export default function KineticHomepage() {
             
             <div className="hidden md:flex flex-1 items-center justify-evenly px-8 text-sm font-medium text-on-surface-variant">
               <Link href="#" className="hover:text-white transition-colors">Attention Market</Link>
-              <Link href="#" className="hover:text-white transition-colors">Spectator Market</Link>
+              <Link href="/spectator-markets" className="hover:text-white transition-colors">Spectator Market</Link>
             </div>
 
             <div className="flex items-center justify-end gap-6 shrink-0 min-w-[120px]">
@@ -48,9 +48,9 @@ export default function KineticHomepage() {
               <button className="w-full sm:w-auto bg-gradient-to-br from-primary to-primary-container text-surface-container-lowest font-bold text-base px-8 py-4 rounded-full hover:brightness-110 hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all">
                 Attention Market
               </button>
-              <button className="w-full sm:w-auto bg-secondary text-black font-bold text-base px-8 py-4 rounded-full hover:brightness-110 hover:shadow-[0_0_20px_rgba(57,255,20,0.5)] transition-all">
+              <Link href="/spectator-markets" className="w-full sm:w-auto bg-secondary text-black font-bold text-base px-8 py-4 rounded-full hover:brightness-110 hover:shadow-[0_0_20px_rgba(57,255,20,0.5)] transition-all flex items-center justify-center">
                 Spectator Market
-              </button>
+              </Link>
             </div>
           </div>
           
