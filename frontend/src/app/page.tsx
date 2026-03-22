@@ -12,7 +12,7 @@ export default function KineticHomepage() {
             </Link>
             
             <div className="hidden md:flex flex-1 items-center justify-evenly px-8 text-sm font-medium text-on-surface-variant">
-              <Link href="#" className="hover:text-white transition-colors">Attention Market</Link>
+              <Link href="/attention-market" className="hover:text-white transition-colors">Attention Market</Link>
               <Link href="/spectator-markets" className="hover:text-white transition-colors">Spectator Market</Link>
             </div>
 
@@ -45,9 +45,9 @@ export default function KineticHomepage() {
               Don’t just follow trends, trade them on our attention market, and trade their outcomes on our spectator market.
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-4 pt-4">
-              <button className="w-full sm:w-auto bg-gradient-to-br from-primary to-primary-container text-surface-container-lowest font-bold text-base px-8 py-4 rounded-full hover:brightness-110 hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all">
+              <Link href="/attention-market" className="w-full sm:w-auto bg-gradient-to-br from-primary to-primary-container text-surface-container-lowest font-bold text-base px-8 py-4 rounded-full hover:brightness-110 hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all flex items-center justify-center">
                 Attention Market
-              </button>
+              </Link>
               <Link href="/spectator-markets" className="w-full sm:w-auto bg-secondary text-black font-bold text-base px-8 py-4 rounded-full hover:brightness-110 hover:shadow-[0_0_20px_rgba(57,255,20,0.5)] transition-all flex items-center justify-center">
                 Spectator Market
               </Link>
@@ -105,9 +105,9 @@ export default function KineticHomepage() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-5">
-                <button className="bg-primary text-black font-bold text-[15px] px-8 py-4 rounded-full hover:brightness-110 shadow-[0_0_15px_rgba(0,229,255,0.3)] transition-all">
+                <Link href="/attention-market" className="bg-primary text-black font-bold text-[15px] px-8 py-4 rounded-full hover:brightness-110 shadow-[0_0_15px_rgba(0,229,255,0.3)] transition-all flex items-center justify-center">
                   Explore Trends
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -127,9 +127,9 @@ export default function KineticHomepage() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-5">
-                <button className="bg-primary text-black font-bold text-[15px] px-8 py-4 rounded-full hover:brightness-110 shadow-[0_0_15px_rgba(0,229,255,0.3)] transition-all">
+                <Link href="/spectator-markets" className="bg-primary text-black font-bold text-[15px] px-8 py-4 rounded-full hover:brightness-110 shadow-[0_0_15px_rgba(0,229,255,0.3)] transition-all flex items-center justify-center">
                   Spectator Positions
-                </button>
+                </Link>
               </div>
             </div>
           </div>

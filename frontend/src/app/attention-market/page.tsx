@@ -193,9 +193,9 @@ export default function AttentionMarket() {
 
                     {/* Navigation */}
                     <nav className="flex flex-col gap-1">
-                        <button className="flex items-center gap-3 px-4 py-3 text-sm text-[#A0ABC0] hover:text-white rounded-lg hover:bg-[#141A22] transition-colors text-left">
+                        <Link href="/" className="flex items-center gap-3 px-4 py-3 text-sm text-[#A0ABC0] hover:text-white rounded-lg hover:bg-[#141A22] transition-colors text-left">
                             <Home size={18} /> Dashboard
-                        </button>
+                        </Link>
                         <button className="flex items-center gap-3 px-4 py-3 text-sm text-[#00E5FF] bg-[#141A22] rounded-r-lg border-l-2 border-[#00E5FF] font-medium text-left">
                             <Activity size={18} /> Attention Market
                         </button>
