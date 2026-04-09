@@ -7,20 +7,26 @@ import {
     Home, Activity, Eye, History, Wallet, Search, SlidersHorizontal, ShieldCheck
 } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { LiFiWidget } from '@lifi/widget';
+import { SwapWidget } from '@/components/SwapWidget';
 
 interface Token {
     token_address: string;
     symbol: string;
     topic: string;
-    image_cid: string;
+    pool_address: string;
     timestamp: string;
+    image_cid: string;
 }
 
 export default function TokenDetail({ params }: { params: Promise<{ address: string }> }) {
     const { address } = use(params);
     const [token, setToken] = useState<Token | null>(null);
     const [loading, setLoading] = useState(true);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     useEffect(() => {
         async function fetchToken() {
@@ -168,37 +174,14 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
 
                         {/* Trade Widget Area */}
                         <div className="xl:col-span-1 flex flex-col gap-6">
-                            <div className="bg-[#0C1014] rounded-2xl p-4 border border-white/5 min-h-[500px]">
-                                <LiFiWidget
-                                    integrator="trend-agent"
-                                    config={{
-                                        theme: {
-                                            container: {
-                                                border: '1px solid rgba(255, 255, 255, 0.05)',
-                                                borderRadius: '16px',
-                                                boxShadow: 'none',
-                                            },
-                                            palette: {
-                                                mode: 'dark',
-                                                primary: { main: '#00E5FF' },
-                                                background: {
-                                                    default: '#141A22',
-                                                    paper: '#0C1014',
-                                                },
-                                            },
-                                            shape: {
-                                                borderRadius: 12,
-                                                borderRadiusSecondary: 12,
-                                            },
-                                        },
-                                        toChain: 8453,
-                                        toToken: token.token_address,
-                                    }}
+                            {mounted && (
+                                <SwapWidget
+                                    poolAddress={token.pool_address}
+                                    tokenAddress={token.token_address}
+                                    tokenSymbol={token.symbol}
+                                    tokenImage={token.image_cid ? `https://gateway.pinata.cloud/ipfs/${token.image_cid}` : undefined}
                                 />
-                                <p className="mt-6 text-[10px] text-zinc-600 text-center uppercase font-bold tracking-[0.1em] px-4">
-                                    NOTICE: TRADING ASSETS CARRIES SIGNIFICANT RISK. ENSURE YOUR WALLET'S SECURITY.
-                                </p>
-                            </div>
+                            )}
                         </div>
                     </div>
                 </div>
