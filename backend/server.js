@@ -1,10 +1,17 @@
 const express = require('express');
 const cors = require('cors');
 const sqlite3 = require('sqlite3').verbose();
+const https = require('https');
+const fs = require('fs');
 require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 5001;
+const HTTPS_PORT = process.env.HTTPS_PORT || 5443;
+
+// SSL Certificate paths (Let's Encrypt)
+const SSL_KEY_PATH = process.env.SSL_KEY_PATH || '/etc/letsencrypt/live/trends.api.baseapps.org/privkey.pem';
+const SSL_CERT_PATH = process.env.SSL_CERT_PATH || '/etc/letsencrypt/live/trends.api.baseapps.org/fullchain.pem';
 
 // Middleware
 app.use(cors());
@@ -289,12 +296,30 @@ app.get('/health', (req, res) => {
     });
 });
 
-// Start server
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Website API running on port ${PORT}`);
-    console.log(`Agent DB: ${AGENT_DB_PATH}`);
-    console.log(`Website DB: ${WEBSITE_DB_PATH}`);
-});
+// Start HTTPS server
+const startServer = () => {
+    try {
+        const key = fs.readFileSync(SSL_KEY_PATH);
+        const cert = fs.readFileSync(SSL_CERT_PATH);
+        
+        https.createServer({ key, cert }, app).listen(HTTPS_PORT, '0.0.0.0', () => {
+            console.log(`Website API running HTTPS on port ${HTTPS_PORT}`);
+            console.log(`Agent DB: ${AGENT_DB_PATH}`);
+            console.log(`Website DB: ${WEBSITE_DB_PATH}`);
+        });
+    } catch (err) {
+        console.error('SSL Certificate not found, falling back to HTTP');
+        console.error(err.message);
+        
+        app.listen(PORT, '0.0.0.0', () => {
+            console.log(`Website API running HTTP on port ${PORT}`);
+            console.log(`Agent DB: ${AGENT_DB_PATH}`);
+            console.log(`Website DB: ${WEBSITE_DB_PATH}`);
+        });
+    }
+};
+
+startServer();
 
 // Graceful shutdown
 process.on('SIGINT', () => {
