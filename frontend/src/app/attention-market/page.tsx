@@ -32,6 +32,10 @@ const Sparkline = ({ up }: { up: boolean }) => (
 export default function AttentionMarket() {
     const [usaTokens, setUsaTokens] = useState<Token[]>([]);
     const [otherTokens, setOtherTokens] = useState<Token[]>([]);
+    const [usaTokensFull, setUsaTokensFull] = useState<Token[]>([]);
+    const [otherTokensFull, setOtherTokensFull] = useState<Token[]>([]);
+    const [usaVisibleCount, setUsaVisibleCount] = useState(20);
+    const [othersVisibleCount, setOthersVisibleCount] = useState(20);
     const [loading, setLoading] = useState(true);
     const [activeTab, setActiveTab] = useState('US Trends');
 
@@ -62,8 +66,10 @@ export default function AttentionMarket() {
                         return !usaSymbols.includes(t.symbol.toUpperCase());
                     });
 
-                    setUsaTokens(usa.slice(0, 5));
-                    setOtherTokens(others.slice(0, 5));
+                    setUsaTokensFull(usa);
+                    setOtherTokensFull(others);
+                    setUsaTokens(usa.slice(0, usaVisibleCount));
+                    setOtherTokens(others.slice(0, othersVisibleCount));
                 }
             } catch (err) {
                 console.error('Failed to fetch tokens:', err);
@@ -74,7 +80,28 @@ export default function AttentionMarket() {
         fetchTokens();
         const interval = setInterval(fetchTokens, 10000); // Polling every 10s
         return () => clearInterval(interval);
-    }, []);
+    }, [usaVisibleCount, othersVisibleCount]);
+
+    const handleLoadMore = () => {
+        if (activeTab === 'US Trends') {
+            const newCount = usaVisibleCount + 20;
+            setUsaVisibleCount(newCount);
+            setUsaTokens(usaTokensFull.slice(0, newCount));
+        } else if (activeTab === 'NG Trends') {
+            const newCount = othersVisibleCount + 20;
+            setOthersVisibleCount(newCount);
+            setOtherTokens(otherTokensFull.slice(0, newCount));
+        }
+    };
+
+    const showLoadMore = () => {
+        if (activeTab === 'US Trends') {
+            return usaVisibleCount < usaTokensFull.length;
+        } else if (activeTab === 'NG Trends') {
+            return othersVisibleCount < otherTokensFull.length;
+        }
+        return false;
+    };
 
     const renderTokenList = (tokens: Token[], forcedRegion?: string) => {
         if (loading && tokens.length === 0) {
@@ -293,11 +320,16 @@ export default function AttentionMarket() {
                     </div>
 
                     {/* Load More Button */}
-                    <div className="flex justify-center mt-4">
-                        <button className="px-8 py-3 bg-[#141A22] hover:bg-[#1F2833] text-[#A0ABC0] hover:text-white text-sm font-medium rounded-full transition-all border border-white/5 hover:border-white/10 active:scale-95 shadow-sm">
-                            Load More Assets
-                        </button>
-                    </div>
+                    {showLoadMore() && (
+                        <div className="flex justify-center mt-4">
+                            <button 
+                                onClick={handleLoadMore}
+                                className="px-8 py-3 bg-[#141A22] hover:bg-[#1F2833] text-[#A0ABC0] hover:text-white text-sm font-medium rounded-full transition-all border border-white/5 hover:border-white/10 active:scale-95 shadow-sm"
+                            >
+                                Load More Assets
+                            </button>
+                        </div>
+                    )}
 
                     {/* TikTok Trends Upcoming */}
                     <div className="mt-12 opacity-50 pointer-events-none grayscale">
