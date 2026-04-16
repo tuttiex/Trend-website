@@ -34,8 +34,8 @@ export default function AttentionMarket() {
     const [otherTokens, setOtherTokens] = useState<Token[]>([]);
     const [usaTokensFull, setUsaTokensFull] = useState<Token[]>([]);
     const [otherTokensFull, setOtherTokensFull] = useState<Token[]>([]);
-    const [usaVisibleCount, setUsaVisibleCount] = useState(20);
-    const [othersVisibleCount, setOthersVisibleCount] = useState(20);
+    const [usaVisibleCount, setUsaVisibleCount] = useState(5);
+    const [othersVisibleCount, setOthersVisibleCount] = useState(5);
     const [loading, setLoading] = useState(true);
     const [activeTab, setActiveTab] = useState('US Trends');
 
