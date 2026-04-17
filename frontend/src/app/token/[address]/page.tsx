@@ -96,7 +96,7 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                     {/* Token Info Header */}
                     <div className="flex flex-col md:flex-row items-center gap-6 mb-12">
                         <div className="relative w-24 h-24 rounded-full overflow-hidden bg-[#141A22] border-2 border-white/5 shadow-[0_0_20px_rgba(0,229,255,0.1)] shrink-0 group">
-                            <img src={`https://gateway.pinata.cloud/ipfs/${token.image_cid}`} alt={token.symbol} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                            <img src={`https://dweb.link/ipfs/${token.image_cid}`} alt={token.symbol} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                         </div>
                         <div className="text-center md:text-left">
                             <div className="flex flex-col md:flex-row items-center gap-3 mb-2">
@@ -179,7 +179,7 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                                     poolAddress={token.pool_address}
                                     tokenAddress={token.token_address}
                                     tokenSymbol={token.symbol}
-                                    tokenImage={token.image_cid ? `https://gateway.pinata.cloud/ipfs/${token.image_cid}` : undefined}
+                                    tokenImage={token.image_cid ? `https://dweb.link/ipfs/${token.image_cid}` : undefined}
                                 />
                             )}
                         </div>
