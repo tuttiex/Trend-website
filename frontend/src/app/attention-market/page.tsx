@@ -94,11 +94,32 @@ export default function AttentionMarket() {
         }
     };
 
+    const handleShowLess = () => {
+        if (activeTab === 'US Trends') {
+            const newCount = Math.max(5, usaVisibleCount - 20);
+            setUsaVisibleCount(newCount);
+            setUsaTokens(usaTokensFull.slice(0, newCount));
+        } else if (activeTab === 'NG Trends') {
+            const newCount = Math.max(5, othersVisibleCount - 20);
+            setOthersVisibleCount(newCount);
+            setOtherTokens(otherTokensFull.slice(0, newCount));
+        }
+    };
+
     const showLoadMore = () => {
         if (activeTab === 'US Trends') {
             return usaVisibleCount < usaTokensFull.length;
         } else if (activeTab === 'NG Trends') {
             return othersVisibleCount < otherTokensFull.length;
+        }
+        return false;
+    };
+
+    const showShowLess = () => {
+        if (activeTab === 'US Trends') {
+            return usaVisibleCount > 5;
+        } else if (activeTab === 'NG Trends') {
+            return othersVisibleCount > 5;
         }
         return false;
     };
@@ -319,15 +340,25 @@ export default function AttentionMarket() {
                         </div>
                     </div>
 
-                    {/* Load More Button */}
-                    {showLoadMore() && (
-                        <div className="flex justify-center mt-4">
-                            <button 
-                                onClick={handleLoadMore}
-                                className="px-8 py-3 bg-[#141A22] hover:bg-[#1F2833] text-[#A0ABC0] hover:text-white text-sm font-medium rounded-full transition-all border border-white/5 hover:border-white/10 active:scale-95 shadow-sm"
-                            >
-                                Load More Assets
-                            </button>
+                    {/* Load More / Show Less Buttons */}
+                    {(showLoadMore() || showShowLess()) && (
+                        <div className="flex justify-center mt-4 gap-3">
+                            {showLoadMore() && (
+                                <button 
+                                    onClick={handleLoadMore}
+                                    className="px-8 py-3 bg-[#141A22] hover:bg-[#1F2833] text-[#A0ABC0] hover:text-white text-sm font-medium rounded-full transition-all border border-white/5 hover:border-white/10 active:scale-95 shadow-sm"
+                                >
+                                    Load More Assets
+                                </button>
+                            )}
+                            {showShowLess() && (
+                                <button 
+                                    onClick={handleShowLess}
+                                    className="px-8 py-3 bg-[#1F2833] hover:bg-[#141A22] text-[#A0ABC0] hover:text-white text-sm font-medium rounded-full transition-all border border-white/5 hover:border-white/10 active:scale-95 shadow-sm"
+                                >
+                                    Show Less
+                                </button>
+                            )}
                         </div>
                     )}
 
