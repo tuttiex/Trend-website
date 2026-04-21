@@ -10,6 +10,9 @@ import { Providers } from "./Providers";
 export const metadata: Metadata = {
     title: "Trend$",
     description: "Live tokens deployed by AI agents",
+    icons: {
+        icon: "/favicon.png",
+    },
 };
 
 export default function RootLayout({
