@@ -252,7 +252,7 @@ app.post('/api/deployments', async (req, res) => {
             return res.status(401).json({ error: 'Unauthorized' });
         }
 
-        const { tokenAddress, symbol, topic, region, metadataCid, imageCid, poolAddress } = req.body.data || req.body;
+        const { tokenAddress, symbol, topic, region, metadataUrl, imageUrl, poolAddress } = req.body.data || req.body;
 
         if (!tokenAddress || !symbol || !topic) {
             return res.status(400).json({ error: 'Missing required fields' });
@@ -277,7 +277,7 @@ app.post('/api/deployments', async (req, res) => {
                 logo_uri = excluded.logo_uri,
                 pool_address = excluded.pool_address,
                 updated_at = datetime('now')
-        `, [tokenAddress, symbol, topic, region || null, metadataCid || null, imageCid || null, poolAddress || null]);
+        `, [tokenAddress, symbol, topic, region || null, metadataUrl || null, imageUrl || null, poolAddress || null]);
 
         console.log(`Cached token: ${symbol} (${tokenAddress})`);
         res.json({ success: true, message: 'Token cached' });
