@@ -160,7 +160,7 @@ export default function AttentionMarket() {
                                     {/* ASSET */}
                                     <div className="flex items-center gap-3 min-w-0 flex-1 md:flex-none">
                                         <div className="w-10 h-10 rounded-full overflow-hidden bg-[#1F2833] shrink-0 border border-white/5">
-                                            <img src={token.image_cid} alt={token.symbol} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                                            <img src={token.image_cid?.startsWith('http') ? token.image_cid : `https://dweb.link/ipfs/${token.image_cid}`} alt={token.symbol} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                                         </div>
                                         <div className="min-w-0 flex flex-col">
                                             <div className="flex items-center gap-2 overflow-hidden">
