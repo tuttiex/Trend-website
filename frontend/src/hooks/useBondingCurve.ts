@@ -27,7 +27,11 @@ export function useBondingCurve(
   const [error, setError] = useState<string | null>(null);
 
   const getPoolContract = useCallback(() => {
-    if (!poolAddress || !signer) return null;
+    console.log('getPoolContract:', { poolAddress, hasSigner: !!signer });
+    if (!poolAddress || !signer) {
+      console.error('Missing:', !poolAddress ? 'poolAddress' : 'signer');
+      return null;
+    }
     return new ethers.Contract(poolAddress, BONDING_CURVE_DEX_ABI, signer);
   }, [poolAddress, signer]);
 
@@ -135,6 +139,7 @@ export function useBondingCurve(
       const ethAmountWei = ethers.parseEther(ethAmount);
       const minTokensOutWei = ethers.parseUnits(minTokensOut, 18);
 
+      console.log('Calling buyTokens with:', { minTokensOutWei: minTokensOutWei.toString(), ethAmountWei: ethAmountWei.toString() });
       const tx = await contract.buyTokens(minTokensOutWei, {
         value: ethAmountWei,
       });
@@ -142,6 +147,7 @@ export function useBondingCurve(
       const receipt = await tx.wait();
       return receipt.hash;
     } catch (err: any) {
+      console.error('Buy transaction error:', err);
       setError(err.message || 'Transaction failed');
       return null;
     } finally {
