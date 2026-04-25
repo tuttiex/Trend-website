@@ -7,7 +7,7 @@ import {
     darkTheme,
 } from '@rainbow-me/rainbowkit';
 import { WagmiProvider, http } from 'wagmi';
-import { base, mainnet } from 'wagmi/chains';
+import { base } from 'wagmi/chains';
 import {
     QueryClientProvider,
     QueryClient,
@@ -17,10 +17,9 @@ import '@rainbow-me/rainbowkit/styles.css';
 const config = getDefaultConfig({
     appName: 'Trend Agent Trading',
     projectId: 'YOUR_PROJECT_ID', // Replaced later in Phase 4
-    chains: [base, mainnet],
+    chains: [base],
     transports: {
         [base.id]: http(),
-        [mainnet.id]: http(),
     },
     ssr: true, // Required for Next.js App Router
 });
