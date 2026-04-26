@@ -157,11 +157,11 @@ app.get('/api/public/tokens', async (req, res) => {
                 token_symbol as symbol,
                 topic,
                 region,
-                metadata_cid,
-                logo_uri as image_cid,
+                COALESCE(logo_uri, metadata_cid) as image_cid,
                 pool_address,
                 created_at as timestamp
             FROM cached_tokens 
+            WHERE logo_uri IS NOT NULL OR metadata_cid IS NOT NULL
             ORDER BY created_at DESC
         `);
         
@@ -176,12 +176,12 @@ app.get('/api/public/tokens', async (req, res) => {
                 token_symbol as symbol,
                 trend_topic as topic,
                 region,
-                metadata_cid,
-                logo_uri as image_cid,
+                COALESCE(logo_uri, metadata_cid) as image_cid,
                 pool_address,
                 timestamp
             FROM deployments 
             WHERE token_address IS NOT NULL 
+            AND (logo_uri IS NOT NULL OR metadata_cid IS NOT NULL)
             ORDER BY timestamp DESC
         `);
         res.json({ success: true, data: rows, source: 'agent' });
