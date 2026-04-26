@@ -177,6 +177,8 @@ app.get('/api/public/tokens', async (req, res) => {
                 trend_topic as topic,
                 region,
                 COALESCE(logo_uri, metadata_cid) as image_cid,
+                logo_uri,
+                metadata_cid,
                 pool_address,
                 timestamp
             FROM deployments 
@@ -184,6 +186,24 @@ app.get('/api/public/tokens', async (req, res) => {
             AND (logo_uri IS NOT NULL OR metadata_cid IS NOT NULL)
             ORDER BY timestamp DESC
         `);
+
+        // Cache tokens from agent database
+        for (const row of rows) {
+            await websiteDbRun(`
+                INSERT INTO cached_tokens 
+                (token_address, token_symbol, topic, region, metadata_cid, logo_uri, pool_address, created_at, updated_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
+                ON CONFLICT(token_address) DO UPDATE SET
+                    token_symbol = excluded.token_symbol,
+                    topic = excluded.topic,
+                    region = excluded.region,
+                    metadata_cid = excluded.metadata_cid,
+                    logo_uri = excluded.logo_uri,
+                    pool_address = excluded.pool_address,
+                    updated_at = datetime('now')
+            `, [row.token_address, row.symbol, row.topic, row.region || null, row.metadata_cid || null, row.logo_uri || null, row.pool_address || null, row.timestamp]);
+        }
+
         res.json({ success: true, data: rows, source: 'agent' });
     } catch (err) {
         console.error('API Error:', err);
