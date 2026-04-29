@@ -17,6 +17,7 @@ interface Token {
     pool_address: string;
     timestamp: string;
     image_cid: string;
+    chain_id?: number; // 84532 for Base Sepolia, 8453 for Base Mainnet
 }
 
 export default function TokenDetail({ params }: { params: Promise<{ address: string }> }) {
@@ -122,13 +123,22 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                     <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
                         {/* Chart Area */}
                         <div className="xl:col-span-2 flex flex-col gap-6">
-                            {/* Candlestick Chart for Base Sepolia tokens */}
+                            {/* Chart: Recharts for Base Sepolia, GeckoTerminal for Mainnet */}
                             <div className="h-[600px] bg-[#0C1014] rounded-2xl overflow-hidden border border-white/5 relative">
-                                <CandlestickChart
-                                    tokenAddress={token.token_address}
-                                    poolAddress={token.pool_address}
-                                    tokenSymbol={token.symbol}
-                                />
+                                {(token.chain_id === 84532 || !token.chain_id) ? (
+                                    <CandlestickChart
+                                        tokenAddress={token.token_address}
+                                        poolAddress={token.pool_address}
+                                        tokenSymbol={token.symbol}
+                                    />
+                                ) : (
+                                    <iframe
+                                        src={`https://www.geckoterminal.com/base/tokens/${token.token_address}?embed=1&info=0&swaps=1`}
+                                        className="w-full h-full border-0 absolute inset-0 grayscale-[0.2] brightness-[0.9]"
+                                        allow="clipboard-write"
+                                        allowFullScreen
+                                    />
+                                )}
                             </div>
 
                             {/* Analytics Row */}
