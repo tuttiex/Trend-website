@@ -93,6 +93,21 @@ function initWebsiteDatabase() {
             payload TEXT,
             received_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )`);
+
+        // Price snapshots for candlestick charts (Base Sepolia tokens)
+        websiteDb.run(`CREATE TABLE IF NOT EXISTS price_snapshots (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            token_address TEXT NOT NULL,
+            pool_address TEXT,
+            price_eth TEXT,
+            eth_reserve TEXT,
+            token_reserve TEXT,
+            volume_eth TEXT,
+            snapshot_time DATETIME DEFAULT CURRENT_TIMESTAMP
+        )`);
+
+        // Index for fast candle queries
+        websiteDb.run(`CREATE INDEX IF NOT EXISTS idx_price_token_time ON price_snapshots(token_address, snapshot_time)`);
     });
     console.log('Website database tables initialized');
 }
@@ -307,8 +322,72 @@ app.post('/api/deployments', async (req, res) => {
     }
 });
 
-// 4. Health check
-app.get('/health', (req, res) => {
+// 4. Price Snapshot API - Receive price data from Agent
+app.post('/api/price-snapshot', async (req, res) => {
+    try {
+        const { tokenAddress, poolAddress, price_eth, eth_reserve, token_reserve, volume_eth } = req.body;
+        
+        if (!tokenAddress || !price_eth) {
+            return res.status(400).json({ error: 'Missing required fields: tokenAddress, price_eth' });
+        }
+        
+        await websiteDbRun(`
+            INSERT INTO price_snapshots 
+            (token_address, pool_address, price_eth, eth_reserve, token_reserve, volume_eth)
+            VALUES (?, ?, ?, ?, ?, ?)
+        `, [tokenAddress, poolAddress || null, price_eth, eth_reserve || null, token_reserve || null, volume_eth || '0']);
+        
+        res.json({ success: true, message: 'Price snapshot saved' });
+    } catch (err) {
+        console.error('Price Snapshot Error:', err);
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// 5. Candlestick API - Get OHLC data for charts
+app.get('/api/candles/:tokenAddress', async (req, res) => {
+    try {
+        const { tokenAddress } = req.params;
+        const { timeframe = '1h', limit = 100 } = req.query;
+        
+        // Timeframe mapping for SQLite strftime
+        const timeGroup = {
+            '1h': '%Y-%m-%d %H:00:00',
+            '4h': '%Y-%m-%d %H:00:00',  // Simplified - SQLite doesn't have native 4h grouping
+            '1d': '%Y-%m-%d'
+        }[timeframe] || '%Y-%m-%d %H:00:00';
+        
+        // Aggregate raw snapshots into OHLC candles
+        const candles = await websiteDbAll(`
+            SELECT 
+                strftime('${timeGroup}', snapshot_time) as time,
+                MIN(price_eth) as low,
+                MAX(price_eth) as high,
+                (SELECT price_eth FROM price_snapshots 
+                 WHERE token_address = ? 
+                 AND strftime('${timeGroup}', snapshot_time) = strftime('${timeGroup}', snapshot_time)
+                 ORDER BY snapshot_time ASC LIMIT 1) as open,
+                (SELECT price_eth FROM price_snapshots 
+                 WHERE token_address = ? 
+                 AND strftime('${timeGroup}', snapshot_time) = strftime('${timeGroup}', snapshot_time)
+                 ORDER BY snapshot_time DESC LIMIT 1) as close,
+                COALESCE(SUM(CAST(volume_eth AS DECIMAL)), 0) as volume
+            FROM price_snapshots 
+            WHERE token_address = ? 
+            GROUP BY strftime('${timeGroup}', snapshot_time)
+            ORDER BY time DESC 
+            LIMIT ?
+        `, [tokenAddress, tokenAddress, tokenAddress, parseInt(limit)]);
+        
+        res.json({ success: true, data: candles, timeframe, tokenAddress });
+    } catch (err) {
+        console.error('Candles API Error:', err);
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// 6. Health check
+app.get('/health', async (req, res) => {
     res.json({ 
         status: 'ok', 
         agentDatabase: AGENT_DB_PATH,

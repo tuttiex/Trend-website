@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { SwapWidget } from '@/components/SwapWidget';
+import { CandlestickChart } from '@/components/CandlestickChart';
 
 interface Token {
     token_address: string;
@@ -121,12 +122,12 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                     <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
                         {/* Chart Area */}
                         <div className="xl:col-span-2 flex flex-col gap-6">
+                            {/* Candlestick Chart for Base Sepolia tokens */}
                             <div className="h-[600px] bg-[#0C1014] rounded-2xl overflow-hidden border border-white/5 relative">
-                                <iframe
-                                    src={`https://www.geckoterminal.com/base/tokens/${token.token_address}?embed=1&info=0&swaps=1`}
-                                    className="w-full h-full border-0 absolute inset-0 grayscale-[0.2] brightness-[0.9]"
-                                    allow="clipboard-write"
-                                    allowFullScreen
+                                <CandlestickChart
+                                    tokenAddress={token.token_address}
+                                    poolAddress={token.pool_address}
+                                    tokenSymbol={token.symbol}
                                 />
                             </div>
 
