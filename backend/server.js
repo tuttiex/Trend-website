@@ -58,7 +58,7 @@ function initWebsiteDatabase() {
 
         // Migration: Add platform column if it doesn't exist (SQLite doesn't support ALTER TABLE ADD COLUMN with IF NOT EXISTS)
         websiteDb.run(`ALTER TABLE cached_tokens ADD COLUMN platform TEXT DEFAULT 'x'`, (err) => {
-            if (err && !err.message.includes('duplicate column')) {
+            if (err && !err.message.includes('duplicate column name')) {
                 console.error('Migration error adding platform column:', err);
             }
         });
