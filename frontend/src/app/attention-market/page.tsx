@@ -326,7 +326,7 @@ export default function AttentionMarket() {
                     {/* Controls Bar */}
                     <div className="flex flex-col xl:flex-row justify-between gap-4">
                         <div className="flex p-1 bg-[#141A22] rounded-xl border border-white/5 overflow-x-auto hide-scrollbar">
-                            {['Favorites', 'US Trends', 'NG Trends', 'TikTok Trends', 'Global', 'New'].map(tab => (
+                            {['Favorites', 'US Trends', 'NG Trends', 'Global', 'New'].map(tab => (
                                 <button 
                                     key={tab}
                                     onClick={() => setActiveTab(tab)}
@@ -364,8 +364,7 @@ export default function AttentionMarket() {
                         <div className="md:p-2">
                             {activeTab === 'US Trends' && renderTokenList(usaTokens, 'US')}
                             {activeTab === 'NG Trends' && renderTokenList(otherTokens, 'NG')}
-                            {activeTab === 'TikTok Trends' && renderTokenList(tiktokTokens)}
-                            {activeTab !== 'US Trends' && activeTab !== 'NG Trends' && activeTab !== 'TikTok Trends' && renderTokenList([])}
+                            {activeTab !== 'US Trends' && activeTab !== 'NG Trends' && renderTokenList([])}
                         </div>
                     </div>
 
@@ -390,6 +389,63 @@ export default function AttentionMarket() {
                             )}
                         </div>
                     )}
+
+                    {/* TikTok Trends Section */}
+                    <div className="mt-16">
+                        <div className="flex items-center gap-3 mb-6">
+                            <h2 className="text-2xl font-black tracking-tight flex items-center gap-2">
+                                <span className="text-[#c4b5fd] uppercase">TikTok Trends</span>
+                            </h2>
+                            <span className="px-2 py-0.5 rounded bg-[#c4b5fd]/20 text-[#c4b5fd] text-[10px] font-bold border border-[#c4b5fd]/50 uppercase tracking-widest">Live</span>
+                        </div>
+                        
+                        <div className="bg-transparent md:bg-[#0C1014] md:border border-white/5 rounded-2xl overflow-hidden">
+                            {/* Table Header */}
+                            <div className="hidden md:grid grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr] gap-4 p-4 border-b border-white/5 text-[10px] font-bold text-[#5A6B80] tracking-wider uppercase">
+                                <div>Asset</div>
+                                <div>Price</div>
+                                <div>24H Change</div>
+                                <div>24H Volume</div>
+                                <div className="hidden lg:block">Market Cap</div>
+                                <div className="hidden lg:block">Last 7 Days</div>
+                            </div>
+
+                            {/* Table Body */}
+                            <div className="md:p-2">
+                                {renderTokenList(tiktokTokens, 'TikTok')}
+                            </div>
+                        </div>
+
+                        {/* TikTok Load More / Show Less Buttons */}
+                        {(tiktokVisibleCount < tiktokTokensFull.length || tiktokVisibleCount > 5) && (
+                            <div className="flex justify-center mt-4 gap-3">
+                                {tiktokVisibleCount < tiktokTokensFull.length && (
+                                    <button 
+                                        onClick={() => {
+                                            const newCount = tiktokVisibleCount + 20;
+                                            setTiktokVisibleCount(newCount);
+                                            setTiktokTokens(tiktokTokensFull.slice(0, newCount));
+                                        }}
+                                        className="px-8 py-3 bg-[#141A22] hover:bg-[#1F2833] text-[#A0ABC0] hover:text-white text-sm font-medium rounded-full transition-all border border-white/5 hover:border-white/10 active:scale-95 shadow-sm"
+                                    >
+                                        Load More
+                                    </button>
+                                )}
+                                {tiktokVisibleCount > 5 && (
+                                    <button 
+                                        onClick={() => {
+                                            const newCount = Math.max(5, tiktokVisibleCount - 20);
+                                            setTiktokVisibleCount(newCount);
+                                            setTiktokTokens(tiktokTokensFull.slice(0, newCount));
+                                        }}
+                                        className="px-8 py-3 bg-[#1F2833] hover:bg-[#141A22] text-[#A0ABC0] hover:text-white text-sm font-medium rounded-full transition-all border border-white/5 hover:border-white/10 active:scale-95 shadow-sm"
+                                    >
+                                        Show Less
+                                    </button>
+                                )}
+                            </div>
+                        )}
+                    </div>
 
                 </div>
             </main>
