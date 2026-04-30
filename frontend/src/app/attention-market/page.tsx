@@ -5,7 +5,8 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { 
     TrendingUp, TrendingDown, ExternalLink, ShieldCheck, ArrowRight, 
-    Home, Activity, Eye, History, Wallet, Search, SlidersHorizontal 
+    Home, Activity, Eye, History, Wallet, Search, SlidersHorizontal,
+    ChevronDown, ChevronUp
 } from 'lucide-react';
 
 interface Token {
@@ -15,6 +16,7 @@ interface Token {
     image_cid: string;
     timestamp: string;
     region?: string;
+    platform?: 'x' | 'tiktok';
 }
 
 const Sparkline = ({ up }: { up: boolean }) => (
@@ -32,10 +34,13 @@ const Sparkline = ({ up }: { up: boolean }) => (
 export default function AttentionMarket() {
     const [usaTokens, setUsaTokens] = useState<Token[]>([]);
     const [otherTokens, setOtherTokens] = useState<Token[]>([]);
+    const [tiktokTokens, setTiktokTokens] = useState<Token[]>([]);
     const [usaTokensFull, setUsaTokensFull] = useState<Token[]>([]);
     const [otherTokensFull, setOtherTokensFull] = useState<Token[]>([]);
+    const [tiktokTokensFull, setTiktokTokensFull] = useState<Token[]>([]);
     const [usaVisibleCount, setUsaVisibleCount] = useState(5);
     const [othersVisibleCount, setOthersVisibleCount] = useState(5);
+    const [tiktokVisibleCount, setTiktokVisibleCount] = useState(5);
     const [loading, setLoading] = useState(true);
     const [activeTab, setActiveTab] = useState('US Trends');
 
@@ -50,15 +55,19 @@ export default function AttentionMarket() {
                 if (data.success) {
                     const filteredTokens = data.data.filter((t: Token) => t.symbol !== 'JXSN' && t.symbol !== 'TENI' && t.symbol !== 'VERIFY');
 
+                    // Separate TikTok tokens by platform
+                    const tiktok = filteredTokens.filter((t: Token) => t.platform === 'tiktok');
+                    const nonTiktok = filteredTokens.filter((t: Token) => t.platform !== 'tiktok');
+
                     const usaSymbols = ['SOTU', 'WWRW', 'SPCX'];
-                    const usa = filteredTokens.filter((t: Token) => {
+                    const usa = nonTiktok.filter((t: Token) => {
                         if (t.region) {
                             const r = t.region.toUpperCase();
                             return r === 'US' || r === 'USA' || r === 'UNITED STATES';
                         }
                         return usaSymbols.includes(t.symbol.toUpperCase());
                     });
-                    const others = filteredTokens.filter((t: Token) => {
+                    const others = nonTiktok.filter((t: Token) => {
                         if (t.region) {
                             const r = t.region.toUpperCase();
                             return r === 'NG' || r === 'NIGERIA';
@@ -66,8 +75,10 @@ export default function AttentionMarket() {
                         return !usaSymbols.includes(t.symbol.toUpperCase());
                     });
 
+                    setTiktokTokensFull(tiktok);
                     setUsaTokensFull(usa);
                     setOtherTokensFull(others);
+                    setTiktokTokens(tiktok.slice(0, tiktokVisibleCount));
                     setUsaTokens(usa.slice(0, usaVisibleCount));
                     setOtherTokens(others.slice(0, othersVisibleCount));
                 }
@@ -80,10 +91,14 @@ export default function AttentionMarket() {
         fetchTokens();
         const interval = setInterval(fetchTokens, 10000); // Polling every 10s
         return () => clearInterval(interval);
-    }, [usaVisibleCount, othersVisibleCount]);
+    }, [usaVisibleCount, othersVisibleCount, tiktokVisibleCount]);
 
     const handleLoadMore = () => {
-        if (activeTab === 'US Trends') {
+        if (activeTab === 'TikTok Trends') {
+            const newCount = tiktokVisibleCount + 20;
+            setTiktokVisibleCount(newCount);
+            setTiktokTokens(tiktokTokensFull.slice(0, newCount));
+        } else if (activeTab === 'US Trends') {
             const newCount = usaVisibleCount + 20;
             setUsaVisibleCount(newCount);
             setUsaTokens(usaTokensFull.slice(0, newCount));
@@ -95,7 +110,11 @@ export default function AttentionMarket() {
     };
 
     const handleShowLess = () => {
-        if (activeTab === 'US Trends') {
+        if (activeTab === 'TikTok Trends') {
+            const newCount = Math.max(5, tiktokVisibleCount - 20);
+            setTiktokVisibleCount(newCount);
+            setTiktokTokens(tiktokTokensFull.slice(0, newCount));
+        } else if (activeTab === 'US Trends') {
             const newCount = Math.max(5, usaVisibleCount - 20);
             setUsaVisibleCount(newCount);
             setUsaTokens(usaTokensFull.slice(0, newCount));
@@ -107,7 +126,9 @@ export default function AttentionMarket() {
     };
 
     const showLoadMore = () => {
-        if (activeTab === 'US Trends') {
+        if (activeTab === 'TikTok Trends') {
+            return tiktokVisibleCount < tiktokTokensFull.length;
+        } else if (activeTab === 'US Trends') {
             return usaVisibleCount < usaTokensFull.length;
         } else if (activeTab === 'NG Trends') {
             return othersVisibleCount < otherTokensFull.length;
@@ -116,7 +137,9 @@ export default function AttentionMarket() {
     };
 
     const showShowLess = () => {
-        if (activeTab === 'US Trends') {
+        if (activeTab === 'TikTok Trends') {
+            return tiktokVisibleCount > 5;
+        } else if (activeTab === 'US Trends') {
             return usaVisibleCount > 5;
         } else if (activeTab === 'NG Trends') {
             return othersVisibleCount > 5;
@@ -298,7 +321,7 @@ export default function AttentionMarket() {
                     {/* Controls Bar */}
                     <div className="flex flex-col xl:flex-row justify-between gap-4">
                         <div className="flex p-1 bg-[#141A22] rounded-xl border border-white/5 overflow-x-auto hide-scrollbar">
-                            {['Favorites', 'US Trends', 'NG Trends', 'Global', 'New'].map(tab => (
+                            {['Favorites', 'US Trends', 'NG Trends', 'TikTok Trends', 'Global', 'New'].map(tab => (
                                 <button 
                                     key={tab}
                                     onClick={() => setActiveTab(tab)}
@@ -336,7 +359,8 @@ export default function AttentionMarket() {
                         <div className="md:p-2">
                             {activeTab === 'US Trends' && renderTokenList(usaTokens, 'US')}
                             {activeTab === 'NG Trends' && renderTokenList(otherTokens, 'NG')}
-                            {activeTab !== 'US Trends' && activeTab !== 'NG Trends' && renderTokenList([])}
+                            {activeTab === 'TikTok Trends' && renderTokenList(tiktokTokens)}
+                            {activeTab !== 'US Trends' && activeTab !== 'NG Trends' && activeTab !== 'TikTok Trends' && renderTokenList([])}
                         </div>
                     </div>
 
@@ -362,42 +386,6 @@ export default function AttentionMarket() {
                         </div>
                     )}
 
-                    {/* TikTok Trends Upcoming */}
-                    <div className="mt-12 opacity-50 pointer-events-none grayscale">
-                        <div className="flex items-center gap-3 mb-4">
-                            <h2 className="text-2xl font-black tracking-tight flex items-center gap-2">
-                                <span className="text-[#c4b5fd] uppercase">TikTok Trends</span>
-                            </h2>
-                            <span className="px-2 py-0.5 rounded bg-[#c4b5fd]/20 text-[#c4b5fd] text-[10px] font-bold border border-[#c4b5fd]/50 uppercase tracking-widest">Coming Soon</span>
-                        </div>
-                        
-                        <div className="bg-transparent md:bg-[#0C1014] md:border border-white/5 rounded-2xl overflow-hidden">
-                            {/* Table Header */}
-                            <div className="hidden md:grid grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr] gap-4 p-4 border-b border-white/5 text-[10px] font-bold text-[#5A6B80] tracking-wider uppercase">
-                                <div>Asset</div>
-                                <div>Price</div>
-                                <div>24H Change</div>
-                                <div>24H Volume</div>
-                                <div className="hidden lg:block">Market Cap</div>
-                                <div className="hidden lg:block">Last 7 Days</div>
-                            </div>
-
-                            {/* Table Body - Mock Skeleton Data */}
-                            <div className="md:p-2 space-y-2">
-                                {[1, 2, 3].map(i => (
-                                    <div key={i} className="flex md:grid md:grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr] gap-4 items-center p-4 bg-[#141A22] rounded-xl border border-transparent">
-                                        <div className="flex items-center gap-4 min-w-0">
-                                            <div className="w-10 h-10 rounded-full overflow-hidden bg-[#1F2833] shrink-0 border border-white/5"></div>
-                                            <div className="min-w-0 space-y-2">
-                                                <div className="h-3 w-24 bg-[#1F2833] rounded"></div>
-                                                <div className="h-2 w-16 bg-[#1F2833] rounded"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </main>
 
