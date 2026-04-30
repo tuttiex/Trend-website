@@ -53,11 +53,14 @@ export default function AttentionMarket() {
                 const res = await fetch(apiUrl);
                 const data = await res.json();
                 if (data.success) {
+                    console.log('API returned tokens:', data.data.length, data.data.map((t: Token) => ({ symbol: t.symbol, platform: t.platform, region: t.region })));
                     const filteredTokens = data.data.filter((t: Token) => t.symbol !== 'JXSN' && t.symbol !== 'TENI' && t.symbol !== 'VERIFY');
 
                     // Separate TikTok tokens by platform
                     const tiktok = filteredTokens.filter((t: Token) => t.platform === 'tiktok');
                     const nonTiktok = filteredTokens.filter((t: Token) => t.platform !== 'tiktok');
+
+                    console.log('TikTok tokens:', tiktok.length, 'Non-TikTok tokens:', nonTiktok.length);
 
                     const usaSymbols = ['SOTU', 'WWRW', 'SPCX'];
                     const usa = nonTiktok.filter((t: Token) => {
@@ -65,15 +68,17 @@ export default function AttentionMarket() {
                             const r = t.region.toUpperCase();
                             return r === 'US' || r === 'USA' || r === 'UNITED STATES';
                         }
-                        return usaSymbols.includes(t.symbol.toUpperCase());
+                        return t.symbol && usaSymbols.includes(t.symbol.toUpperCase());
                     });
                     const others = nonTiktok.filter((t: Token) => {
                         if (t.region) {
                             const r = t.region.toUpperCase();
                             return r === 'NG' || r === 'NIGERIA';
                         }
-                        return !usaSymbols.includes(t.symbol.toUpperCase());
+                        return t.symbol && !usaSymbols.includes(t.symbol.toUpperCase());
                     });
+
+                    console.log('USA tokens:', usa.length, 'NG/Others tokens:', others.length);
 
                     setTiktokTokensFull(tiktok);
                     setUsaTokensFull(usa);

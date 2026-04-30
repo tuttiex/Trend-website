@@ -56,6 +56,13 @@ function initWebsiteDatabase() {
             updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )`);
 
+        // Migration: Add platform column if it doesn't exist (SQLite doesn't support ALTER TABLE ADD COLUMN with IF NOT EXISTS)
+        websiteDb.run(`ALTER TABLE cached_tokens ADD COLUMN platform TEXT DEFAULT 'x'`, (err) => {
+            if (err && !err.message.includes('duplicate column')) {
+                console.error('Migration error adding platform column:', err);
+            }
+        });
+
         // Users table
         websiteDb.run(`CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
