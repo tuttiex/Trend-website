@@ -394,9 +394,9 @@ export default function AttentionMarket() {
                     <div className="mt-16">
                         <div className="flex items-center gap-3 mb-6">
                             <h2 className="text-2xl font-black tracking-tight flex items-center gap-2">
-                                <span className="text-[#c4b5fd] uppercase">TikTok Trends</span>
+                                <span className="bg-gradient-to-br from-primary to-primary-container text-transparent bg-clip-text inline-block uppercase">TikTok Trends</span>
                             </h2>
-                            <span className="px-2 py-0.5 rounded bg-[#c4b5fd]/20 text-[#c4b5fd] text-[10px] font-bold border border-[#c4b5fd]/50 uppercase tracking-widest">Live</span>
+                            <span className="px-2 py-0.5 rounded bg-primary/20 text-primary text-[10px] font-bold border border-primary/50 uppercase tracking-widest">Live</span>
                         </div>
                         
                         <div className="bg-transparent md:bg-[#0C1014] md:border border-white/5 rounded-2xl overflow-hidden">
