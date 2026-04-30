@@ -48,6 +48,7 @@ function initWebsiteDatabase() {
             token_name TEXT,
             topic TEXT,
             region TEXT,
+            platform TEXT DEFAULT 'x',
             metadata_cid TEXT,
             logo_uri TEXT,
             pool_address TEXT,
@@ -172,6 +173,7 @@ app.get('/api/public/tokens', async (req, res) => {
                 token_symbol as symbol,
                 topic,
                 region,
+                platform,
                 COALESCE(logo_uri, metadata_cid) as image_cid,
                 pool_address,
                 created_at as timestamp
@@ -195,7 +197,12 @@ app.get('/api/public/tokens', async (req, res) => {
                 logo_uri,
                 metadata_cid,
                 pool_address,
-                timestamp
+                timestamp,
+                CASE 
+                    WHEN primary_source = 'TIKTOK_API' THEN 'tiktok'
+                    WHEN primary_source = 'TWITTER_API_IO' THEN 'x'
+                    ELSE 'x'
+                END as platform
             FROM deployments 
             WHERE token_address IS NOT NULL 
             AND (logo_uri IS NOT NULL OR metadata_cid IS NOT NULL)
@@ -206,17 +213,18 @@ app.get('/api/public/tokens', async (req, res) => {
         for (const row of rows) {
             await websiteDbRun(`
                 INSERT INTO cached_tokens 
-                (token_address, token_symbol, topic, region, metadata_cid, logo_uri, pool_address, created_at, updated_at)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
+                (token_address, token_symbol, topic, region, platform, metadata_cid, logo_uri, pool_address, created_at, updated_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
                 ON CONFLICT(token_address) DO UPDATE SET
                     token_symbol = excluded.token_symbol,
                     topic = excluded.topic,
                     region = excluded.region,
+                    platform = excluded.platform,
                     metadata_cid = excluded.metadata_cid,
                     logo_uri = excluded.logo_uri,
                     pool_address = excluded.pool_address,
                     updated_at = datetime('now')
-            `, [row.token_address, row.symbol, row.topic, row.region || null, row.metadata_cid || null, row.logo_uri || null, row.pool_address || null, row.timestamp]);
+            `, [row.token_address, row.symbol, row.topic, row.region || null, row.platform || 'x', row.metadata_cid || null, row.logo_uri || null, row.pool_address || null, row.timestamp]);
         }
 
         res.json({ success: true, data: rows, source: 'agent' });
@@ -238,6 +246,7 @@ app.get('/api/public/tokens/:address', async (req, res) => {
                 token_symbol as symbol,
                 topic,
                 region,
+                platform,
                 metadata_cid,
                 logo_uri as image_cid,
                 pool_address,
@@ -260,7 +269,12 @@ app.get('/api/public/tokens/:address', async (req, res) => {
                 metadata_cid,
                 logo_uri as image_cid,
                 pool_address,
-                timestamp
+                timestamp,
+                CASE 
+                    WHEN primary_source = 'TIKTOK_API' THEN 'tiktok'
+                    WHEN primary_source = 'TWITTER_API_IO' THEN 'x'
+                    ELSE 'x'
+                END as platform
             FROM deployments 
             WHERE token_address = ?
         `, [address]);
@@ -287,10 +301,18 @@ app.post('/api/deployments', async (req, res) => {
             return res.status(401).json({ error: 'Unauthorized' });
         }
 
-        const { tokenAddress, symbol, topic, region, metadataUrl, imageUrl, poolAddress } = req.body.data || req.body;
+        const { tokenAddress, symbol, topic, region, metadataUrl, imageUrl, poolAddress, primarySource, sources } = req.body.data || req.body;
 
         if (!tokenAddress || !symbol || !topic) {
             return res.status(400).json({ error: 'Missing required fields' });
+        }
+
+        // Map primarySource to platform (x or tiktok)
+        let platform = 'x'; // default
+        if (primarySource === 'TIKTOK_API' || (sources && sources.includes('TIKTOK_API'))) {
+            platform = 'tiktok';
+        } else if (primarySource === 'TWITTER_API_IO' || (sources && sources.includes('TWITTER_API_IO'))) {
+            platform = 'x';
         }
 
         // Log webhook
@@ -302,17 +324,18 @@ app.post('/api/deployments', async (req, res) => {
         // Insert or update cached token
         await websiteDbRun(`
             INSERT INTO cached_tokens 
-            (token_address, token_symbol, topic, region, metadata_cid, logo_uri, pool_address, updated_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, datetime('now'))
+            (token_address, token_symbol, topic, region, platform, metadata_cid, logo_uri, pool_address, updated_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
             ON CONFLICT(token_address) DO UPDATE SET
                 token_symbol = excluded.token_symbol,
                 topic = excluded.topic,
                 region = excluded.region,
+                platform = excluded.platform,
                 metadata_cid = excluded.metadata_cid,
                 logo_uri = excluded.logo_uri,
                 pool_address = excluded.pool_address,
                 updated_at = datetime('now')
-        `, [tokenAddress, symbol, topic, region || null, metadataUrl || null, imageUrl || null, poolAddress || null]);
+        `, [tokenAddress, symbol, topic, region || null, platform, metadataUrl || null, imageUrl || null, poolAddress || null]);
 
         console.log(`Cached token: ${symbol} (${tokenAddress})`);
         res.json({ success: true, message: 'Token cached' });
