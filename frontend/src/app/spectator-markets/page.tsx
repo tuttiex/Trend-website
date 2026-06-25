@@ -66,6 +66,7 @@ export default function SpectatorMarkets() {
                         
                         <div className="hidden md:flex flex-1 items-center justify-evenly px-8 text-sm font-medium text-on-surface-variant">
                             <Link href="/attention-market" className="hover:text-white transition-colors">Attention Market</Link>
+                            <Link href="/opinion-market" className="hover:text-white transition-colors">Opinion Market</Link>
                             <Link href="/spectator-markets" className="text-white transition-colors border-b border-[#00E5FF]">Spectator Market</Link>
                         </div>
 
