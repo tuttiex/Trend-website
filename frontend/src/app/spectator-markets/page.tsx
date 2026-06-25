@@ -140,6 +140,7 @@ export default function SpectatorMarkets() {
                                 <Trophy size={14} /> Featured Prediction
                             </div>
                             <h2 className="text-2xl md:text-3xl font-black max-w-lg">Will an AI agent deploy a Top 100 token by Q3?</h2>
+                            <div className="text-[#A0ABC0] text-sm font-medium uppercase tracking-widest">Trends</div>
                             <button className="bg-white text-black font-bold text-sm px-6 py-2 rounded-full hover:bg-white/90 transition-all">
                                 Trade Yes 82%
                             </button>
@@ -150,7 +151,7 @@ export default function SpectatorMarkets() {
                     {/* Controls Bar */}
                     <div className="flex flex-col xl:flex-row justify-between gap-4">
                         <div className="flex p-1 bg-[#141A22] rounded-xl border border-white/5 overflow-x-auto hide-scrollbar">
-                            {['All', 'Platform', 'Trends', 'Network', 'AI', 'Politics'].map(tab => (
+                            {['All', 'X', 'TikTok', 'Reddit', 'YouTube'].map(tab => (
                                 <button 
                                     key={tab}
                                     onClick={() => setActiveTab(tab)}
