@@ -81,8 +81,8 @@ export default function TokenDetail({ params }: { params: Promise<{ address: str
                         
                         <div className="hidden md:flex flex-1 items-center justify-evenly px-8 text-sm font-medium text-on-surface-variant">
                             <Link href="/attention-market" className="hover:text-white transition-colors">Attention Market</Link>
-                            <Link href="/opinion-market" className="hover:text-white transition-colors">Opinion Market</Link>
                             <Link href="/spectator-markets" className="hover:text-white transition-colors">Spectator Market</Link>
+                            <Link href="/opinion-market" className="hover:text-white transition-colors">Opinion Market</Link>
                         </div>
 
                         <div className="flex items-center justify-end gap-6 shrink-0 min-w-[120px]">
