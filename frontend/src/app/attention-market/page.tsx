@@ -16,7 +16,7 @@ interface Token {
     image_cid: string;
     timestamp: string;
     region?: string;
-    platform?: 'x' | 'tiktok' | 'youtube';
+    platform?: 'x' | 'tiktok' | 'youtube' | 'snapchat' | 'facebook';
 }
 
 const Sparkline = ({ up }: { up: boolean }) => (
@@ -36,14 +36,20 @@ export default function AttentionMarket() {
     const [otherTokens, setOtherTokens] = useState<Token[]>([]);
     const [tiktokTokens, setTiktokTokens] = useState<Token[]>([]);
     const [youtubeTokens, setYoutubeTokens] = useState<Token[]>([]);
+    const [snapchatTokens, setSnapchatTokens] = useState<Token[]>([]);
+    const [facebookTokens, setFacebookTokens] = useState<Token[]>([]);
     const [usaTokensFull, setUsaTokensFull] = useState<Token[]>([]);
     const [otherTokensFull, setOtherTokensFull] = useState<Token[]>([]);
     const [tiktokTokensFull, setTiktokTokensFull] = useState<Token[]>([]);
     const [youtubeTokensFull, setYoutubeTokensFull] = useState<Token[]>([]);
+    const [snapchatTokensFull, setSnapchatTokensFull] = useState<Token[]>([]);
+    const [facebookTokensFull, setFacebookTokensFull] = useState<Token[]>([]);
     const [usaVisibleCount, setUsaVisibleCount] = useState(5);
     const [othersVisibleCount, setOthersVisibleCount] = useState(5);
     const [tiktokVisibleCount, setTiktokVisibleCount] = useState(5);
     const [youtubeVisibleCount, setYoutubeVisibleCount] = useState(5);
+    const [snapchatVisibleCount, setSnapchatVisibleCount] = useState(5);
+    const [facebookVisibleCount, setFacebookVisibleCount] = useState(5);
     const [loading, setLoading] = useState(true);
     const [activeTab, setActiveTab] = useState('US Trends');
 
@@ -59,12 +65,14 @@ export default function AttentionMarket() {
                     console.log('API returned tokens:', data.data.length, data.data.map((t: Token) => ({ symbol: t.symbol, platform: t.platform, region: t.region })));
                     const filteredTokens = data.data.filter((t: Token) => t.symbol !== 'JXSN' && t.symbol !== 'TENI' && t.symbol !== 'VERIFY');
 
-                    // Separate TikTok and YouTube tokens by platform
+                    // Separate TikTok, YouTube, Snapchat, and Facebook tokens by platform
                     const tiktok = filteredTokens.filter((t: Token) => t.platform === 'tiktok');
                     const youtube = filteredTokens.filter((t: Token) => t.platform === 'youtube');
-                    const nonTiktok = filteredTokens.filter((t: Token) => t.platform !== 'tiktok' && t.platform !== 'youtube');
+                    const snapchat = filteredTokens.filter((t: Token) => t.platform === 'snapchat');
+                    const facebook = filteredTokens.filter((t: Token) => t.platform === 'facebook');
+                    const nonTiktok = filteredTokens.filter((t: Token) => t.platform !== 'tiktok' && t.platform !== 'youtube' && t.platform !== 'snapchat' && t.platform !== 'facebook');
 
-                    console.log('TikTok tokens:', tiktok.length, 'YouTube tokens:', youtube.length, 'Non-TikTok tokens:', nonTiktok.length);
+                    console.log('TikTok tokens:', tiktok.length, 'YouTube tokens:', youtube.length, 'Snapchat tokens:', snapchat.length, 'Facebook tokens:', facebook.length, 'Non-TikTok tokens:', nonTiktok.length);
 
                     const usaSymbols = ['SOTU', 'WWRW', 'SPCX'];
                     const usa = nonTiktok.filter((t: Token) => {
@@ -86,10 +94,14 @@ export default function AttentionMarket() {
 
                     setTiktokTokensFull(tiktok);
                     setYoutubeTokensFull(youtube);
+                    setSnapchatTokensFull(snapchat);
+                    setFacebookTokensFull(facebook);
                     setUsaTokensFull(usa);
                     setOtherTokensFull(others);
                     setTiktokTokens(tiktok.slice(0, tiktokVisibleCount));
                     setYoutubeTokens(youtube.slice(0, youtubeVisibleCount));
+                    setSnapchatTokens(snapchat.slice(0, snapchatVisibleCount));
+                    setFacebookTokens(facebook.slice(0, facebookVisibleCount));
                     setUsaTokens(usa.slice(0, usaVisibleCount));
                     setOtherTokens(others.slice(0, othersVisibleCount));
                 }
@@ -102,7 +114,7 @@ export default function AttentionMarket() {
         fetchTokens();
         const interval = setInterval(fetchTokens, 10000); // Polling every 10s
         return () => clearInterval(interval);
-    }, [usaVisibleCount, othersVisibleCount, tiktokVisibleCount, youtubeVisibleCount]);
+    }, [usaVisibleCount, othersVisibleCount, tiktokVisibleCount, youtubeVisibleCount, snapchatVisibleCount, facebookVisibleCount]);
 
     const handleLoadMore = () => {
         if (activeTab === 'TikTok Trends') {
@@ -113,6 +125,14 @@ export default function AttentionMarket() {
             const newCount = youtubeVisibleCount + 20;
             setYoutubeVisibleCount(newCount);
             setYoutubeTokens(youtubeTokensFull.slice(0, newCount));
+        } else if (activeTab === 'Snapchat Trends') {
+            const newCount = snapchatVisibleCount + 20;
+            setSnapchatVisibleCount(newCount);
+            setSnapchatTokens(snapchatTokensFull.slice(0, newCount));
+        } else if (activeTab === 'Facebook Trends') {
+            const newCount = facebookVisibleCount + 20;
+            setFacebookVisibleCount(newCount);
+            setFacebookTokens(facebookTokensFull.slice(0, newCount));
         } else if (activeTab === 'US Trends') {
             const newCount = usaVisibleCount + 20;
             setUsaVisibleCount(newCount);
@@ -133,6 +153,14 @@ export default function AttentionMarket() {
             const newCount = Math.max(5, youtubeVisibleCount - 20);
             setYoutubeVisibleCount(newCount);
             setYoutubeTokens(youtubeTokensFull.slice(0, newCount));
+        } else if (activeTab === 'Snapchat Trends') {
+            const newCount = Math.max(5, snapchatVisibleCount - 20);
+            setSnapchatVisibleCount(newCount);
+            setSnapchatTokens(snapchatTokensFull.slice(0, newCount));
+        } else if (activeTab === 'Facebook Trends') {
+            const newCount = Math.max(5, facebookVisibleCount - 20);
+            setFacebookVisibleCount(newCount);
+            setFacebookTokens(facebookTokensFull.slice(0, newCount));
         } else if (activeTab === 'US Trends') {
             const newCount = Math.max(5, usaVisibleCount - 20);
             setUsaVisibleCount(newCount);
@@ -149,6 +177,10 @@ export default function AttentionMarket() {
             return tiktokVisibleCount < tiktokTokensFull.length;
         } else if (activeTab === 'YouTube Trends') {
             return youtubeVisibleCount < youtubeTokensFull.length;
+        } else if (activeTab === 'Snapchat Trends') {
+            return snapchatVisibleCount < snapchatTokensFull.length;
+        } else if (activeTab === 'Facebook Trends') {
+            return facebookVisibleCount < facebookTokensFull.length;
         } else if (activeTab === 'US Trends') {
             return usaVisibleCount < usaTokensFull.length;
         } else if (activeTab === 'NG Trends') {
@@ -162,6 +194,10 @@ export default function AttentionMarket() {
             return tiktokVisibleCount > 5;
         } else if (activeTab === 'YouTube Trends') {
             return youtubeVisibleCount > 5;
+        } else if (activeTab === 'Snapchat Trends') {
+            return snapchatVisibleCount > 5;
+        } else if (activeTab === 'Facebook Trends') {
+            return facebookVisibleCount > 5;
         } else if (activeTab === 'US Trends') {
             return usaVisibleCount > 5;
         } else if (activeTab === 'NG Trends') {
@@ -513,6 +549,120 @@ export default function AttentionMarket() {
                                             const newCount = Math.max(5, youtubeVisibleCount - 20);
                                             setYoutubeVisibleCount(newCount);
                                             setYoutubeTokens(youtubeTokensFull.slice(0, newCount));
+                                        }}
+                                        className="px-8 py-3 bg-[#1F2833] hover:bg-[#141A22] text-[#A0ABC0] hover:text-white text-sm font-medium rounded-full transition-all border border-white/5 hover:border-white/10 active:scale-95 shadow-sm"
+                                    >
+                                        Show Less
+                                    </button>
+                                )}
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Snapchat Trends Section */}
+                    <div className="mt-16">
+                        <div className="flex items-center gap-3 mb-6">
+                            <h2 className="text-2xl font-black tracking-tight flex items-center gap-2">
+                                <span className="bg-gradient-to-br from-primary to-primary-container text-transparent bg-clip-text inline-block uppercase">Snapchat Trends</span>
+                            </h2>
+                            <span className="px-2 py-0.5 rounded bg-primary/20 text-primary text-[10px] font-bold border border-primary/50 uppercase tracking-widest">Live</span>
+                        </div>
+                        
+                        <div className="bg-transparent md:bg-[#0C1014] md:border border-white/5 rounded-2xl overflow-hidden">
+                            {/* Table Header */}
+                            <div className="hidden md:grid grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr] gap-4 p-4 border-b border-white/5 text-[10px] font-bold text-[#5A6B80] tracking-wider uppercase">
+                                <div>Asset</div>
+                                <div>Price</div>
+                                <div>24H Change</div>
+                                <div>24H Volume</div>
+                                <div className="hidden lg:block">Market Cap</div>
+                                <div className="hidden lg:block">Last 7 Days</div>
+                            </div>
+
+                            {/* Table Body */}
+                            <div className="md:p-2">
+                                {renderTokenList(snapchatTokens, 'Snapchat')}
+                            </div>
+                        </div>
+
+                        {/* Snapchat Load More / Show Less Buttons */}
+                        {(snapchatVisibleCount < snapchatTokensFull.length || snapchatVisibleCount > 5) && (
+                            <div className="flex justify-center mt-4 gap-3">
+                                {snapchatVisibleCount < snapchatTokensFull.length && (
+                                    <button 
+                                        onClick={() => {
+                                            const newCount = snapchatVisibleCount + 20;
+                                            setSnapchatVisibleCount(newCount);
+                                            setSnapchatTokens(snapchatTokensFull.slice(0, newCount));
+                                        }}
+                                        className="px-8 py-3 bg-[#141A22] hover:bg-[#1F2833] text-[#A0ABC0] hover:text-white text-sm font-medium rounded-full transition-all border border-white/5 hover:border-white/10 active:scale-95 shadow-sm"
+                                    >
+                                        Load More
+                                    </button>
+                                )}
+                                {snapchatVisibleCount > 5 && (
+                                    <button 
+                                        onClick={() => {
+                                            const newCount = Math.max(5, snapchatVisibleCount - 20);
+                                            setSnapchatVisibleCount(newCount);
+                                            setSnapchatTokens(snapchatTokensFull.slice(0, newCount));
+                                        }}
+                                        className="px-8 py-3 bg-[#1F2833] hover:bg-[#141A22] text-[#A0ABC0] hover:text-white text-sm font-medium rounded-full transition-all border border-white/5 hover:border-white/10 active:scale-95 shadow-sm"
+                                    >
+                                        Show Less
+                                    </button>
+                                )}
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Facebook Trends Section */}
+                    <div className="mt-16">
+                        <div className="flex items-center gap-3 mb-6">
+                            <h2 className="text-2xl font-black tracking-tight flex items-center gap-2">
+                                <span className="bg-gradient-to-br from-primary to-primary-container text-transparent bg-clip-text inline-block uppercase">Facebook Trends</span>
+                            </h2>
+                            <span className="px-2 py-0.5 rounded bg-primary/20 text-primary text-[10px] font-bold border border-primary/50 uppercase tracking-widest">Live</span>
+                        </div>
+                        
+                        <div className="bg-transparent md:bg-[#0C1014] md:border border-white/5 rounded-2xl overflow-hidden">
+                            {/* Table Header */}
+                            <div className="hidden md:grid grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr] gap-4 p-4 border-b border-white/5 text-[10px] font-bold text-[#5A6B80] tracking-wider uppercase">
+                                <div>Asset</div>
+                                <div>Price</div>
+                                <div>24H Change</div>
+                                <div>24H Volume</div>
+                                <div className="hidden lg:block">Market Cap</div>
+                                <div className="hidden lg:block">Last 7 Days</div>
+                            </div>
+
+                            {/* Table Body */}
+                            <div className="md:p-2">
+                                {renderTokenList(facebookTokens, 'Facebook')}
+                            </div>
+                        </div>
+
+                        {/* Facebook Load More / Show Less Buttons */}
+                        {(facebookVisibleCount < facebookTokensFull.length || facebookVisibleCount > 5) && (
+                            <div className="flex justify-center mt-4 gap-3">
+                                {facebookVisibleCount < facebookTokensFull.length && (
+                                    <button 
+                                        onClick={() => {
+                                            const newCount = facebookVisibleCount + 20;
+                                            setFacebookVisibleCount(newCount);
+                                            setFacebookTokens(facebookTokensFull.slice(0, newCount));
+                                        }}
+                                        className="px-8 py-3 bg-[#141A22] hover:bg-[#1F2833] text-[#A0ABC0] hover:text-white text-sm font-medium rounded-full transition-all border border-white/5 hover:border-white/10 active:scale-95 shadow-sm"
+                                    >
+                                        Load More
+                                    </button>
+                                )}
+                                {facebookVisibleCount > 5 && (
+                                    <button 
+                                        onClick={() => {
+                                            const newCount = Math.max(5, facebookVisibleCount - 20);
+                                            setFacebookVisibleCount(newCount);
+                                            setFacebookTokens(facebookTokensFull.slice(0, newCount));
                                         }}
                                         className="px-8 py-3 bg-[#1F2833] hover:bg-[#141A22] text-[#A0ABC0] hover:text-white text-sm font-medium rounded-full transition-all border border-white/5 hover:border-white/10 active:scale-95 shadow-sm"
                                     >
