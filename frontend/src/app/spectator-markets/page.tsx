@@ -140,13 +140,15 @@ export default function SpectatorMarkets() {
                                 <Trophy size={14} /> Featured Prediction
                             </div>
                             <h2 className="text-2xl md:text-3xl font-black max-w-lg">Will an AI agent deploy a Top 100 token by Q3?</h2>
-                            <div className="text-[#A0ABC0] text-sm font-medium uppercase tracking-widest">Trends</div>
                             <button className="bg-white text-black font-bold text-sm px-6 py-2 rounded-full hover:bg-white/90 transition-all">
                                 Trade Yes 82%
                             </button>
                         </div>
                         <div className="absolute right-0 top-0 h-full w-1/3 opacity-20 pointer-events-none skew-x-12 translate-x-12 bg-primary blur-3xl group-hover:opacity-30 transition-opacity"></div>
                     </div>
+
+                    {/* Trends Label */}
+                    <div className="text-[#A0ABC0] text-sm font-medium uppercase tracking-widest">Trends</div>
 
                     {/* Controls Bar */}
                     <div className="flex flex-col xl:flex-row justify-between gap-4">
